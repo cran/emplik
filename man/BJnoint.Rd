@@ -41,8 +41,8 @@ Buckley-James estimator.
     \item{iteration}{number of iterations performed.}
 }
 \references{
-    Buckley, J. and James, I. (1979).
-    Biometrika 
+    Buckley, J. and James, I. (1979).  Linear regression with censored data.
+   \emph{Biometrika}, \bold{66} 429-36.
 }
 \author{ Mai Zhou. }
 \examples{

@@ -21,11 +21,12 @@ iter <- function(x, y, delta, beta)
         niceorder <- order(res, - delta) # order the obs according to
         resorder <- res[niceorder]     # res, if tie then according to
         dorder <- delta[niceorder]  # delta value i.e. d=1 comes first
+        dorder[N] <- 1              # added 2005 3/20
         uorder <- u[niceorder] 
         ystar <- y[niceorder]  # should I just let ystar <- delta ?
         xorder <- as.matrix(x[niceorder,])
 
-temp <- WKM(x=resorder, d=dorder)
+temp <- WKM(x=resorder, d=dorder, zc=1:N)  # add  ( , zc=1:N )  2005, 3
 
 jifen <- rev( cumsum( rev(resorder * temp$jump)) )
 Sresorder <- temp$surv

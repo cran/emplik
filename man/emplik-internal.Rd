@@ -61,6 +61,6 @@ is used by \code{el.test.wt3}.
 
 \code{iter} is for perform one iteration of EM in the Buckley-James
             censored regression estimation.
-\code{redistF} is for redistribution, according to Fdist.
+\code{redistF} is for redistribution of probability, according to Fdist.
 }
 \keyword{internal}
