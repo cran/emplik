@@ -59,9 +59,9 @@ el.cen.EM <- function(x,d, fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
    funNPMLE <- NA
   }
   if( (m>0) && (mleft==0) ) {
-   temp3 <- WKM(x,d,w)
+   temp3 <- WKM(x=x,d=d,w=w)
    logel00 <- temp3$logel
-   funNPMLE <- sum( funxd1 * temp3$jump )
+   funNPMLE <- sum(funxd1 * temp3$jump[temp3$jump > 0])
 #  now the iteration 
    pnew <- el.test.wt(x=funxd1, wt=wd1, mu=mu)$prob
    n <- length(pnew)

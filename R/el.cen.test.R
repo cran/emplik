@@ -18,7 +18,7 @@ el.cen.test <- function(x,d,fun=function(x){x},mu,error=1e-8,maxit=15)
    xx <- temp$value
    n <- length(xx) 
    ww <- temp$weight
-   w0 <- WKM(xx, dd, ww)$jump
+   w0 <- WKM(x=xx, d=dd, w=ww)$jump
    uncenw0 <- w0[dd==1]
    funxx <- fun(xx)
 

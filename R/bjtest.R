@@ -16,6 +16,7 @@ dsort[length(dsort)] <- 1  #last one as uncensored always
 temp0 <- WKM(esort,dsort)
 pKM <- temp0$jump
 temp <- redistF( y=esort, d=dsort, Fdist=pKM ) 
+### what to do if there is tied obs.???
 weight <- temp$weight/n   #the prob weight matrix
 
 A <- matrix(0, ncol=xdim[2], nrow=n)
