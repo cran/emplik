@@ -32,8 +32,8 @@ This function is designed for the case where the
 true distributions are all continuous.
 So there should be no tie in the data.
 
-The likelihood used here is the `Poisson' version likelihood:
-\deqn{ lik = \prod (dH(x_i))^{\delta_i} \exp [ - H(x_i)] 
+The log empirical likelihood used here is the `Poisson' version likelihood:
+\deqn{  \sum_{i=1}^n \delta_i \log (dH(x_i))  - [ H(x_i) - H(y_i) ]  ~. } 
 }
 
 If there are ties in the data that are resulted from rounding,

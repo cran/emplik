@@ -1,40 +1,45 @@
-\name{el.cen.EM}
-\alias{el.cen.EM}
-\title{Empirical likelihood ratio for mean 
+\name{el.cen.EM2}
+\alias{el.cen.EM2}
+\title{Empirical likelihood ratio test for several means 
 with right, left or doubly censored data, by EM algorithm}
 \usage{
-el.cen.EM(x,d,fun=function(t){t},mu,maxit=25,error=1e-9,...)
+el.cen.EM2(x,d,xc=rep(1,length(x)),fun,mu,maxit=25,error=1e-9,...)
 }
 \description{
-This program uses EM algorithm to compute the maximized 
+This function is similar to \code{el.cen.EM()}, but for multiple constraints.
+This program uses EM algorithm to maximize 
 (wrt \eqn{p_i}) empirical
 log likelihood function for right, left or doubly censored data with 
 the MEAN constraint:
-\deqn{ \sum_{d_i=1}  p_i f(x_i)  = \int f(t) dF(t) = \mu ~. }
+\deqn{ \sum_{d_i=1} p_i f_j(x_i) = \int f_j(t) dF(t) = \mu_j ~, }
+for \eqn{j = 1,2,...,k}.
 Where \eqn{p_i = \Delta F(x_i)} is a probability,
 \eqn{d_i} is the censoring indicator, 1(uncensored), 0(right censored),
 2(left censored). 
 It also returns those \eqn{p_i}. 
-
-The empirical log likelihood been maximized is
-\deqn{ \sum_{d_i=1} \log \Delta F(x_i) + \sum_{d_i=0} \log [1-F(x_i)] 
-    + \sum_{d_i=2}  \log F(x_i) . } 
+The log likelihood function is defined as
+\deqn{ \sum_{d_i=1} \log p_i + \sum_{d_i=2} \log F(x_i) 
+     + \sum_{d_i=0} \log [ 1-F(x_i)] ~.}
 }
 \arguments{
     \item{x}{a vector containing the observed survival times.}
     \item{d}{a vector containing the censoring indicators, 
            1-uncensored; 0-right censored; 2-left censored.}
-    \item{fun}{a continuous (weight) function used to calculate
-         the mean as in \eqn{H_0}.
-         \code{fun(t)} must be able to take a vector input \code{t}.
-         Default to the identity function \eqn{f(t)=t}.} 
-    \item{mu}{a real number used in the constraint, mean value of \eqn{f(X)}.}
+    \item{xc}{an optional vector of collapsing control values. 
+              If xc has different values then two (x,d) will not 
+              merge into one obs. even if they are identical.}
+    \item{fun}{a continuous (weight) function that returns a matrix. 
+         The columns (=k) of the matrix is used to calculate
+         the means as in \eqn{H_0}.
+         \code{fun(t)} must be able to take a vector input \code{t}.} 
+    \item{mu}{a vector of length k. Used in the constraint, 
+                    mean value of \eqn{f(X)}.}
     \item{error}{an optional positive real number specifying the tolerance of
        iteration error. This is the bound of the
        \eqn{L_1} norm of the differnence of two successive weights.}
     \item{maxit}{an optional integer, used to control maximum number of
              iterations. }
-   \item{...}{additional arguments, if any, to pass to fun.}
+    \item{...}{additional inputs to pass to \code{fun()}.}
 }
 \value{
     A list with the following components:
@@ -50,13 +55,13 @@ The empirical log likelihood been maximized is
 
 This implementation is all in R and have several for-loops in it. 
 A faster version would use C to do the for-loop part.
-But this version seems faster enough and is easier to port to Splus.
+(but this version is easier to port to Splus, and seems faster enough). 
 
 We return the log likelihood all the time. Sometimes, (for right censored
 and no censor case) we also return the -2 log likelihood ratio.
 In other cases, you have to plot a curve with many values of the 
 parameter, mu, to
-find out where is the place the log likelihood becomes maximum.
+find out where the log likelihood becomes maximum.
 And from there you can get -2 log likelihood ratio between
 the maximum location and your current parameter in Ho.
 
@@ -64,7 +69,7 @@ In order to get a proper distribution as NPMLE, we automatically
 change the \eqn{d} for the largest observation to 1
 (even if it is right censored), similar for the left censored, 
 smallest observation.
-\eqn{\mu} is a given constant. 
+\eqn{\mu} is a given constant vector. 
 When the given constants \eqn{\mu} is too far
 away from the NPMLE, there will be no distribution
 satisfy the constraint.
@@ -72,7 +77,7 @@ In this case the computation will stop.
 The -2 Log empirical likelihood ratio
 should be infinite. 
 
-The constant \code{mu} must be inside 
+The constant vector \code{mu} must be inside 
 \eqn{( \min f(x_i) , \max f(x_i) ) }
 for the computation to continue. 
 It is always true that the NPMLE values are feasible. So when the
@@ -90,26 +95,13 @@ Or use a different \code{fun}.
         by EM algorithm. 
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
 
-    Murphy, S. and van der Varrt (1997)
-         Semiparametric likelihood ratio inference.
-         \emph{Ann. Statist.} \bold{ 25}, 1471-1509.
 }
 \examples{
 ## example with tied observations
 x <- c(1, 1.5, 2, 3, 4, 5, 6, 5, 4, 1, 2, 4.5)
 d <- c(1,   1, 0, 1, 0, 1, 1, 1, 1, 0, 0,   1)
-el.cen.EM(x,d,mu=3.5)
-## we should get "-2LLR" = 1.2466....
-myfun5 <- function(x, theta, eps) {
-u <- (x-theta)*sqrt(5)/eps 
-INDE <- (u < sqrt(5)) & (u > -sqrt(5)) 
-u[u >= sqrt(5)] <- 0 
-u[u <= -sqrt(5)] <- 1 
-y <- 0.5 - (u - (u)^3/15)*3/(4*sqrt(5)) 
-u[ INDE ] <- y[ INDE ] 
-return(u)
-}
-el.cen.EM(x, d, fun=myfun5, mu=0.5, theta=3.5, eps=0.1)
+el.cen.EM2(x,d, fun=function(x){x}, mu=3.5)
+## we should get, same as in el.cen.EM;  "-2LLR" = 1.2466....
 }
 \keyword{nonparametric}
 \keyword{survival}

@@ -1,6 +1,6 @@
 Package: emplik
 Maintainer: Mai Zhou <mai@ms.uky.edu>
-Version: 0.6
+Version: 0.7
 Depends: R (>= 1.0)
 Author: Mai Zhou, Art Owen (for el.test())
 Description: empirical likelihood ratio tests for means/quantiles/hazards

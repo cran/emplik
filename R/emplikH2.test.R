@@ -79,7 +79,7 @@ loglik <- 2*(sum(log(onepluslamh)) - sum((onepluslamh-1)/onepluslamh) )
 #          sum( (risk1 -1)*log((1-jump1)/(1- weights1) ) )  ) 
 # this version of LR seems to give negative value sometime???
 
-list( "-2logemLR"=loglik,  ### drop this output "-2logemLRv2"=loglik2, 
+list( "-2LLR"=loglik,  ### drop this output "-2logemLRv2"=loglik2, 
       lambda=lam, times=Dtime, wts=weights, 
       nits=temp2$nf, message=temp2$message )
 }

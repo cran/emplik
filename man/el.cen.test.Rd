@@ -9,7 +9,7 @@ el.cen.test(x,d,fun=function(x){x},mu,error=1e-8,maxit=20)
 This program computes the maximized (wrt \eqn{p_i}) empirical
 log likelihood function for right censored data with 
 the MEAN constraint:
-\deqn{ \sum_i [ d_i p_i f(x_i) ] = \int f(t) dF(t) = \mu  } 
+\deqn{ \sum_i [ d_i p_i g(x_i) ] = \int g(t) dF(t) = \mu  } 
 where \eqn{p_i = \Delta F(x_i)} is a probability,
 \eqn{d_i} is the censoring indicator. 
 The \eqn{d} for the largest observation is always taken to be 1.
@@ -17,13 +17,16 @@ It then computes the -2 log
 empirical likelihood ratio which should be approximately chi-square
 distributed if the constraint is true.
 Here \eqn{F(t)} is the (unknown) CDF; 
-\eqn{f(t)} can be any given left
+\eqn{g(t)} can be any given left
 continuous function in \eqn{t}.
 \eqn{\mu} is a given constant. 
 The data must contain some right censored observations.
 If there is no censoring or the only censoring is the largest 
 observation, the code will stop and we should use 
 \code{el.test} that is for uncensored data.  
+
+The log likelihood been maximized is
+\deqn{ \sum_{d_i=1} \log \Delta F(x_i) + \sum_{d_i=0} \log [ 1-F(x_i) ].}
 }
 \arguments{
     \item{x}{a vector containing the observed survival times.}
@@ -94,7 +97,7 @@ el.cen.test(x,d,mu=3.5)
 \keyword{htest}
 
 
-{   # This program compute the maximized (wrt w_i) loglikelihood 
+{  # This program compute the maximized (wrt w_i) loglikelihood 
    # function for right censored data with the MEAN constraint: 
    #                   sum[d_i * w_i * fun(x_i)]= mu        (star)
    # where w_i is the probability.

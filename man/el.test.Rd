@@ -25,6 +25,9 @@ el.test(x, mu, lam, maxit=25, gradtol=1e-7,
 \description{
     Compute the empirical likelihood ratio with the
 	mean vector fixed at mu.
+
+The log empirical likelihood been maximized is
+\deqn{ \sum_{i=1}^n \log \Delta F(x_i).}
 }
 \details{
 If \code{mu} is in the interior of the convex hull of the

@@ -1,5 +1,8 @@
 el.cen.EM               Empirical likelihood ratio for mean with right,
                         left or doubly censored data, by EM algorithm
+el.cen.EM2              Empirical likelihood ratio test for several
+                        means with right, left or doubly censored data,
+                        by EM algorithm
 el.cen.test             Empirical likelihood ratio for mean with right
                         censored data, by QP.
 el.ltrc.EM              Empirical likelihood ratio for mean with left

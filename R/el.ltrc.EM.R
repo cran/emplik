@@ -69,5 +69,5 @@ el.ltrc.EM <- function(y,x,d,fun=function(t){t},mu,maxit=30,error=1e-9) {
    logel0 <- sum(wd1*log(p0))+sum(wd0*log(sur0[k]))-sum(log(pvec0))
    WILKS <- 2*(logel0 - logel)
   }
-  list(times=xd1, prob=pnew, "-2LLR"= WILKS )
+  list(times=xd1, prob=pnew, "-2LLR"= WILKS, Pval=1-pchisq(WILKS,df=1))
 }

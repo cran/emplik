@@ -12,9 +12,9 @@ the null hypothesis that
 where \eqn{H(t)} is the (unknown) discrete cumulative
 hazard function; \eqn{f(t,\theta)} can be any given left 
 continuous function in \eqn{t}. 
-\eqn{\theta} is the parameter of the function \code{fun}
+\eqn{\theta} is the parameter of the function 
 and \code{K} is a given constant. 
-The data can be right censored.
+The data can be right censored and left truncated.
 
 When the given constants \eqn{\theta} and/or \code{K} are too far
 away from the NPMLE, there will be no hazard function satisfy this 
@@ -47,6 +47,13 @@ will be infinite. In this case the computation will stop.
     \item{niters}{number of iterations used}
 }
 \details{
+The log likelihood been maximized is the binomial likelihood:
+\deqn{ \sum d_i \log w_i  + (R_i-d_i) \log [1-w_i] }
+where \eqn{w_i = \Delta H(t_i)} is the jump 
+of the cumulative hazard function, \eqn{d_i} is the number of failures
+observed at \eqn{t_i}, \eqn{R_i} is the number of subjects at risk at
+time \eqn{t_i}.
+
 For discrete distributions, the jump size of the cumulative hazard at
 the last jump is always 1. We have to exclude this jump from the 
 summation since \eqn{ \log( 1- dH(\cdot))} do not make sense.

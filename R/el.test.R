@@ -89,7 +89,7 @@ while(  nits<maxit && gsize > gradtol  ){
 
   gstep <- -grad
   if(  sum(nstep^2) < sum(gstep^2) )
-    gstep <- gstep*sum(nstep^2)^.5/sum(gstep^2)^.5
+    gstep <- gstep*(sum(nstep^2)^.5/sum(gstep^2)^.5)
   ologelr <- -sum( llog(arg,1/n) )
   ninner <- 0
   for(  i in 1:length(nwts) ){
@@ -107,7 +107,7 @@ while(  nits<maxit && gsize > gradtol  ){
 }
 
 list( "-2LLR" = -2*nlogelr, Pval = 1-pchisq(-2*nlogelr, df=p),
-     lambda = lam*scale, grad=grad*scale,
+     lambda = lam/scale, grad=grad*scale,
  hess=t(hess)%*%hess*scale^2, wts=wts1, nits=nits )
 }
 

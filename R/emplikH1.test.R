@@ -77,7 +77,7 @@ loglik <- 2*(sum(log(onepluslamh)) - sum((onepluslamh-1)/onepluslamh) )
 #          sum( (risk1 -1)*log((1-jump1)/(1- weights1) ) )  ) 
 ##? this likelihood seems have negative values sometimes???
 
-list( logemlik=loglik,  ### logemlikv2=loglik2, 
+list( "-2LLR"=loglik,  ### logemlikv2=loglik2, 
       lambda=lam, times=time, wts=weights, 
       nits=temp2$nf, message=temp2$message )
 }

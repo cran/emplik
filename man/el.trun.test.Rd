@@ -14,6 +14,9 @@ Where \eqn{p_i = \Delta F(x_i)} is a probability.
 \eqn{\mu} is a given constant. 
 It also returns those \eqn{p_i} and the \eqn{p_i} without
 constraint, the Lynden-Bell estimator.
+
+The log likelihood been maximized is
+\deqn{ \sum_{i=1}^n \log \frac{\Delta F(x_i)}{1-F(y_i)} .}
 }
 \arguments{
     \item{y}{a vector containing the left truncation times.}
@@ -41,8 +44,8 @@ constraint, the Lynden-Bell estimator.
 \details{
 
 This implementation is all in R and have several for-loops in it. 
-It may be slow for larger data sets.
-A better version would use C to do the for-loop part.
+A faster version would use C to do the for-loop part. But it seems
+faster enough and is easier to port to Splus.
 
 When the given constants \eqn{\mu} is too far
 away from the NPMLE, there will be no distribution

@@ -87,7 +87,8 @@ el.cen.test <- function(x,d,fun=function(x){x},mu,error=1e-8,maxit=15)
 
      lik00 <- sum(ww*log(dvec00))
 
-   list("-2LLR"=2*(lik00 - sum(ww*log(w))), weights=w[dd==1],
-                    xtime=xx[dd==1], iteration=m, error=diff)
+     tval <- 2*(lik00 - sum(ww*log(w)))
+   list("-2LLR"=tval, Pval=1-pchisq(tval, df=1),
+            weights=w[dd==1], xtime=xx[dd==1], iteration=m, error=diff)
 }
 

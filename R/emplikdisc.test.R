@@ -81,7 +81,7 @@ loglik <- 2*sum(odti*log(rPlgti/orisk) +
 
 #?is that right? YES the -2log lik ratio. 
 # Notice the output time and jumps has less the last point.
-list("discrete.-2logemlikRatio"=loglik, lambda=lam, times=otime,
+list("discrete.-2LLR"=loglik, lambda=lam, times=otime,
                 jumps=odti/rPlgti)
 }
 

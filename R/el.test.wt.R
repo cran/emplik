@@ -7,13 +7,13 @@ lamfun <- function(lam,xmu,wt,allw) { sum(wt*xmu/(allw+lam*xmu)) }
 
 if(lamfun(0,xmu,wt,allw) == 0) lam0 <- 0 
 else {
- if( lamfun(0,xmu,wt,allw) > 0 ) {lo=0
+ if( lamfun(0,xmu,wt,allw) > 0 ) {lo <- 0
                                 up <- BU
                                 while(lamfun(up,xmu,wt,allw)>0)
                                      up <- up + BU
                                  }
- else {up=0
-      lo= - BU
+ else {up <- 0
+      lo <- - BU
       while(lamfun(lo,xmu,wt,allw) < 0 )
            lo <- lo - BU
      }

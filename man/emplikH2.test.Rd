@@ -56,7 +56,7 @@ to add a small number to the observations to break tie.
 
 The likelihood used here is the `Poisson' version of the likelihood
 \deqn{
-\prod ( dH(t_i) )^{\delta_i} \exp [-H(t_i)] . 
+\prod_{i=1}^n ( dH(x_i) )^{\delta_i} \exp [-H(x_i)+H(y_i)] . 
 }
 
 For discrete distributions we recommend

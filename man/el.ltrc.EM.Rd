@@ -16,6 +16,10 @@ Where \eqn{p_i = \Delta F(x_i)} is a probability,
 The \eqn{d} for the largest observation \eqn{x}, is always (automatically)
 changed to 1.  \eqn{\mu} is a given constant. 
 This function also returns those \eqn{p_i}. 
+
+The log empirical likelihood function been maximized is
+\deqn{\sum_{d_i=1} \log \frac{ \Delta F(x_i)}{1-F(y_i)}  + 
+    \sum_{d_i=0} \log \frac{1-F(x_i)}{1-F(y_i)}.}
 }
 \arguments{
     \item{y}{an optional vector containing the observed truncation times.}
@@ -40,10 +44,9 @@ This function also returns those \eqn{p_i}.
                 CDF at those locations.}
     \item{"-2LLR"}{It is Minus two times the 
                    Empirical Log Likelihood Ratio.
-                   Should be approx. chi-square distributed under Ho.}
+                   Should be approximate chi-square distributed under Ho.}
 }
 \details{
-
 
 We return the -2 log likelihood ratio, and the constrained
 NPMLE of CDF.
@@ -67,8 +70,8 @@ to the NPMLE ---
 Or use a different \code{fun}. 
 
 This implementation is all in R and have several for-loops in it. 
-A better version would use C to do the for-loop part.
-(but this version is easier to port to Splus)
+A faster version would use C to do the for-loop part.
+(but this version is easier to port to Splus, and seems faster enough).
 }
 \author{ Mai Zhou }
 \references{
