@@ -1,30 +1,36 @@
-\name{el.test.wt}
-\alias{el.test.wt}
-\title{Weighted Empirical Likelihood ratio for mean, uncensored data}
+\name{el.test.wt2}
+\alias{el.test.wt2}
+\title{Weighted Empirical Likelihood ratio for mean(s), uncensored data}
 \usage{
-el.test.wt(x, wt, mu)
+el.test.wt2(x, wt, mu, maxit = 25, gradtol = 1e-07, Hessian = FALSE, 
+    svdtol = 1e-09, itertrace = FALSE)
 }
 \description{
 This program is similar to el.test except
-it takes weights, and is for one dimensional mu.
+it takes weights.
 
-The mean constraint:
+The mean constraint are:
 \deqn{ \sum_{i=1}^n  p_i x_i  = \mu . }
-where \eqn{p_i = \Delta F(x_i)} is a probability.
+Where \eqn{p_i = \Delta F(x_i)} is a probability.
 Plus the probability constraint: \eqn{ \sum p_i =1}.
 
 The weighted log empirical likelihood been maximized is
 \deqn{ \sum_{i=1}^n w_i \log p_i. } 
 }
 \arguments{
-    \item{x}{a vector containing the observations.}
-    \item{wt}{a vector containing the weights.}
-    \item{mu}{a real number used in the constraint, weighted
+    \item{x}{a matrix (of size nxp) or vector containing the observations.}
+    \item{wt}{a vector of length n, containing the weights.}
+    \item{mu}{a vector of length p, used in the constraint. weighted
                 mean value of \eqn{f(X)}.}
+    \item{maxit}{the maximum number of iteration.}
+    \item{gradtol}{the tol for a solution}
+    \item{Hessian}{if the Hessian needs to be computed?}
+    \item{svdtol}{ tol in perform SVD of the matrix. }
+    \item{itertrace}{TRUE/FALSE, if the intermediate steps needs to be printed.}
 }
 \value{
     A list with the following components:
-    \item{x}{the observations.}
+    \item{lambda}{the Lagrange multiplier.}
     \item{wt}{the vector of weights.}
     \item{prob}{The probabilities that maximized the weighted 
                   empirical likelihood under mean constraint.}
@@ -32,10 +38,6 @@ The weighted log empirical likelihood been maximized is
 \details{
 This function used to be an internal function. 
 It becomes external because others may find it useful.
-
-The constant \code{mu} must be inside 
-\eqn{( \min x_i , \max x_i ) }
-for the computation to continue. 
 
 }
 \author{ Mai Zhou }

@@ -11,7 +11,7 @@ bjtest(y, d, x, beta)
 	      d=0 means y is right censored. }
     \item{x}{a matrix of size N by q. }
     \item{beta}{a vector of length q. the value of the regression coefficient to 
-          be tested in the model y = x beta + epsilon }
+          be tested in the model \eqn{y_i = \beta x_i  + \epsilon_i} }.
 }
 \description{
     Use the empirical likelihood ratio and Wilks theorem to test if the

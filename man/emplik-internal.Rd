@@ -11,7 +11,6 @@
 \alias{llogpp}
 \alias{solve3.QP}
 \alias{WKM}
-\alias{el.test.wt2}
 \alias{el.test.wt3}
 \alias{LTRC}
 \alias{iter}
@@ -31,7 +30,6 @@ DnR(x,d,w,y=rep(-Inf,length(x)))
 solve3.QP(D, d, A, b, meq, factorized=FALSE)
 WKM(x,d,zc=rep(1,length(d)),w=rep(1,length(d)))
 LTRC(x,d,w=rep(1, length(d)),y=rep(-Inf, length(x)))
-el.test.wt2(x,wt,mu,maxit,gradtol,Hessian,svdtol,itertrace)
 el.test.wt3(x,wt,mu,maxit,gradtol,Hessian,svdtol,itertrace)
 iter(x, y, delta, beta)
 redistF(y, d, Fdist)
@@ -55,9 +53,10 @@ used by function \code{el.cen.test}.
 
 \code{LTRC} is for Left Truncated and Right Censored data.
 
-\code{el.test.wt2}, \code{el.test.wt3} are similar to \code{el.test.wt} 
+\code{el.test.wt3} are similar to \code{el.test.wt} and \code{el.test.wt2}, 
 but can take vector mean as constraint. \code{llog}, \code{llogp} and
-\code{llogpp} are used by both functions. In addition \code{logwelr}
+\code{llogpp} are used by both \code{el.test.wt3} and
+\code{el.test.wt2}. In addition \code{logwelr}
 is used by \code{el.test.wt3}.
 
 \code{iter} is for perform one iteration of EM in the Buckley-James

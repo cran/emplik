@@ -67,6 +67,8 @@ It is always true that the NPMLE values are feasible. So when the
 computation stops, try move the \code{mu} closer
 to the NPMLE, or use a different \code{fun}. 
 
+This function depends on Wdataclean2(), WKM() and solve3.QP() 
+
 This function uses sequential Quadratic Programming to find the
 maximum. Unlike other functions in this package,
 it can be slow for larger sample sizes.
@@ -96,24 +98,3 @@ el.cen.test(x,d,mu=3.5)
 \keyword{survival}
 \keyword{htest}
 
-
-{  # This program compute the maximized (wrt w_i) loglikelihood 
-   # function for right censored data with the MEAN constraint: 
-   #                   sum[d_i * w_i * fun(x_i)]= mu        (star)
-   # where w_i is the probability.
-   # Inputs
-   # x  : life time data vector, size n
-   # d  : censoring indicator. length n vector. d=1 uncensor; d=0 censor.
-   # fun : function to compute the mean, default is f(t)=t. 
-   # mu : constrained mean value, a scalar. 
-   # error : iteration stopping control standard. default=1e-8.
-   # maxit : maximum number of iteration
-   #
-   # Output
-   # -2LLR   : -2log maximized loglikelihood ratio (chisq under Ho)
-   # weight  : weight under mean constraint
-   # m       : the number of iterations
-   #************************************************************
-   # depends on Wdataclean2(), WKM() and solve3.QP() 
-   ####################################################################
-} 

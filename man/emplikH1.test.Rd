@@ -33,13 +33,15 @@ true distributions are all continuous.
 So there should be no tie in the data.
 
 The log empirical likelihood used here is the `Poisson' version likelihood:
-\deqn{  \sum_{i=1}^n \delta_i \log (dH(x_i))  - [ H(x_i) - H(y_i) ]  ~. } 
+\deqn{  
+\sum_{i=1}^n \delta_i \log (dH(x_i))  - [ H(x_i) - H(y_i) ]  ~.
 }
 
 If there are ties in the data that are resulted from rounding,
 you may break the tie by adding a tiny number to the tied
-observation. If those are true ties (thus the true distribution is discrete)
-we recommend use \code{emplikdisc.test()}
+observation(s). If those are true ties 
+(thus the true distribution is discrete)
+we recommend use \code{emplikdisc.test()}. 
 
 The constant \code{theta} must be inside the so called
 feasible region for the computation to continue. This is similar to the
@@ -69,7 +71,6 @@ infinite.
 \examples{
 fun <- function(x) { as.numeric(x <= 6.5) }
 emplikH1.test( x=c(1,2,3,4,5), d=c(1,1,0,1,1), theta=2, fun=fun) 
-
 fun2 <- function(x) {exp(-x)}  
 emplikH1.test( x=c(1,2,3,4,5), d=c(1,1,0,1,1), theta=0.2, fun=fun2) 
 }

@@ -1,6 +1,6 @@
 \name{BJnoint}
 \alias{BJnoint}
-\title{The Buckley-James censored regression estimator without intercept term}
+\title{The Buckley-James censored regression estimator}
 \usage{
 BJnoint(x, y, delta, beta0 = NA, maxiter=30, error = 0.00001)
 }
@@ -14,18 +14,23 @@ BJnoint(x, y, delta, beta0 = NA, maxiter=30, error = 0.00001)
     \item{error}{an optional positive value to control interations.}
 }
 \description{
-    Compute the Buckley-James estimator in the regression
-model 
-\deqn{ y_i = beta x_i + epsilon_i } 
-with right censored y.
+    Compute the Buckley-James estimator in the regression model 
+\deqn{ y_i = \beta x_i + \epsilon_i } 
+with right censored \eqn{y_i}.
 
 }
 \details{
+This function can be used to compute the Buckley-James estimator 
+when your model do not have an intercept term.
+Of course, if you include a column of 1's in the x matrix, it is also OK
+with this function and it
+is equivalent to having an intercept term.
 If your model do have an intercept term, then you should use the function
-\code{bj( )} in the Design library.
+\code{bj( )} in the \code{Design} library. It should be more refined 
+than \code{BJnoint}. 
 
 This function is included here mainly to produce the estimator value
-that may provide some useful info with function \code{bjtest( )}.
+that may provide some useful information with the function \code{bjtest( )}.
 For example you may want to test the beta value close to the
 Buckley-James estimator. 
 
@@ -38,9 +43,6 @@ Buckley-James estimator.
 \references{
     Buckley, J. and James, I. (1979).
     Biometrika 
-
-    Owen, A. (1990). Empirical likelihood ratio confidence regions. 
-    Ann. Statist. \bold{18} 90-120.
 }
 \author{ Mai Zhou. }
 \examples{
