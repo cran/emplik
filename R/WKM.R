@@ -1,7 +1,6 @@
-WKM <- function(x,d,w=rep(1, length(d)) ) {
+WKM <- function(x,d,zc=rep(1,length(d)),w=rep(1,length(d))) {
 
-
-temp <- Wdataclean2(x,d,w)
+temp <- Wdataclean3(x,d,zc,w)
 dd <- temp$dd
 ww <- temp$weight
 dd[length(dd)] <- 1

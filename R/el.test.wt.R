@@ -1,7 +1,11 @@
 el.test.wt <- function(x, wt, mu) {
+#x <- as.matrix(x)
+#if( ncol(x) != 1 ) stop("x must must be a vector") 
+if( length(mu) != 1 ) stop("mu must be a scalar")
+
 xmu <- x-mu
 allw <- sum(wt)
-BU <- 0.1*allw/max(abs(xmu))
+BU <- 0.02*allw/max(abs(xmu))
 
 lamfun <- function(lam,xmu,wt,allw) { sum(wt*xmu/(allw+lam*xmu)) }
 

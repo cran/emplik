@@ -75,9 +75,8 @@ while(  nits<maxit && gsize > gradtol  ){
 #  Use svd on hess to get a stable solution.
 #
 
-## may try La.svd() in R (v. > 1.0) for better LAPACK
-## or better, use QR decomposition on hess to solve it.
-## QR is faster than svd! 
+## may try La.svd() in R (v. > 1.0) for better LAPACK.
+## or use QR decomposition on hess to solve it.
 
   svdh <- svd( hess )
 ##  svdh <- La.svd( hess )

@@ -1,8 +1,11 @@
-el.cen.EM2 <- function(x,d,xc=rep(1,length(x)),fun,mu,maxit=25,error=1e-9,...){
+el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...){
 ####
-#### xc is collaps control: if for i and j, x[] d[] are identical
+#### xc is collaps control: if for index i and j, (x[] d[]) are identical
 ####     should they be merged into one obs. with weight 2?
-####     if xc[i] != xc[j] then they do not merge. Default: merge.
+####     if xc[i] != xc[j] then they do not merge. 
+####     For regression applications, you should not merge -- use
+####     xc = 1:length(x) .
+####     The order of censoring is based on x, not fun(x).
 ####
    xvec <- as.vector(x) 
    d <- as.vector(d) 
@@ -18,11 +21,15 @@ el.cen.EM2 <- function(x,d,xc=rep(1,length(x)),fun,mu,maxit=25,error=1e-9,...){
    if(!is.numeric(xvec)) stop("x must be numeric")
    if(!is.numeric(mu)) stop("mu must be numeric")
 
+   funx <- as.matrix(fun(xvec, ...))   ##get the matrix before sorting xvec
+   pp <- ncol(funx)
+   if(length(mu)!=pp) stop("length of mu and ncol of fun(x) must agree")
 
-   temp <- Wdataclean3(z=xvec,d,zc=xc)  ## collaps control zc
+   temp <- Wdataclean5(z=xvec,d,zc=xc, xmat=funx)  ## collaps control zc
    x <- temp$value
    d <- temp$dd
    w <- temp$weight
+   funx <- temp$xxmat     ## make sure funx and x are in same order
 
    ###### change the last obs. among d=1,0, so that d=1
    ###### change the first obs. among d=1,2 so that d=1
@@ -34,10 +41,8 @@ el.cen.EM2 <- function(x,d,xc=rep(1,length(x)),fun,mu,maxit=25,error=1e-9,...){
 
    xd1 <- x[d==1]
     if(length(xd1) <= 1) stop("need more distinct uncensored obs.")
-   funxd1 <- as.matrix( fun(xd1,...) )  # get the matrix 
-   pp <- ncol(funxd1)
-   if(length(mu)!=pp) stop("length of mu and ncol of fun(x) must agree")
 
+   funxd1 <- funx[d==1,] 
    xd0 <- x[d==0]
    xd2 <- x[d==2]
    wd1 <- w[d==1]
@@ -87,7 +92,7 @@ el.cen.EM2 <- function(x,d,xc=rep(1,length(x)),fun,mu,maxit=25,error=1e-9,...){
      }
    sur <- rev(cumsum(rev(pnew)))
    logel <- sum( wd1*log(pnew)) + sum( wd0*log(sur[k]) )
-   logel00 <- WKM(x,d,w)$logel
+   logel00 <- WKM(x,d, zc=xc, w)$logel
    }
   if( (m==0) && (mleft>0) ) {
    kk <- rep(NA, mleft)
@@ -106,12 +111,13 @@ el.cen.EM2 <- function(x,d,xc=rep(1,length(x)),fun,mu,maxit=25,error=1e-9,...){
    logel <- sum( wd1*log(pnew)) + sum( wd2*log( cdf[kk] ) )
    logel00 <- NA   ### ???  do I need a left WKM ??
    }
-  if( (m==0) && (mleft==0) ) {
+  if( (m==0) && (mleft==0) ) { 
+    num <- 0
     pnew <- el.test.wt2(x=funxd1, wt=wd1, mu)$prob
     logel <- sum( wd1*log(pnew) ) 
     logel00 <- sum( wd1*log( wd1/sum(wd1) ) )
   }
   tval <- 2*(logel00 - logel)
-  list(loglik=logel, times=xd1, prob=pnew, 
+  list(loglik=logel, times=xd1, prob=pnew, iters=num, 
              "-2LLR"=tval, Pval= 1-pchisq(tval, df=length(mu)) )
 }

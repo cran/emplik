@@ -1,7 +1,7 @@
-This package is based on R codes el.cen.EM, el.tr.test
-EMPLIKH1, EMPLIKH2, EmpLIKDISC.test() and EL.CEN.TEST
-written by Mai Zhou. The code el.test is based on
-S code ELM by Owen. 
+This package is based on R codes el.cen.EM, el.cen.EM2,
+el.trun.test emplikH1, emplikH2, EmpLIKDISC.test() and 
+EL.CEN.TEST written by Mai Zhou. 
+The code el.test is based on S code ELM by Art Owen. 
 
 el.test() can handle vector means as Ho (several
 mean parameters), but data must be uncensored. 
@@ -29,3 +29,4 @@ Version 0.4     Apr. 6,  2002
 Version 0.5     Apr. 24, 2002
 Version 0.5-1   Apr. 25, 2002
 Version 0.6     May  13, 2002
+version 0.7     Oct. 12, 2002
