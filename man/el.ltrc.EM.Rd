@@ -3,7 +3,7 @@
 \title{Empirical likelihood ratio for mean 
 with left truncated and right censored data, by EM algorithm}
 \usage{
-el.ltrc.EM(y= -Inf,x,d,fun=function(t){t},mu,maxit=25,error=1e-9)
+el.ltrc.EM(y,x,d,fun=function(t){t},mu,maxit=30,error=1e-9)
 }
 \description{
 This program uses EM algorithm to compute the maximized 

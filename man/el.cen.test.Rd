@@ -3,7 +3,7 @@
 \title{Empirical likelihood ratio for mean
 with right censored data, by QP.}
 \usage{
-el.cen.test(x,d,fun=function(x){x},mu,error=1e-8,maxit=20)
+el.cen.test(x,d,fun=function(x){x},mu,error=1e-8,maxit=15)
 }
 \description{
 This program computes the maximized (wrt \eqn{p_i}) empirical

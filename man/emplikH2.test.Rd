@@ -5,10 +5,10 @@
 \usage{
 emplikH2.test(x, d, y= -Inf, K, fun, tola=.Machine$double.eps^.25,...)
 }
-\description{ Use empirical likelihood ratio and Wilks theorem to test 
+\description{Use empirical likelihood ratio and Wilks theorem to test 
 the null hypothesis that 
 \deqn{\int f(t, ... ) dH(t) = K }
-with right censored data, where \eqn{ H(t) } is the (unknown)
+with right censored, left truncated data, where \eqn{ H(t) } is the (unknown)
 cumulative hazard function;
 \eqn{ f(t, ... )} can be any given left continuous function in \eqn{t};
 (of course the integral must be finite). 
@@ -62,7 +62,10 @@ The likelihood used here is the `Poisson' version of the likelihood
 For discrete distributions we recommend
 use \code{emplikdisc.test()}.
 
-The constants \code{theta} and \code{K} must be inside the so called
+Please note here the largest observed time is NOT autometically defined to be
+uncensored. In the el.cen.EM(), it is (to make F a proper distribution always).
+
+The constant \code{K} must be inside the so called
 feasible region for the computation to continue. This is similar to the
 requirement that in testing the value of the mean, the value must be
 inside the convex hull of the observations.

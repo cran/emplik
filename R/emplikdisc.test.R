@@ -30,13 +30,15 @@ if (orisk[last] == odti[last]) {
 ######## compute the function g(ti, theta) 
 gti <- fun(otime,theta) 
 
+Kcenter <- sum(gti * log(1- odti/orisk))
+
 ### the constrain function. To be solved in equation later.
 
 constr <- function(x, Konst, gti, rti, dti, n) { 
-                  rtiLgti <- rti + x*n*gti
-                  OneminusdH <- (rtiLgti - dti)/rtiLgti
-                  if( any(OneminusdH <= 0) ) stop(" too far away ")
-                  sum(gti*log(OneminusdH)) -  Konst } 
+               rtiLgti <- rti + x*n*gti
+               OneminusdH <- (rtiLgti - dti)/rtiLgti
+               if( any(OneminusdH <= 0) ) stop("estimator not well defined")
+               sum(gti*log(OneminusdH)) -  Konst } 
 
 ##############################################################
 
@@ -45,7 +47,9 @@ differ <- constr(0, Konst=K, gti=gti, rti=orisk, dti=odti, n=n)
 if( abs(differ) < tola ) { lam <- 0 } else {
     step <- 0.2/sqrt(n) 
     if(abs(differ) > 200*log(n)*step )   #Why 200 ? 
-    stop("given theta value is too far away from theta0")
+    { print( Kcenter )
+      stop("the given K value is too far away from K_0. \n Move K closer to the above value")
+    }
 
     mini<-0
     maxi<-0   

@@ -48,9 +48,9 @@ will be infinite. In this case the computation will stop.
 }
 \details{
 The log likelihood been maximized is the binomial likelihood:
-\deqn{ \sum d_i \log w_i  + (R_i-d_i) \log [1-w_i] }
+\deqn{ \sum D_i \log w_i  + (R_i-D_i) \log [1-w_i] }
 where \eqn{w_i = \Delta H(t_i)} is the jump 
-of the cumulative hazard function, \eqn{d_i} is the number of failures
+of the cumulative hazard function, \eqn{D_i} is the number of failures
 observed at \eqn{t_i}, \eqn{R_i} is the number of subjects at risk at
 time \eqn{t_i}.
 

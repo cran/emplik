@@ -1,4 +1,4 @@
-el.cen.EM <- function(x,d, fun=function(x){x},mu,maxit=25,error=1e-9, ...) {
+el.cen.EM <- function(x,d, fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
    xvec <- as.vector(x)
    nn <- length(xvec)
    if(nn <= 1) stop ("Need more observations")
@@ -15,7 +15,7 @@ el.cen.EM <- function(x,d, fun=function(x){x},mu,maxit=25,error=1e-9, ...) {
 
    ###### change the last obs. among d=1,0, so that d=1
    ###### change the first obs. among d=1,2 so that d=1
-   ###### this ensures we got a proper df for NPMLE. (no mass escape)
+   ###### this ensures we got a proper dist. for NPMLE. (no mass escape)
    INDEX10 <- which(d != 2)
    d[ INDEX10[length(INDEX10)] ] <- 1
    INDEX12 <- which(d != 0)
@@ -56,8 +56,13 @@ el.cen.EM <- function(x,d, fun=function(x){x},mu,maxit=25,error=1e-9, ...) {
      }
    logel <- sum(wd1*log(pnew)) + sum(wd0*log(sur[k])) + sum(wd2*log(cdf[kk]))
    logel00 <- NA
+   funNPMLE <- NA
   }
   if( (m>0) && (mleft==0) ) {
+   temp3 <- WKM(x,d,w)
+   logel00 <- temp3$logel
+   funNPMLE <- sum( funxd1 * temp3$jump )
+#  now the iteration 
    pnew <- el.test.wt(x=funxd1, wt=wd1, mu=mu)$prob
    n <- length(pnew)
    k <- rep(NA,m)
@@ -73,7 +78,6 @@ el.cen.EM <- function(x,d, fun=function(x){x},mu,maxit=25,error=1e-9, ...) {
      }
    sur <- rev(cumsum(rev(pnew)))
    logel <- sum( wd1*log(pnew)) + sum( wd0*log(sur[k]) )
-   logel00 <- WKM(x,d,w)$logel
   }
   if( (m==0) && (mleft>0) ) {
    kk <- rep(NA, mleft)
@@ -91,13 +95,16 @@ el.cen.EM <- function(x,d, fun=function(x){x},mu,maxit=25,error=1e-9, ...) {
      }
    logel <- sum( wd1*log(pnew)) + sum( wd2*log( cdf[kk] ) )
    logel00 <- NA   #### do I need a left WKM() ???
+   funNPMLE <- NA 
   }
   if( (m==0) && (mleft==0) ) {
+    funNPMLE <- sum( funxd1 * wd1/sum(wd1) )
+    logel00 <- sum( wd1*log( wd1/sum(wd1) ) )
     pnew <- el.test.wt(funxd1, wt=wd1, mu)$prob
     logel <- sum( wd1*log(pnew) ) 
-    logel00 <- sum( wd1*log( wd1/sum(wd1) ) )
   }
+# get ready for exit
   tval <- 2*(logel00 - logel)
-  list(loglik=logel, times=xd1, prob=pnew, 
+  list(loglik=logel, times=xd1, prob=pnew, funMLE=funNPMLE, 
              "-2LLR"=tval, Pval= 1-pchisq(tval, df=1) )
 }
