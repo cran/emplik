@@ -16,7 +16,7 @@ Wdataclean2 <- function (z, d, wt = rep(1,length(z)) )
    list( value = sortedz[ind], dd = sortedd[ind],
          weight = diff(c(0, csumw[ind])) )
 }
-##########################################################
+##############################################################
 # this function sorts the data, and collaps them
-# if there are true tie. and number of tie counted in wt
-##########################################################
+# if there are true tie. and number of tie counted in weight
+##############################################################

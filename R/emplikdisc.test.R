@@ -2,7 +2,7 @@
 ############ emplikdisc.test() #########################
 ########################################################
 
-emplikdisc.test <- function(x, d, K, fun, 
+emplikdisc.test <- function(x, d, y= -Inf, K, fun, 
 	                     tola=.Machine$double.eps^.25, theta)
 {
 n <- length(x) 
@@ -14,9 +14,9 @@ if(!is.numeric(x)) stop("x must be numeric values --- observed times")
 #temp<-summary(survfit(Surv(x,d),se.fit=F,type="fleming",conf.type="none"))
 #
 newdata <- Wdataclean2(x,d)
-temp <- DnR(newdata$value, newdata$dd, newdata$weight)
+temp <- DnR(newdata$value, newdata$dd, newdata$weight,y=y)
 
-otime <- temp$time         # only uncensored time?  Yes. 
+otime <- temp$times         # only uncensored time?  Yes. 
 orisk <- temp$n.risk
 odti <- temp$n.event
 
@@ -44,22 +44,22 @@ differ <- constr(0, Konst=K, gti=gti, rti=orisk, dti=odti, n=n)
 
 if( abs(differ) < tola ) { lam <- 0 } else {
     step <- 0.2/sqrt(n) 
-    if(abs(differ) > 200*log(n)*step )   #Why 60 ? 
+    if(abs(differ) > 200*log(n)*step )   #Why 200 ? 
     stop("given theta value is too far away from theta0")
 
     mini<-0
-    maxi<-0            
+    maxi<-0   
 ######### assume the constrain function is increasing in lam (=x) 
     if(differ > 0) { 
     mini <- -step 
     while(constr(mini, Konst=K, gti=gti, rti=orisk, dti=odti, n=n) > 0
- 	          && mini > -200*log(n)*step ) 
+ 	          && mini > -200*log(n)*step )
     mini <- mini - step 
     } 
     else { 
     maxi <- step 
     while(constr(maxi, Konst=K, gti=gti, rti=orisk, dti=odti, n=n) < 0
-                  &&  maxi < 200*log(n)*step ) 
+                  &&  maxi < 200*log(n)*step )
     maxi <- maxi+step 
     }
 
@@ -70,7 +70,7 @@ if( abs(differ) < tola ) { lam <- 0 } else {
 # Now we solve the equation to get lambda, to satisfy the constraint of Ho
 
     temp2 <- uniroot(constr,c(mini,maxi), tol = tola, 
-                  Konst=K, gti=gti, rti=orisk, dti=odti, n=n)  
+                  Konst=K, gti=gti, rti=orisk, dti=odti, n=n) 
     lam <- temp2$root 
 }
 ####################################################################

@@ -58,7 +58,7 @@ el.cen.EM <- function(x,d, fun=function(x){x},mu,maxit=25,error=1e-9) {
    logel00 <- NA
   }
   if( (m>0) && (mleft==0) ) {
-   pnew <- el.test.wt(funxd1, wt=wd1, mu)$prob
+   pnew <- el.test.wt(x=funxd1, wt=wd1, mu=mu)$prob
    n <- length(pnew)
    k <- rep(NA,m)
    for(i in 1:m) { k[i] <- 1 + n - sum( xd1 > xd0[i] ) }

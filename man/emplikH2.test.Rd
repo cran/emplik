@@ -1,8 +1,9 @@
 \name{emplikH2.test}
 \alias{emplikH2.test}
-\title{Empirical likelihood for weighted hazard with right censored data}
+\title{Empirical likelihood for weighted hazard with 
+        right censored, left truncated data}
 \usage{
-emplikH2.test(x, d, K, fun, tola=.Machine$double.eps^.25,...)
+emplikH2.test(x, d, y= -Inf, K, fun, tola=.Machine$double.eps^.25,...)
 }
 \description{ Use empirical likelihood ratio and Wilks theorem to test 
 the null hypothesis that 
@@ -15,6 +16,7 @@ cumulative hazard function;
 \arguments{
     \item{x}{a vector containing the observed survival times.}
     \item{d}{a vector of the censoring indicators, 1-uncensor; 0-censor.}
+    \item{y}{a vector containing the left truncation times.}
     \item{K}{a real number used in the constraint, i.e. to set the
                weighted integral of hazard to this value.}
     \item{fun}{a left continuous (in \code{t}) weight function
@@ -74,13 +76,13 @@ infinite.
 z1<-c(1,2,3,4,5)
 d1<-c(1,1,0,1,1)
 fun4 <- function(x, theta) { as.numeric(x <= theta) }
-emplikH2.test(z1,d1, K=0.5, fun4, theta=3.5)
+emplikH2.test(x=z1,d=d1, K=0.5, fun=fun4, theta=3.5)
 #Next, test if H(3.5) = log(2) .
-emplikH2.test(z1,d1, K=log(2), fun4, theta=3.5)
+emplikH2.test(x=z1,d=d1, K=log(2), fun=fun4, theta=3.5)
 #Next, try one sample log rank test
 indi <- function(x,y){ as.numeric(x >= y) }
 fun3 <- function(t,z){rowsum(outer(z,t,FUN="indi"),group=rep(1,length(z)))} 
-emplikH2.test(z1, d1, K=sum(0.25* z1), fun3, z=z1) 
+emplikH2.test(x=z1, d=d1, K=sum(0.25* z1), fun=fun3, z=z1) 
 }
 \keyword{nonparametric}
 \keyword{survival}

@@ -5,6 +5,8 @@ dd <- temp$dd
 ww <- temp$weight
 dd[length(dd)] <- 1
 
+######why not use DnR?
+
 allrisk <- rev(cumsum(rev(ww)))
 survP <- cumprod( 1 -  (dd*ww)/allrisk )
 jumps <- -diff( c(1, survP) )

@@ -1,9 +1,9 @@
 \name{emplikdisc.test}
 \alias{emplikdisc.test}
 \title{Empirical likelihood ratio for discrete hazard
-with right censored data}
+with right censored, left truncated data}
 \usage{
-emplikdisc.test(x, d, K, fun, tola=.Machine$double.eps^.25, theta)
+emplikdisc.test(x, d, y= -Inf, K, fun, tola=.Machine$double.eps^.25, theta)
 }
 \description{
 Use empirical likelihood ratio and Wilks theorem to test 
@@ -25,6 +25,7 @@ will be infinite. In this case the computation will stop.
     \item{x}{a vector containing the observed survival times.}
     \item{d}{a vector containing the censoring indicators, 
            1-uncensor; 0-censor.}
+    \item{y}{optional vector containing the left truncation times.}
     \item{K}{a real number used in the constraint, sum to this value.}
     \item{fun}{a left continuous (weight) function used to calculate
          the weighted discrete hazard in \eqn{H_0}. 
@@ -48,14 +49,14 @@ will be infinite. In this case the computation will stop.
 \details{
 For discrete distributions, the jump size of the cumulative hazard at
 the last jump is always 1. We have to exclude this jump from the 
-summation since \eqn{ \log( 1- dH())} do not make sense.
+summation since \eqn{ \log( 1- dH(\cdot))} do not make sense.
 
 The constants \code{theta} and \code{K} must be inside the so called
 feasible region for the computation to continue. This is similar to the
 requirement that in testing the value of the mean, the value must be
 inside the convex hull of the observations.
-It is always true that the NPMLE values are feasible. So when the 
-computation stops, try move the \code{theta} and \code{K} closer 
+It is always true that the NPMLE values are feasible. So when the
+computation stops, try move the \code{theta} and \code{K} closer
 to the NPMLE.  When the computation stops, the -2LLR should have value
 infinite.
 
@@ -73,14 +74,18 @@ with a \code{theta} input, just to match the arguments.
     ``Empirical likelihood ratio for 2 sample problem 
                        for censored data''. 
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
+
+    Zhou, M. (2002). 
 }
 \examples{
 fun4 <- function(x, theta) { as.numeric(x <= theta) }
 x <- c(1, 2, 3, 4, 5, 6, 5, 4, 3, 4, 1, 2.4, 4.5)
 d <- c(1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1)
 # test if -H(4) = -0.7 
-emplikdisc.test(x,d,K=-0.7,fun4,theta=4)
+emplikdisc.test(x=x,d=d,K=-0.7,fun=fun4,theta=4)
 # we should get "discrete.-2logemlikRatio" 0.1446316  etc....
+y <- c(-2,-2, -2, 1.5, -1)
+emplikdisc.test(x=x,d=d,y=y,K=-0.7,fun=fun4,theta=4)
 }
 \keyword{nonparametric}
 \keyword{survival}

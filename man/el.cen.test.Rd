@@ -6,7 +6,7 @@ with right censored data, by QP.}
 el.cen.test(x,d,fun=function(x){x},mu,error=1e-8,maxit=20)
 }
 \description{
-This program computes the maximized (wrt \eqn{w_i}) empirical
+This program computes the maximized (wrt \eqn{p_i}) empirical
 log likelihood function for right censored data with 
 the MEAN constraint:
 \deqn{ \sum_i [ d_i p_i f(x_i) ] = \int f(t) dF(t) = \mu  } 

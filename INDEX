@@ -1,15 +1,18 @@
-el.cen.EM                Empirical likelihood ratio for mean with right,
-                         left or doubly censored data, by EM algorithm
-el.cen.test              Empirical likelihood ratio for mean with right
-                         censored data, by QP.
-el.test                  Empirical likelihood ratio test for the means,
-                         uncensored data
-el.trun.test             Empirical likelihood ratio for mean with left
-                         truncated data
-emplik-internal          Internal emplik functions
-emplikH1.test            Empirical likelihood for hazard with right
-                         censored data
-emplikH2.test            Empirical likelihood for weighted hazard with
-                         right censored data
-emplikdisc.test          Empirical likelihood ratio for discrete hazard
-                         with right censored data
+el.cen.EM               Empirical likelihood ratio for mean with right,
+                        left or doubly censored data, by EM algorithm
+el.cen.test             Empirical likelihood ratio for mean with right
+                        censored data, by QP.
+el.ltrc.EM              Empirical likelihood ratio for mean with left
+                        truncated and right censored data, by EM
+                        algorithm
+el.test                 Empirical likelihood ratio test for the means,
+                        uncensored data
+el.trun.test            Empirical likelihood ratio for mean with left
+                        truncated data
+emplik-internal         Internal emplik functions
+emplikH1.test           Empirical likelihood for hazard with right
+                        censored, left truncated data
+emplikH2.test           Empirical likelihood for weighted hazard with
+                        right censored, left truncated data
+emplikdisc.test         Empirical likelihood ratio for discrete hazard
+                        with right censored, left truncated data

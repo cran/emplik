@@ -2,7 +2,7 @@
 ############# emplikH2() ######################
 ###############################################
 
-emplikH2.test <- function(x, d, K, fun, 
+emplikH2.test <- function(x, d, y= -Inf, K, fun, 
 	                tola = .Machine$double.eps^.25,...)
 {
 if(!is.numeric(x)) stop("x must be numeric values -- observed times")
@@ -14,10 +14,10 @@ if(any((d!=0)&(d!=1))) stop("d must be 0/1's for censor/not-censor")
 #temp <- summary(survfit(Surv(x,d),se.fit=F,type="fleming",conf.type="none"))
 #
 newdata <- Wdataclean2(x,d)
-temp <- DnR(newdata$value, newdata$dd, newdata$weight)
+temp <- DnR(newdata$value, newdata$dd, newdata$weight, y=y)
 
 
-Dtime <- temp$time         # only uncensored time?  Yes. 
+Dtime <- temp$times         # only uncensored time?  Yes. 
 risk <- temp$n.risk 
 jump <- (temp$n.event)/risk
 

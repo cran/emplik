@@ -1,29 +1,31 @@
-\name{el.cen.EM}
-\alias{el.cen.EM}
+\name{el.ltrc.EM}
+\alias{el.ltrc.EM}
 \title{Empirical likelihood ratio for mean 
-with right, left or doubly censored data, by EM algorithm}
+with left truncated and right censored data, by EM algorithm}
 \usage{
-el.cen.EM(x,d,fun=function(t){t},mu,maxit=25,error=1e-9)
+el.ltrc.EM(y= -Inf,x,d,fun=function(t){t},mu,maxit=25,error=1e-9)
 }
 \description{
 This program uses EM algorithm to compute the maximized 
 (wrt \eqn{p_i}) empirical
-log likelihood function for right, left or doubly censored data with 
+log likelihood function for left truncated and right censored data with 
 the MEAN constraint:
 \deqn{ \sum_{d_i=1}  p_i f(x_i)  = \int f(t) dF(t) = \mu ~. }
 Where \eqn{p_i = \Delta F(x_i)} is a probability,
-\eqn{d_i} is the censoring indicator, 1(uncensored), 0(right censored),
-2(left censored). 
-It also returns those \eqn{p_i}. 
+\eqn{d_i} is the censoring indicator, 1(uncensored), 0(right censored). 
+The \eqn{d} for the largest observation \eqn{x}, is always (automatically)
+changed to 1.  \eqn{\mu} is a given constant. 
+This function also returns those \eqn{p_i}. 
 }
 \arguments{
+    \item{y}{an optional vector containing the observed truncation times.}
     \item{x}{a vector containing the observed survival times.}
     \item{d}{a vector containing the censoring indicators, 
-           1-uncensored; 0-right censored; 2-left censored.}
+           1-uncensored; 0-right censored.}
     \item{fun}{a continuous (weight) function used to calculate
          the mean as in \eqn{H_0}.
          \code{fun(t)} must be able to take a vector input \code{t}.
-         Default to the identity function \eqn{f(t)=t}.} 
+         Default to the identity function \eqn{f(t)=t}.}
     \item{mu}{a real number used in the constraint, mean value of \eqn{f(X)}.}
     \item{error}{an optional positive real number specifying the tolerance of
        iteration error. This is the bound of the
@@ -33,32 +35,20 @@ It also returns those \eqn{p_i}.
 }
 \value{
     A list with the following components:
-    \item{loglik}{the maximized empirical log likelihood under the constraint.}
     \item{times}{locations of CDF that have positive mass.}
-    \item{prob}{the jump size of CDF at those locations.}
-    \item{"-2LLR"}{If available, it is Minus two times the 
+    \item{prob}{the probability of the constrained NPMLE of 
+                CDF at those locations.}
+    \item{"-2LLR"}{It is Minus two times the 
                    Empirical Log Likelihood Ratio.
                    Should be approx. chi-square distributed under Ho.}
 }
 \details{
 
-This implementation is all in R and have several for-loops in it. 
-A better version would use C to do the for-loop part.
-(but this version is easier to port to Splus)
 
-We return the log likelihood all the time. Sometimes, (for right censored
-and no censor case) we also return the -2 log likelihood ratio.
-In other cases, you have to plot a curve with many values of the 
-parameter, mu, to
-find out where is the place the log likelihood becomes maximum.
-And from there you can get -2 log likelihood ratio between
-the maximum location and your current parameter in Ho.
+We return the -2 log likelihood ratio, and the constrained
+NPMLE of CDF.
+The un-constrained NPMLE should be WJT or Lynden-Bell estimator.
 
-In order to get a proper distribution as NPMLE, we automatically
-change the \eqn{d} for the largest observation to 1
-(even if it is right censored), similar for the left censored, 
-smallest observation.
-\eqn{\mu} is a given constant. 
 When the given constants \eqn{\mu} is too far
 away from the NPMLE, there will be no distribution
 satisfy the constraint.
@@ -76,24 +66,30 @@ to the NPMLE ---
 \eqn{p_i^0} taken to be the jumps of the NPMLE of CDF. 
 Or use a different \code{fun}. 
 
+This implementation is all in R and have several for-loops in it. 
+A better version would use C to do the for-loop part.
+(but this version is easier to port to Splus)
 }
 \author{ Mai Zhou }
 \references{
     Zhou, M. (2002). 
-        Computing censored empirical likelihood ratio 
+        Computing censored and truncated empirical likelihood ratio 
         by EM algorithm. 
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
 
-    Murphy, S. and van der Varrt (1997)
-         Semiparametric likelihood ratio inference.
-         \emph{Ann. Statist.} \bold{ 25}, 1471-1509.
+    Turnbbull, B. (1976). The empirical distribution function with
+   arbitrarily grouped, censored and truncated data. JRSS B 290-295.
 }
 \examples{
 ## example with tied observations
+y <- c(0, 0, 0.5, 0, 1, 2, 2, 0, 0, 0, 0, 0 )
 x <- c(1, 1.5, 2, 3, 4, 5, 6, 5, 4, 1, 2, 4.5)
 d <- c(1,   1, 0, 1, 0, 1, 1, 1, 1, 0, 0,   1)
-el.cen.EM(x,d,mu=3.5)
-## we should get "-2LLR" = 1.2466....
+el.ltrc.EM(y,x,d,mu=3.5)
+ypsy <- c(51, 58, 55, 28, 25, 48, 47, 25, 31, 30, 33, 43, 45, 35, 36)
+xpsy <- c(52, 59, 57, 50, 57, 59, 61, 61, 62, 67, 68, 69, 69, 65, 76)
+dpsy <- c(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1 )
+el.ltrc.EM(ypsy,xpsy,dpsy,mu=64)
 }
 \keyword{nonparametric}
 \keyword{survival}

@@ -1,40 +1,28 @@
-el.trun.test <- function(y, x, wt=rep(1,length(x)),
-                  fun=function(x){x}, mu, maxit=20,error=1e-9) {
+el.trun.test <- function(y,x,fun=function(t){t},mu,maxit=20,error=1e-9) {
+x <- as.vector(x)
+y <- as.vector(y)
+temp <- Wdataclean2(x,d=rep(1, length(x))) 
+x <- temp$value
+wt0 <- temp$weight
+
 indi <- function(u,v){ as.numeric(u > v) }
 uij <- outer(x,y,FUN="indi")
-n <- length(x)
-w0 <- wt/n
+m <- length(y)
+w0 <- rep(1/length(x), length(x))
 xmu <- fun(x) - mu
 for(i in 1:maxit) {
      pvec0 <- as.vector( w0 %*% uij )
-     nvec <- as.vector( rowsum( t(uij)*wt/pvec0, group=rep(1, n) ) )
-     w0 <- wt/nvec
-     w0 <- w0/sum(w0)
+     nvec <- wt0 + as.vector(rowsum( t(w0*(1-uij))/pvec0, group=rep(1, m)))
+     w0 <- nvec/sum(nvec)
 }
 w <- w0
-lamfun <- function(lam, nvec, xmu){sum(xmu/(nvec+lam*xmu))}
 for(i in 1:maxit) {
        pvec <- as.vector( w %*% uij )
-       nvec <- as.vector( rowsum( t(uij)*wt/pvec, group=rep(1, n) ) )
-       BU <- 0.1*min(nvec)/max(abs(xmu))
-       if(lamfun(0, nvec=nvec, xmu=xmu) == 0) lam <- 0
-       else {
-             if(lamfun(0, nvec=nvec, xmu=xmu) > 0) { lo <- 0
-             up <- BU
-             while(lamfun(up, nvec=nvec, xmu=xmu) > 0)
-             up <- up + BU
-             }
-           else {up <- 0
-                 lo <- -BU
-                 while(lamfun(lo, nvec=nvec, xmu=xmu) < 0 ) lo <- lo - BU
-                }
- lam <- uniroot(lamfun,lower=lo,upper=up, nvec=nvec,xmu=xmu,tol=1e-9)$root
-            }
-       w <- wt/(nvec + lam * xmu)
-       w <- w/sum(w)
+       nvec <- wt0 + as.vector(rowsum( t(w*(1-uij))/pvec, group=rep(1, m)))
+       w <- el.test.wt(x=xmu, wt=nvec, mu=0)$prob
 }
 pvec <- as.vector( w %*% uij )
 pvec0 <- as.vector( w0 %*% uij )
-ELR <- sum(log(w0)-log(pvec0))-sum(log(w)-log(pvec))
+ELR <- sum(wt0*log(w0)) - sum(log(pvec0)) - sum(wt0*log(w)) + sum(log(pvec))
 return(list(NPMLE=w0, NPMLEmu=w, "-2LLR"=2*ELR) )
 }

@@ -2,7 +2,7 @@
 \alias{el.trun.test}
 \title{Empirical likelihood ratio for mean with left truncated data}
 \usage{
-el.trun.test(y,x,wt,fun=function(x){x},mu,maxit=20,error=1e-9)
+el.trun.test(y,x,fun=function(t){t},mu,maxit=20,error=1e-9)
 }
 \description{
 This program uses EM algorithm to compute the maximized
@@ -13,16 +13,17 @@ the MEAN constraint:
 Where \eqn{p_i = \Delta F(x_i)} is a probability.
 \eqn{\mu} is a given constant. 
 It also returns those \eqn{p_i} and the \eqn{p_i} without
-constraint, the Lyden-Bell estimator.
+constraint, the Lynden-Bell estimator.
 }
 \arguments{
     \item{y}{a vector containing the left truncation times.}
     \item{x}{a vector containing the survival times. truncation means x>y.}
-    \item{wt}{a vector containing the weights of the observations.}
+    \item{F0}{an optional vector containing the initial probabilities at the
+              location x. Default to equal probabilities.}
     \item{fun}{a continuous (weight) function used to calculate
          the mean as in \eqn{H_0}.
-         \code{fun(x)} must be able to take a vector input \code{x}.
-         Default to the identity function \eqn{f(x)=x}.}
+         \code{fun(t)} must be able to take a vector input \code{t}.
+         Default to the identity function \eqn{f(t)=t}.}
     \item{mu}{a real number used in the constraint, mean value of \eqn{f(X)}.}
     \item{error}{an optional positive real number specifying the tolerance of
        iteration error. This is the bound of the
@@ -69,6 +70,13 @@ Or use a different \code{fun}.
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
 
     Li, G. (1995)
+        Nonparametric likelihood ratio estimation of probabilities
+        for truncated data. \emph{JASA} 90, 997-1003.
+    
+    Turnbull (1976)
+       The empirical distribution function with arbitrarily grouped, censored
+and truncated data. \emph{JRSS} B 38, 290-295.
+
 }
 \examples{
 ## example with tied observations

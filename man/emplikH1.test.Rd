@@ -1,8 +1,9 @@
 \name{emplikH1.test}
 \alias{emplikH1.test}
-\title{Empirical likelihood for hazard with right censored data}
+\title{Empirical likelihood for hazard with right censored, 
+                 left truncated data}
 \usage{
-emplikH1.test(x, d, theta, fun, tola=.Machine$double.eps^.25)
+emplikH1.test(x, d, y= -Inf, theta, fun, tola=.Machine$double.eps^.25)
 }
 \description{Use empirical likelihood ratio and Wilks theorem to test 
 the null hypothesis that 
@@ -16,6 +17,7 @@ dependent, just have to be `predictable'.
 \arguments{
    \item{x}{a vector of the observed survival times.}
    \item{d}{a vector of the censoring indicators, 1-uncensor; 0-censor.}
+   \item{y}{a vector of the observed left truncation times.}
    \item{theta}{a real number used in the \eqn{H_0} to set the hazard 
                to this value.}
    \item{fun}{a left continuous (weight) function used to calculate 
@@ -66,10 +68,10 @@ infinite.
 }
 \examples{
 fun <- function(x) { as.numeric(x <= 6.5) }
-emplikH1.test( c(1,2,3,4,5), c(1,1,0,1,1), theta=2, fun) 
+emplikH1.test( x=c(1,2,3,4,5), d=c(1,1,0,1,1), theta=2, fun=fun) 
 
 fun2 <- function(x) {exp(-x)}  
-emplikH1.test( c(1,2,3,4,5), c(1,1,0,1,1), theta=0.2, fun2) 
+emplikH1.test( x=c(1,2,3,4,5), d=c(1,1,0,1,1), theta=0.2, fun=fun2) 
 }
 \keyword{nonparametric}
 \keyword{survival}

@@ -8,6 +8,7 @@
 \alias{solve3.QP}
 \alias{WKM}
 \alias{el.test.wt}
+\alias{LTRC}
 \title{Internal emplik functions}
 \usage{
 logelr(x,mu,lam)
@@ -15,9 +16,10 @@ llog(z, eps)
 llogp(z, eps)
 llogpp(z, eps)
 Wdataclean2(z,d,wt=rep(1,length(d)))
-DnR(x,d,w)
+DnR(x,d,w,y=rep(-Inf,length(x)))
 solve3.QP(D, d, A, b, meq, factorized=FALSE)
 WKM(x,d,w=rep(1,length(d)))
+LTRC(x,d,w=rep(1, length(d)),y=rep(-Inf, length(x)))
 el.test.wt(x,wt,mu)
 }
 \description{ Internal emplik functions }
@@ -26,7 +28,8 @@ These are not to be called by the user.
 
 \code{Wdataclean2} and
 \code{DnR} are used by the functions \code{emplikH1.test}, 
-\code{emplikH2.test} and \code{emplikdisc.test}.  
+\code{emplikH2.test} and \code{emplikdisc.test}.  It is also used by 
+\code{LTRC}.  
 
 \code{logelr}, \code{llog}, \code{llogp} and \code{llogpp} 
 are used by function \code{el.test}.
@@ -38,5 +41,7 @@ used by function \code{el.cen.test}.
 
 \code{el.test.wt} is basically a weighted version of \code{el.test}
 but only for 1 dim mean. 
+
+\code{LTRC} is for Left Truncated and Right Censored data.
 }
 \keyword{internal}

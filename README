@@ -7,10 +7,22 @@ on that of Owen.
 
 Only el.test() can handle vector means as Ho (several
 parameters), but data must be uncensored. 
-All other code can take right censored data (and may be
-more) but can only handle one parameter in Ho.
+All other codes can only handle one parameter in Ho,
+but can take censored/truncated data.
+ 
+The name convention: el.xxx    is for the parameter mean.
+                     emplikxxx is for the parameter of hazard.
 
 Everything is written in R, so porting to Splus should be
-easy. I may put out another version that more some of the
-loop to C function. (is there such need? this will also
+easy. I may put out another version that move some of the
+loops to C function. (is there such need? this will also
 make the porting harder)
+
+History: 
+Version 0.1-2   Nov. 12, 2001
+Version 0.2-1   Jan. 10, 2002
+Version 0.3     Feb. 18, 2002
+Version 0.4     Apr. 6,  2002
+Version 0.5     Apr. 24, 2002
+Version 0.5-1   Apr. 25, 2002
+Version 0.6     May  13, 2002
