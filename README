@@ -1,0 +1,11 @@
+This package is based on R codes 
+EMPLIKH1, EMPLIKH2, EMPLIKDISC and EL.CEN.TEST
+written by Mai Zhou. The code el.test is based on
+S code ELM by Owen.  The R code and documentation 
+for el.test() have been edited by Mai Zhou, based 
+on that of Owen.
+
+Only el.test() can handle vector means as Ho (several
+parameters), but data must be uncensored. 
+All other codes can take right censored data but
+can only handle one parameter in Ho.
