@@ -38,12 +38,14 @@ cumulative hazard function;
 }
 \author{ Mai Zhou } 
 \references{
-    Pan and Zhou (2001),
+    Pan and Zhou (2002),
     ``Empirical likelihood in terms of cumulative
       hazard for censored data''. 
-    \emph{Journal of Multivariate Analysis} \bold{}
+    \emph{Journal of Multivariate Analysis} \bold{80}, 166-188.
 }
 \details{
+This version works for implicit function \code{ f(t, ...)}.
+
 This function is designed for continuous distributions.
 Thus we do not expect tie in the observations. If you believe
 the true underlying distribution is continuous but the

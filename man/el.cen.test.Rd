@@ -1,7 +1,7 @@
 \name{el.cen.test}
 \alias{el.cen.test}
-\title{Empirical likelihood ratio for mean 
-with right censored data}
+\title{Empirical likelihood ratio for mean
+with right censored data, by QP.}
 \usage{
 el.cen.test(x,d,fun=function(x){x},mu,error=1e-8,maxit=20)
 }
@@ -9,9 +9,10 @@ el.cen.test(x,d,fun=function(x){x},mu,error=1e-8,maxit=20)
 This program computes the maximized (wrt \eqn{w_i}) empirical
 log likelihood function for right censored data with 
 the MEAN constraint:
-\deqn{ \sum_i [ d_i w_i f(x_i) ] = \int f(t) dF(t) = \mu  } 
-where \eqn{w_i = \Delta F(x_i)} is a probability,
+\deqn{ \sum_i [ d_i p_i f(x_i) ] = \int f(t) dF(t) = \mu  } 
+where \eqn{p_i = \Delta F(x_i)} is a probability,
 \eqn{d_i} is the censoring indicator. 
+The \eqn{d} for the largest observation is always taken to be 1.
 It then computes the -2 log 
 empirical likelihood ratio which should be chi-square
 distributed if the constraint is true.
@@ -29,13 +30,13 @@ observation, the code will stop and we should use
     \item{d}{a vector containing the censoring indicators, 
            1-uncensor; 0-censor.}
     \item{fun}{a left continuous (weight) function used to calculate
-         the mean \eqn{H_0}. 
+         the mean as in \eqn{H_0}. 
          \code{fun(t)} must be able to take a vector input \code{t}. 
       Default to the identity function \eqn{f(t)=t}.}
     \item{mu}{a real number used in the constraint, sum to this value.}
     \item{error}{an optional positive real number specifying the tolerance of
-       iteration error in the QP. This is the \eqn{L_1} norm of the 
-       differnence of two successive weights.}
+       iteration error in the QP. This is the bound of the
+       \eqn{L_1} norm of the differnence of two successive weights.}
     \item{maxit}{an optional integer, used to control maximum number of
              iterations. }
 }
@@ -49,16 +50,11 @@ observation, the code will stop and we should use
     \item{iteration}{number of iterations carried out}
 }
 \details{
-This function, unlike other functions in this package,
-can be slow for larger sample sizes.
-It took about one minute for a sample of size 2000 with 20\% censoring
-on a 1GHz, 256MB PC.
-
 When the given constants \eqn{\mu} is too far
 away from the NPMLE, there will be no distribution
 satisfy the constraint.
 In this case the computation will stop.
-The minus 2 Log empirical likelihood ratio
+The -2 Log empirical likelihood ratio
 should be infinite. 
 
 The constant \code{mu} must be inside 
@@ -67,9 +63,19 @@ for the computation to continue.
 It is always true that the NPMLE values are feasible. So when the
 computation stops, try move the \code{mu} closer
 to the NPMLE, or use a different \code{fun}. 
+
+This function uses sequential Quadratic Programming to find the
+maximum. Unlike other functions in this package,
+it can be slow for larger sample sizes.
+It took about one minute for a sample of size 2000 with 20\% censoring
+on a 1GHz, 256MB PC.
 }
 \author{ Mai Zhou, Kun Chen }
 \references{
+    Pan and Zhou (1999). Empirical likelihood ratio, one parameter
+                         sub-family of distributions and censored data.
+    \emph{J. Statist. Plann. Inference}. \bold{75}, 379-392.
+
     Chen and Zhou (2000). 
         Computing censored empirical likelihood ratio 
         using Quadratic Programming. 
@@ -105,7 +111,6 @@ el.cen.test(x,d,mu=3.5)
    # weight  : weight under mean constraint
    # m       : the number of iterations
    #************************************************************
-   # ver. 2 by Mai Zhou (10/2001) based on Kun Chen's IQP at 1/25/2001
    # depends on Wdataclean2(), WKM() and solve3.QP() 
    ####################################################################
 } 

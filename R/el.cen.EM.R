@@ -1,0 +1,86 @@
+el.cen.EM <- function(x,d,fun=function(x){x},mu,maxit=25,error=1e-9) {
+   xvec <- as.vector(x)
+   nn <- length(xvec)
+   if(nn <= 1) stop ("Need more observations")
+   if(length(d)!=nn) stop("length of x and d must agree")
+   if(any((d!=0)&(d!=1)&(d!=2)))
+     stop("d must be 0(right-censored) or 1(uncensored) or 2(left-censored)")
+   if(!is.numeric(xvec)) stop("x must be numeric")
+   if(length(mu)!=1) stop("check the dim of constraint mu")
+
+   temp <- Wdataclean2(xvec,d)
+   x <- temp$value
+   d <- temp$dd
+   d[length(d)] <- 1   # last obs. always treat as uncensored. 
+   w <- temp$weight
+   xd1 <- x[d==1]
+    if(length(xd1) <= 1) stop("need more distinct uncensored obs.")
+   funxd1 <- fun(xd1) 
+   xd0 <- x[d==0]
+   xd2 <- x[d==2]
+   wd1 <- w[d==1]
+   wd0 <- w[d==0]
+   wd2 <- w[d==2]
+   m <- length(xd0)
+   mleft <- length(xd2)
+
+   if( (m>0) && (mleft>0) ) { 
+   pnew <- el.test.wt(funxd1, wt=wd1, mu)$prob
+   n <- length(pnew)
+   k <- rep(NA, m)
+   for(i in 1:m) { k[i] <- 1+n - sum( xd1 > xd0[i] ) }
+   kk <- rep(NA, mleft)
+   for(j in 1:mleft) { kk[j] <- sum( xd1 < xd2[j] ) }
+   num <- 1
+   while(num < maxit) {
+     wd1new <- wd1
+     sur <- rev(cumsum(rev(pnew)))
+     cdf <- 1 - c(sur[-1],0)
+     for(i in 1:m)
+        {wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i]*pnew[k[i]:n]/sur[k[i]]}
+     for(j in 1:mleft)
+        {wd1new[1:kk[j]] <- wd1new[1:kk[j]] + wd2[j]*pnew[1:kk[j]]/cdf[kk[j]]}
+     pnew <- el.test.wt(funxd1, wt=wd1new, mu)$prob
+     num <- num +1
+     }
+   logel <- sum(wd1*log(pnew)) + wd0*sum(log(sur[k])) + wd2*sum(log(cdf[kk]))
+  }
+  if( (m>0) && (mleft==0) ) {
+   pnew <- el.test.wt(funxd1, wt=wd1, mu)$prob
+   n <- length(pnew)
+   k <- rep(NA,m)
+   for(i in 1:m) { k[i] <- 1 + n - sum( xd1 > xd0[i] ) }
+   num <- 1
+   while(num < maxit) {
+     wd1new <- wd1
+     sur <- rev(cumsum(rev(pnew)))
+     for(i in 1:m)
+        {wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i]*pnew[k[i]:n]/sur[k[i]]}
+     pnew <- el.test.wt(funxd1, wt=wd1new, mu)$prob
+     num <- num +1
+     }
+   sur <- rev(cumsum(rev(pnew)))
+   logel <- sum( wd1*log(pnew)) + sum( wd0*log(sur[k]) )
+  }
+  if( (m==0) && (mleft>0) ) {
+   kk <- rep(NA, mleft)
+   for(j in 1:mleft) { kk[j] <- sum( xd1 < xd2[j] ) }
+   pnew <- el.test.wt(funxd1, wt=wd1, mu)$prob
+   n <- length(pnew)
+   num <- 1
+   while(num < maxit) {
+     wd1new <- wd1
+     cdf <- cumsum(pnew) 
+     for(j in 1:mleft)
+        {wd1new[1:kk[j]] <- wd1new[1:kk[j]] + wd2[j]*pnew[1:kk[j]]/cdf[kk[j]]}
+     pnew <- el.test.wt(funxd1, wt=wd1new, mu)$prob
+     num <- num +1
+     }
+   logel <- sum( wd1*log(pnew)) + sum( wd2*log( cdf[kk] ) )
+  }
+  if( (m==0) && (mleft==0) ) {
+    pnew <- el.test.wt(funxd1, wt=wd1, mu)$prob
+    logel <- sum( wd1*log(pnew) ) 
+  }
+  list(loglik=logel, times=xd1, prob=pnew)
+}

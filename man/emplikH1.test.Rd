@@ -59,9 +59,9 @@ infinite.
 }
 \author{ Mai Zhou } 
 \references{
-    Pan and Zhou (2001),
+    Pan and Zhou (2002),
     ``Empirical likelihood in terms of hazard for censored data''. 
-    \emph{Journal of Multivariate Analysis} \bold{}
+    \emph{Journal of Multivariate Analysis} \bold{80}, 166-188.
 }
 \examples{
 fun <- function(x) { as.numeric(x <= 6.5) }

@@ -1,6 +1,6 @@
 \name{el.test}
 \alias{el.test}
-\title{Empirical likelihood ratio test for the means}
+\title{Empirical likelihood ratio test for the means, uncensored data}
 \usage{
 el.test(x, mu, lam, maxit=25, gradtol=1e-7, 
                  svdtol = 1e-9, itertrace=FALSE)
@@ -53,7 +53,8 @@ it by infinity when the weights do not sum to nearly n.
 }
 \value{
     A list with the following components:
-    \item{-2LLR}{the -2 log likelihood ratio; approx chisq under \eqn{H_o}.}
+    \item{-2LLR}{the -2 loglikelihood ratio; approximate chisq distribution
+                 under \eqn{H_o}.}
     \item{Pval}{the observed P-value by chi-square approximation.}
     \item{lambda}{the final value of Lagrange multiplier.}
     \item{grad}{the gradient at the maximum.}
@@ -72,7 +73,8 @@ el.test(x, mu=c(1,2))
 ## Suppose now we wish to test Ho: 2mu(1)-mu(2)=0, then
 y <- 2*x[,1]-x[,2]
 el.test(y, mu=0)
-#xx <- c(28,-44,29,30,26,27,22,23,33,16,24,29,24,40,21,31,34,-2,25,19)
+xx <- c(28,-44,29,30,26,27,22,23,33,16,24,29,24,40,21,31,34,-2,25,19)
+el.test(xx, mu=15)  #### -2LLR = 1.805702
 }
 \keyword{nonparametric}
 \keyword{htest}

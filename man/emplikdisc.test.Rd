@@ -69,7 +69,7 @@ with a \code{theta} input, just to match the arguments.
 	   Survival Analysis. Ph.D. Thesis, Univ. of Kentucky, Dept
  	   of Statistics.
 
-    Zhou and Fang (2000). 
+    Zhou and Fang (2001). 
     ``Empirical likelihood ratio for 2 sample problem 
                        for censored data''. 
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
