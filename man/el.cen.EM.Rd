@@ -16,6 +16,7 @@ Where \eqn{p_i = \Delta F(x_i)} is a probability,
 2(left censored). 
 The \eqn{d} for the largest observation is always taken to be 1.
 \eqn{\mu} is a given constant. 
+It also returns those \eqn{p_i}. 
 }
 \arguments{
     \item{x}{a vector containing the observed survival times.}
@@ -25,7 +26,7 @@ The \eqn{d} for the largest observation is always taken to be 1.
          the mean as in \eqn{H_0}.
          \code{fun(x)} must be able to take a vector input \code{x}.
          Default to the identity function \eqn{f(x)=x}.}
-    \item{mu}{a real number used in the constraint, mean value of f(X).}
+    \item{mu}{a real number used in the constraint, mean value of \eqn{f(X)}.}
     \item{error}{an optional positive real number specifying the tolerance of
        iteration error. This is the bound of the
        \eqn{L_1} norm of the differnence of two successive weights.}
@@ -36,15 +37,21 @@ The \eqn{d} for the largest observation is always taken to be 1.
     A list with the following components:
     \item{loglik}{the maximized empirical log likelihood under the constraint.}
     \item{times}{locations of CDF that have positive mass.}
-    \item{prob}{the jump size of CDF function at those locations.}
+    \item{prob}{the jump size of CDF at those locations.}
+    \item{"-2LLR"}{If available, it is Minus two times the 
+                   Empirical Log Likelihood Ratio.
+                   Should be approx. chi-square distributed under Ho.}
 }
 \details{
 
 This implementation is all in R and have several for-loops in it. 
 A better version would use C to do the for-loop part.
+(but this version is easier to port to Splus)
 
-We only return the log likelihood, not the -2 log likelihood ratio.
-You have to plot a curve with many values of the parameter to
+We return the log likelihood all the time. Sometimes, (for right censored
+and no censor case) we also return the -2 log likelihood ratio.
+In other cases, you have to plot a curve with many values of the 
+parameter, mu, to
 find out where is the place the log likelihood becomes maximum.
 And from there you can get -2 log likelihood ratio between
 the maximum location and your current parameter in Ho.
@@ -63,18 +70,18 @@ It is always true that the NPMLE values are feasible. So when the
 computation stops, try move the \code{mu} closer
 to the NPMLE --- 
 \deqn{ \sum_{d_i=1} p_i^0 f(x_i) } 
-\eqn{p_i^0} taken to be the jumps of NPMLE. 
+\eqn{p_i^0} taken to be the jumps of the NPMLE of CDF. 
 Or use a different \code{fun}. 
 
 }
 \author{ Mai Zhou }
 \references{
-    Zhou (2002). 
+    Zhou, M. (2002). 
         Computing censored empirical likelihood ratio 
         by EM algorithm. 
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
 
-    Murphy and van der Varrt (1997)
+    Murphy, S. and van der Varrt (1997)
          Semiparametric likelihood ratio inference.
          \emph{Ann. Statist.} \bold{ 25}, 1471-1509.
 }

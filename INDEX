@@ -4,6 +4,8 @@ el.cen.test              Empirical likelihood ratio for mean with right
                          censored data, by QP.
 el.test                  Empirical likelihood ratio test for the means,
                          uncensored data
+el.trun.test             Empirical likelihood ratio for mean with left
+                         truncated data
 emplik-internal          Internal emplik functions
 emplikH1.test            Empirical likelihood for hazard with right
                          censored data

@@ -16,10 +16,11 @@ dependent, just have to be `predictable'.
 \arguments{
    \item{x}{a vector of the observed survival times.}
    \item{d}{a vector of the censoring indicators, 1-uncensor; 0-censor.}
-   \item{theta}{a real number used in the Ho to set the hazard to this value.}
+   \item{theta}{a real number used in the \eqn{H_0} to set the hazard 
+               to this value.}
    \item{fun}{a left continuous (weight) function used to calculate 
-       the weighted hazard in Ho. \code{fun} must be able 
-       to take a vector input.}
+       the weighted hazard in \eqn{ H_0}. \code{fun} must be able 
+       to take a vector input. See example below.}
     \item{tola}{an optional positive real number specifying the tolerance of
        iteration error in solve the non-linear equation needed in constrained 
         maximization.}
@@ -59,7 +60,7 @@ infinite.
 }
 \author{ Mai Zhou } 
 \references{
-    Pan and Zhou (2002),
+    Pan, X. and Zhou, M. (2002),
     ``Empirical likelihood in terms of hazard for censored data''. 
     \emph{Journal of Multivariate Analysis} \bold{80}, 166-188.
 }

@@ -77,14 +77,10 @@ fun4 <- function(x, theta) { as.numeric(x <= theta) }
 emplikH2.test(z1,d1, K=0.5, fun4, theta=3.5)
 #Next, test if H(3.5) = log(2) .
 emplikH2.test(z1,d1, K=log(2), fun4, theta=3.5)
-#psum <- function(...) { 
-#             args <- do.call("cbind", list(...))
-#             nargs <- ncol(args)
-#             as.vector(args %*% rep(1, nargs))
-#}
-#fun3 <- function(t, z) { psum( t( outer(z, t, FUN=">=") ) ) } 
-#
-#emplikH2.test(z1, d1, K=sum(0.25* z1), fun3, z=z1) 
+#Next, try one sample log rank test
+indi <- function(x,y){ as.numeric(x >= y) }
+fun3 <- function(t,z){rowsum(outer(z,t,FUN="indi"),group=rep(1,length(z)))} 
+emplikH2.test(z1, d1, K=sum(0.25* z1), fun3, z=z1) 
 }
 \keyword{nonparametric}
 \keyword{survival}

@@ -1,4 +1,4 @@
-This package is based on R codes el.cen.EM
+This package is based on R codes el.cen.EM, el.tr.test
 EMPLIKH1, EMPLIKH2, EMPLIKDISC and EL.CEN.TEST
 written by Mai Zhou. The code el.test is based on
 S code ELM by Owen.  The R code and documentation 
@@ -7,5 +7,10 @@ on that of Owen.
 
 Only el.test() can handle vector means as Ho (several
 parameters), but data must be uncensored. 
-All other code can take right censored data but
-can only handle one parameter in Ho.
+All other code can take right censored data (and may be
+more) but can only handle one parameter in Ho.
+
+Everything is written in R, so porting to Splus should be
+easy. I may put out another version that more some of the
+loop to C function. (is there such need? this will also
+make the porting harder)

@@ -14,7 +14,7 @@ where \eqn{p_i = \Delta F(x_i)} is a probability,
 \eqn{d_i} is the censoring indicator. 
 The \eqn{d} for the largest observation is always taken to be 1.
 It then computes the -2 log 
-empirical likelihood ratio which should be chi-square
+empirical likelihood ratio which should be approximately chi-square
 distributed if the constraint is true.
 Here \eqn{F(t)} is the (unknown) CDF; 
 \eqn{f(t)} can be any given left
@@ -72,11 +72,11 @@ on a 1GHz, 256MB PC.
 }
 \author{ Mai Zhou, Kun Chen }
 \references{
-    Pan and Zhou (1999). Empirical likelihood ratio, one parameter
+    Pan, X. and Zhou, M. (1999). Empirical likelihood ratio, one parameter
                          sub-family of distributions and censored data.
     \emph{J. Statist. Plann. Inference}. \bold{75}, 379-392.
 
-    Chen and Zhou (2000). 
+    Chen, K. and Zhou, M. (2000). 
         Computing censored empirical likelihood ratio 
         using Quadratic Programming. 
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}

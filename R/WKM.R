@@ -9,7 +9,9 @@ allrisk <- rev(cumsum(rev(ww)))
 survP <- cumprod( 1 -  (dd*ww)/allrisk )
 jumps <- -diff( c(1, survP) )
 
-list(times=temp$value, jump=jumps, surv=survP )
+logel <- sum(ww[dd==1]*log(jumps[dd==1])) + sum(ww[dd==0]*log(survP[dd==0]))
+
+list(times=temp$value, jump=jumps, surv=survP, logel=logel)
 
 }
 

@@ -1,4 +1,4 @@
-el.cen.EM <- function(x,d,fun=function(x){x},mu,maxit=25,error=1e-9) {
+el.cen.EM <- function(x,d, fun=function(x){x},mu,maxit=25,error=1e-9) {
    xvec <- as.vector(x)
    nn <- length(xvec)
    if(nn <= 1) stop ("Need more observations")
@@ -11,8 +11,16 @@ el.cen.EM <- function(x,d,fun=function(x){x},mu,maxit=25,error=1e-9) {
    temp <- Wdataclean2(xvec,d)
    x <- temp$value
    d <- temp$dd
-   d[length(d)] <- 1   # last obs. always treat as uncensored. 
    w <- temp$weight
+
+   ###### change the last obs. among d=1,0, so that d=1
+   ###### change the first obs. among d=1,2 so that d=1
+   ###### this ensures we got a proper df for NPMLE. (no mass escape)
+   INDEX10 <- which(d != 2)
+   d[ INDEX10[length(INDEX10)] ] <- 1
+   INDEX12 <- which(d != 0)
+   d[ INDEX12[1] ] <- 1
+
    xd1 <- x[d==1]
     if(length(xd1) <= 1) stop("need more distinct uncensored obs.")
    funxd1 <- fun(xd1) 
@@ -24,6 +32,9 @@ el.cen.EM <- function(x,d,fun=function(x){x},mu,maxit=25,error=1e-9) {
    m <- length(xd0)
    mleft <- length(xd2)
 
+##############################################
+#### do the computation in 4 different cases.#
+##############################################
    if( (m>0) && (mleft>0) ) { 
    pnew <- el.test.wt(funxd1, wt=wd1, mu)$prob
    n <- length(pnew)
@@ -43,7 +54,8 @@ el.cen.EM <- function(x,d,fun=function(x){x},mu,maxit=25,error=1e-9) {
      pnew <- el.test.wt(funxd1, wt=wd1new, mu)$prob
      num <- num +1
      }
-   logel <- sum(wd1*log(pnew)) + wd0*sum(log(sur[k])) + wd2*sum(log(cdf[kk]))
+   logel <- sum(wd1*log(pnew)) + sum(wd0*log(sur[k])) + sum(wd2*log(cdf[kk]))
+   logel00 <- NA
   }
   if( (m>0) && (mleft==0) ) {
    pnew <- el.test.wt(funxd1, wt=wd1, mu)$prob
@@ -61,6 +73,7 @@ el.cen.EM <- function(x,d,fun=function(x){x},mu,maxit=25,error=1e-9) {
      }
    sur <- rev(cumsum(rev(pnew)))
    logel <- sum( wd1*log(pnew)) + sum( wd0*log(sur[k]) )
+   logel00 <- WKM(x,d,w)$logel
   }
   if( (m==0) && (mleft>0) ) {
    kk <- rep(NA, mleft)
@@ -77,10 +90,12 @@ el.cen.EM <- function(x,d,fun=function(x){x},mu,maxit=25,error=1e-9) {
      num <- num +1
      }
    logel <- sum( wd1*log(pnew)) + sum( wd2*log( cdf[kk] ) )
+   logel00 <- NA
   }
   if( (m==0) && (mleft==0) ) {
     pnew <- el.test.wt(funxd1, wt=wd1, mu)$prob
     logel <- sum( wd1*log(pnew) ) 
+    logel00 <- sum( wd1*log( wd1/sum(wd1) ) )
   }
-  list(loglik=logel, times=xd1, prob=pnew)
+  list(loglik=logel, times=xd1, prob=pnew, "-2LLR"=2*(logel00 - logel))
 }
