@@ -29,11 +29,11 @@ The empirical log likelihood been maximized is
          \code{fun(t)} must be able to take a vector input \code{t}.
          Default to the identity function \eqn{f(t)=t}.} 
     \item{mu}{a real number used in the constraint, mean value of \eqn{f(X)}.}
-    \item{error}{an optional positive real number specifying the tolerance of
-       iteration error. This is the bound of the
-       \eqn{L_1} norm of the differnence of two successive weights.}
     \item{maxit}{an optional integer, used to control maximum number of
              iterations. }
+    \item{error}{an optional positive real number specifying the tolerance of
+       iteration error. This is the bound of the
+       \eqn{L_1} norm of the difference of two successive weights.}
    \item{...}{additional arguments, if any, to pass to fun.}
 }
 \value{

@@ -46,11 +46,11 @@ The log likelihood function is defined as
          \code{fun(t)} must be able to take a vector input \code{t}.} 
     \item{mu}{a vector of length k. Used in the constraint, 
                     as the mean of \eqn{f(X)}.}
-    \item{error}{an optional positive real number specifying the tolerance of
-       iteration error. This is the bound of the
-       \eqn{L_1} norm of the differnence of two successive weights.}
     \item{maxit}{an optional integer, used to control maximum number of
              iterations. }
+    \item{error}{an optional positive real number specifying the tolerance of
+       iteration error. This is the bound of the
+       \eqn{L_1} norm of the difference of two successive weights.}
     \item{...}{additional inputs to pass to \code{fun()}.}
 }
 \value{

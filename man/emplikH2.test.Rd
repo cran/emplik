@@ -26,8 +26,8 @@ cumulative hazard function;
     \item{tola}{an optional positive real number specifying the tolerance of
        iteration error in solve the non-linear equation needed in constrained
         maximization.}
-    \item{...}{additional parameter(s) passing along to \code{fun}. This
-           allows an implicit function of \code{fun}.  }
+    \item{...}{additional parameter(s), if any, passing along to \code{fun}. 
+            This allows an implicit function of \code{fun}.  }
 }
 \value{
     A list with the following components:

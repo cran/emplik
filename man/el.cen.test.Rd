@@ -39,7 +39,7 @@ The log likelihood been maximized is
     \item{mu}{a real number used in the constraint, sum to this value.}
     \item{error}{an optional positive real number specifying the tolerance of
        iteration error in the QP. This is the bound of the
-       \eqn{L_1} norm of the differnence of two successive weights.}
+       \eqn{L_1} norm of the difference of two successive weights.}
     \item{maxit}{an optional integer, used to control maximum number of
              iterations. }
 }
@@ -71,7 +71,7 @@ This function uses sequential Quadratic Programming to find the
 maximum. Unlike other functions in this package,
 it can be slow for larger sample sizes.
 It took about one minute for a sample of size 2000 with 20\% censoring
-on a 1GHz, 256MB PC.
+on a 1GHz, 256MB PC, about 19 seconds on a 3 GHz 512MB PC.
 }
 \author{ Mai Zhou, Kun Chen }
 \references{

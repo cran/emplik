@@ -24,7 +24,7 @@ dependent, just have to be `predictable'.
        the weighted hazard in \eqn{ H_0}. \code{fun} must be able 
        to take a vector input. See example below.}
     \item{tola}{an optional positive real number specifying the tolerance of
-       iteration error in solve the non-linear equation needed in constrained 
+       iteration error in solve the non-linear equation needed in constrained
         maximization.}
 }
 \details{

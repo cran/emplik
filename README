@@ -20,7 +20,7 @@ easy. I may put out another version that move some of the
 loops to C function. (is there such need? this will also
 make the porting harder)
 
-History: 
+Release History: 
 Pre-beta           1998--1999
 Version 0.1-2   Nov. 12, 2001
 Version 0.2-1   Jan. 10, 2002
@@ -29,4 +29,6 @@ Version 0.4     Apr. 6,  2002
 Version 0.5     Apr. 24, 2002
 Version 0.5-1   Apr. 25, 2002
 Version 0.6     May  13, 2002
-version 0.7     Oct. 12, 2002
+Version 0.7     Oct. 12, 2002
+Version 0.7-3   Jan. 12, 2003
+Version 0.7-4   July 20, 2003

@@ -21,8 +21,6 @@ The log likelihood been maximized is
 \arguments{
     \item{y}{a vector containing the left truncation times.}
     \item{x}{a vector containing the survival times. truncation means x>y.}
-    \item{F0}{an optional vector containing the initial probabilities at the
-              location x. Default to equal probabilities.}
     \item{fun}{a continuous (weight) function used to calculate
          the mean as in \eqn{H_0}.
          \code{fun(t)} must be able to take a vector input \code{t}.
