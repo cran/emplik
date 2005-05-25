@@ -106,7 +106,7 @@ nstep <- as.vector( nstep %*% grad )
   ninner <- 0
   for(  i in 1:length(nwts) ){
 
-###   nlogelr <- logwelr(z,rep(0,p),wt, lam+nwts[i]*nstep+gwts[i]*gstep )
+### nlogelr <- logwelr(z,rep(0,p),wt, lam+nwts[i]*nstep+gwts[i]*gstep)
     ngrad <- gradf(z,wt, lam+nwts[i]*nstep+gwts[i]*gstep )
     ngsize <- mean( abs(ngrad) ) 
 

@@ -1,5 +1,7 @@
 WKM <- function(x,d,zc=rep(1,length(d)),w=rep(1,length(d))) {
 
+if (any((d != 0) & (d != 1)))
+        stop("d must be 0(right-censored) or 1(uncensored)")
 temp <- Wdataclean3(x,d,zc,w)
 dd <- temp$dd
 ww <- temp$weight

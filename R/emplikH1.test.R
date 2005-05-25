@@ -11,6 +11,7 @@ if( length(d) != n ) stop("length of x and d must agree")
 if(any((d!=0)&(d!=1))) stop("d must be 0/1's for censor/not-censor")
 if(!is.numeric(x)) stop("x must be numeric values --- observed times")
 
+#
 #temp<-summary(survfit(Surv(x,d),se.fit=F,type="fleming",conf.type="none"))
 #
 newdata <- Wdataclean2(x,d)
@@ -32,7 +33,7 @@ diff <- inthaz(0, funtimeTjump, funh, theta)
 
 if( diff == 0 ) { lam <- 0 } else {
     step <- 0.2/sqrt(n) 
-    if(abs(diff) > 6*log(n)*step )
+    if(abs(diff) > 9*log(n)*step )
     stop("given theta value is too far away from theta0")
 
     mini<-0

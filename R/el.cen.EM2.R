@@ -5,7 +5,8 @@ el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...){
 ####     if xc[i] != xc[j] then they do not merge. 
 ####     For regression applications, you should not merge -- use
 ####     xc = 1:length(x) .
-####     The order of censoring is based on x, not fun(x).
+####     The order of censoring (re-distribute weights)
+####     is based on x, not fun(x).
 ####
    xvec <- as.vector(x) 
    d <- as.vector(d) 
@@ -15,7 +16,7 @@ el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...){
 
    if (length(xvec)!=n) stop ("length of d and x must agree")
    if (length(xc)!=n) stop ("length of xc and d must agree")
-   if(n <= 1) stop ("Need more observations")
+   if(n <= 2*length(mu)+1) stop ("Need more observations")
    if(any((d!=0)&(d!=1)&(d!=2)))
      stop("d must be 0(right-censored) or 1(uncensored) or 2(left-censored)")
    if(!is.numeric(xvec)) stop("x must be numeric")

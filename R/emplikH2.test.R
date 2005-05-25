@@ -34,7 +34,7 @@ diff <- inthaz(0, funtimeTjump, funh, K)
 if( diff == 0 ) { lam <- 0 } else {
     step <- 0.2/sqrt(n) 
     if(abs(diff) > 99*log(n)*step )        ##why 99*log(n)? no reason, you 
-    stop("given theta value is too far away from theta0") # need something. 
+    stop("given theta value is too far away from theta0") # need something.
 
     mini<-0
     maxi<-0 

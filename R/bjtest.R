@@ -13,7 +13,7 @@ xsort <- as.matrix(x[ordere,])
 dsort[length(dsort)] <- 1  #last one as uncensored always
 
 ## use KM as F (need to be an n vector prob)
-temp0 <- WKM(esort,dsort)
+temp0 <- WKM(esort,dsort, zc=1:n)
 pKM <- temp0$jump
 temp <- redistF( y=esort, d=dsort, Fdist=pKM ) 
 ### what to do if there is tied obs.???

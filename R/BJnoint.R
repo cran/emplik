@@ -26,12 +26,13 @@ BJnoint <- function(x, y, delta, beta0 = NA, maxiter = 30, error = 0.00001)
      x <- as.matrix(x)            # to insure x is a matrix, not a vector
      newtemp <- matrix(NA, ncol = ncol(x), nrow = 3)
      newtemp[1,] <- beta0
-     if(is.na(beta0)) newtemp[1, ] <- lm(y ~ 0 + x)$coef  # get initial est.
+     if(any(is.na(beta0))) 
+        newtemp[1, ] <- lm(y ~ 0 + x)$coef  # get initial est.
      for(i in 2:3) {
            newtemp[i, ] <- iter(x, y, delta, newtemp[i - 1, ])
      }
      num <- 2                        # do at least 2 iterations
-     while(num <= maxiter && error < sum(abs(newtemp[2, ] - newtemp[3, ])))
+     while(num <= maxiter && error <= sum(abs(newtemp[2, ] - newtemp[3, ])))
           {
           newtemp[2, ] <- newtemp[3, ] 
           newtemp[3, ] <- iter(x, y, delta, newtemp[2, ])

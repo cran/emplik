@@ -1,17 +1,19 @@
-\name{emplikdisc.test}
-\alias{emplikdisc.test}
+\name{emplikH.disc}
+\alias{emplikH.disc}
 \title{Empirical likelihood ratio for discrete hazard
 with right censored, left truncated data}
 \usage{
-emplikdisc.test(x, d, y= -Inf, K, fun, tola=.Machine$double.eps^.25, theta)
+emplikH.disc(x, d, y= -Inf, K, fun, tola=.Machine$double.eps^.25, theta)
 }
 \description{
 Use empirical likelihood ratio and Wilks theorem to test 
 the null hypothesis that
-\deqn{ \sum_i[f(x_i, \theta) \log(1- dH(x_i))] = K   }
+\deqn{ 
+\sum_i[f(x_i, \theta) \log(1- dH(x_i))] = K  
+}
 where \eqn{H(t)} is the (unknown) discrete cumulative
-hazard function; \eqn{f(t,\theta)} can be any given left 
-continuous function in \eqn{t}. 
+hazard function; \eqn{f(t,\theta)} can be any predictable
+function of \eqn{t}. 
 \eqn{\theta} is the parameter of the function 
 and \code{K} is a given constant. 
 The data can be right censored and left truncated.
@@ -22,10 +24,9 @@ constraint and the minus 2Log empirical likelihood ratio
 will be infinite. In this case the computation will stop.
 }
 \arguments{
-    \item{x}{a vector containing the observed survival times.}
-    \item{d}{a vector containing the censoring indicators, 
-           1-uncensor; 0-censor.}
-    \item{y}{optional vector containing the left truncation times.}
+    \item{x}{a vector, the observed survival times.}
+    \item{d}{a vector, the censoring indicators, 1-uncensor; 0-censor.}
+    \item{y}{optional vector, the left truncation times.}
     \item{K}{a real number used in the constraint, sum to this value.}
     \item{fun}{a left continuous (weight) function used to calculate
          the weighted discrete hazard in \eqn{H_0}. 
@@ -89,10 +90,10 @@ fun4 <- function(x, theta) { as.numeric(x <= theta) }
 x <- c(1, 2, 3, 4, 5, 6, 5, 4, 3, 4, 1, 2.4, 4.5)
 d <- c(1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1)
 # test if -H(4) = -0.7 
-emplikdisc.test(x=x,d=d,K=-0.7,fun=fun4,theta=4)
+emplikH.disc(x=x,d=d,K=-0.7,fun=fun4,theta=4)
 # we should get "discrete.-2logemlikRatio" 0.1446316  etc....
 y <- c(-2,-2, -2, 1.5, -1)
-emplikdisc.test(x=x,d=d,y=y,K=-0.7,fun=fun4,theta=4)
+emplikH.disc(x=x,d=d,y=y,K=-0.7,fun=fun4,theta=4)
 }
 \keyword{nonparametric}
 \keyword{survival}

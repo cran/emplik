@@ -15,6 +15,8 @@
 \alias{LTRC}
 \alias{iter}
 \alias{redistF}
+\alias{gradf2}
+\alias{gradf3}
 \title{Internal emplik functions}
 \usage{
 logelr(x,mu,lam)
@@ -33,6 +35,8 @@ LTRC(x,d,w=rep(1, length(d)),y=rep(-Inf, length(x)))
 el.test.wt3(x,wt,mu,maxit,gradtol,Hessian,svdtol,itertrace)
 iter(x, y, delta, beta)
 redistF(y, d, Fdist)
+gradf2(lam, funt1, evt1, rsk1, funt2, evt2, rsk2, K, n)
+gradf3(lam, funt1, evt1, rsk1, funt2, evt2, rsk2, K, n)
 }
 \description{ Internal emplik functions }
 \details{
@@ -52,6 +56,8 @@ used by function \code{el.cen.test}.
 \code{Wdataclean2} is used by \code{el.cen.EM}.
 
 \code{LTRC} is for Left Truncated and Right Censored data.
+
+\code{gradf3} is used by the function emplikHs.test2.
 
 \code{el.test.wt3} are similar to \code{el.test.wt} and \code{el.test.wt2}, 
 but can take vector mean as constraint. \code{llog}, \code{llogp} and

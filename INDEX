@@ -23,9 +23,18 @@ el.test.wt2             Weighted Empirical Likelihood ratio for
                         mean(s), uncensored data
 el.trun.test            Empirical likelihood ratio for mean with left
                         truncated data
+emplikH.disc            Empirical likelihood ratio for discrete hazard
+                        with right censored, left truncated data
+emplikH.disc2           Two sample empirical likelihood ratio for
+                        discrete hazards with right censored, left
+                        truncated data, one parameter.
 emplikH1.test           Empirical likelihood for hazard with right
                         censored, left truncated data
 emplikH2.test           Empirical likelihood for weighted hazard with
                         right censored, left truncated data
-emplikdisc.test         Empirical likelihood ratio for discrete hazard
-                        with right censored, left truncated data
+emplikHs.disc2          Two sample empirical likelihood ratio for
+                        discrete hazards with right censored, left
+                        truncated data. Many constraints.
+emplikHs.test2          Two sample empirical likelihood ratio for
+                        hazards with right censored, left truncated
+                        data

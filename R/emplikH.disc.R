@@ -1,8 +1,8 @@
 ########################################################
-############ emplikdisc.test() #########################
+############ emplikH.disc() #########################
 ########################################################
 
-emplikdisc.test <- function(x, d, y= -Inf, K, fun, 
+emplikH.disc <- function(x, d, y= -Inf, K, fun, 
 	                     tola=.Machine$double.eps^.25, theta)
 {
 n <- length(x) 
