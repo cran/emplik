@@ -1,5 +1,7 @@
 BJnoint                 The Buckley-James censored regression
                         estimator
+RankRegTest             Test the AFT model Rank Regression estimator
+                        by Empirical Likelihood
 bjtest                  Test the Buckley-James estimator by Empirical
                         Likelihood
 bjtest1d                Test the Buckley-James estimator by Empirical

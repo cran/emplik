@@ -1,4 +1,4 @@
-el.cen.EM <- function(x,d, fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
+el.cen.EM <- function(x,d,fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
    xvec <- as.vector(x)
    nn <- length(xvec)
    if(nn <= 1) stop ("Need more observations")
@@ -55,8 +55,9 @@ el.cen.EM <- function(x,d, fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
      num <- num +1
      }
    logel <- sum(wd1*log(pnew)) + sum(wd0*log(sur[k])) + sum(wd2*log(cdf[kk]))
-   logel00 <- NA
-   funNPMLE <- NA
+   tempDB <- WCY(x=x,d=d,wt=w)
+   logel00 <- tempDB$logEL
+   funNPMLE <- sum( fun(tempDB$time)* tempDB$jump )
   }
   if( (m>0) && (mleft==0) ) {
    temp3 <- WKM(x=x,d=d,w=w)
@@ -94,7 +95,10 @@ el.cen.EM <- function(x,d, fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
      num <- num +1
      }
    logel <- sum( wd1*log(pnew)) + sum( wd2*log( cdf[kk] ) )
-   logel00 <- NA   #### do I need a left WKM() ???
+   dleft <- d
+   dleft[dleft==2] <- 0 
+   templeft <- WKM(x=rev(x), d=rev(dleft) , w=rev(w))
+   logel00 <- templeft$logel    ### substitute a left WKM() ???
    funNPMLE <- NA 
   }
   if( (m==0) && (mleft==0) ) {

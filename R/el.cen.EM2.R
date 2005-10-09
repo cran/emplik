@@ -75,7 +75,7 @@ el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...){
      num <- num +1
      }
    logel <- sum(wd1*log(pnew)) + sum(wd0*log(sur[k])) + sum(wd2*log(cdf[kk]))
-   logel00 <- NA
+   logel00 <- WCY(x=x,d=d,wt=w)$logEL   ####  should I add zc?
    }
   if( (m>0) && (mleft==0) ) {
    pnew <- el.test.wt2(x=funxd1, wt=wd1, mu=mu)$prob
@@ -93,7 +93,7 @@ el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...){
      }
    sur <- rev(cumsum(rev(pnew)))
    logel <- sum( wd1*log(pnew)) + sum( wd0*log(sur[k]) )
-   logel00 <- WKM(x,d, zc=xc, w)$logel
+   logel00 <- WKM(x=x,d=d,zc=xc,w=w)$logel
    }
   if( (m==0) && (mleft>0) ) {
    kk <- rep(NA, mleft)
@@ -110,7 +110,10 @@ el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...){
      num <- num+1
      }
    logel <- sum( wd1*log(pnew)) + sum( wd2*log( cdf[kk] ) )
-   logel00 <- NA   ### ???  do I need a left WKM ??
+   dleft <- d 
+   dleft[dleft==2] <- 0
+   templeft <- WKM(x=rev(x),d=rev(dleft),zc=rev(xc),w=rev(w))
+   logel00 <- templeft$logel   ### ?? do I need a left WKM ??
    }
   if( (m==0) && (mleft==0) ) { 
     num <- 0

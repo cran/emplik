@@ -14,10 +14,12 @@ BJnoint <- function(x, y, delta, beta0 = NA, maxiter = 30, error = 0.00001)
 #           delta = 0 means y is right censored, i.e. the true
 #        response is larger than y.
 #
-# Optinal input: maxiter = number of maximum iteration, default is 20.
-#                          minimum iteration is internally set to 3.
+# Optinal input: maxiter = number of maximum iteration, 
+#                           default is 30.  minimum iteration 
+#                           is internally set to 3.
 #                error = when the consecutive iteration changes less then
 #                        error, the iteration will stop. default is .00001
+#                beta0 = initial estimator.
 # Output:
 # the estimate, beta, and an extra integer at the end: number of iterations.
 #

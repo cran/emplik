@@ -115,13 +115,19 @@ Or use a different \code{fun}.
 y <- c(3, 5.3, 6.4, 9.1, 14.1, 15.4, 18.1, 15.3, 14, 5.8, 7.3, 14.4)
 x <- c(1, 1.5, 2,   3,   4,    5,    6,    5,    4,  1,   2,   4.5)
 d <- c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+### first we estimate beta, the MLE
+lm.wfit(x=cbind(rep(1,12),x), y=y, w=WKM(x=y, d=d)$jump[rank(y)])$coef
+## you should get 1.392885 and 2.845658
+## then define myfun7 with the MLE value
 myfun7 <- function(y, xmat) {
 temp1 <- y - ( 1.392885 +  2.845658 * xmat)
 return( cbind( temp1, xmat*temp1) )
 }
-el.cen.EM2(y,d, xc=1:12, fun=myfun7, mu=c(0,0), xmat=x)
+## now test 
+el.cen.EM2(y,d, fun=myfun7, mu=c(0,0), xmat=x)
 ## we should get, Pval = 1 , as the MLE should.
-## for different values of (a, b) inside myfun7, you get other Pval
+## for other values of (a, b) inside myfun7, you get other Pval
+##
 rqfun1 <- function(y, xmat, beta, tau = 0.5) {
 temp1 <- tau - (1-myfun55(y-beta*xmat))
 return(xmat * temp1)
