@@ -83,7 +83,8 @@ with a \code{theta} input, just to match the arguments.
                        for censored data''. 
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
 
-    Zhou, M. (2002). 
+    Zhou, M. and Fang, H. (2006). 
+    A comparison of Poisson and binomial empirical likelihood.
 }
 \examples{
 fun4 <- function(x, theta) { as.numeric(x <= theta) }

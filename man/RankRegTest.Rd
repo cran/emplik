@@ -27,6 +27,10 @@ where \eqn{e_i} are the residuals.
 }
 \details{
 
+The estimator of beta can be obtained by function 
+\code{rankaft( )}
+in the package \code{rankreg}.
+
 The above likelihood should be understood as the likelihood of the 
 error term, so in the regression model the error epsilon should be iid.
 
@@ -34,7 +38,7 @@ error term, so in the regression model the error epsilon should be iid.
 The estimation equation used when maximize the 
 empirical likelihood is 
 \deqn{ 0 = \sum_i \phi (e_i)  d_i \Delta F(e_i) (x_i - \bar x_i  )/(n w_i) }
-which was descrided in detail in the reference below.
+which was described in detail in the reference below.
 }
 \value{
     A list with the following components:
@@ -56,7 +60,7 @@ Rank-based inference for the accelerated failure time model.
 
 Zhou, M. (2005). Empirical likelihood analysis of the rank
         estimator for the censored accelerated failure time model. 
-      Biometrika,  \bold{92}, 492-98.
+      {\em Biometrika},  \bold{92}, 492-98.
 }
 \author{ Mai Zhou. }
 \examples{

@@ -23,9 +23,9 @@ continuous function in \eqn{t}.
 The data must contain some right censored observations.
 If there is no censoring or the only censoring is the largest 
 observation, the code will stop and we should use 
-\code{el.test} that is for uncensored data.  
+\code{el.test( )} which is for uncensored data.  
 
-The log likelihood been maximized is
+The log empirical likelihood been maximized is
 \deqn{ \sum_{d_i=1} \log \Delta F(x_i) + \sum_{d_i=0} \log [ 1-F(x_i) ].}
 }
 \arguments{
@@ -46,8 +46,8 @@ The log likelihood been maximized is
 \value{
     A list with the following components:
     \item{"-2LLR"}{The -2Log Likelihood ratio.}
-    \item{xtimes}{the location of the hazard jumps.}
-    \item{weights}{the jump size of CDF function at those locations.}
+    \item{xtimes}{the location of the CDF jumps.}
+    \item{weights}{the jump size of CDF at those locations.}
     \item{Pval}{P-value}
     \item{error}{the \eqn{L_1} norm between the last two \code{wts}.}
     \item{iteration}{number of iterations carried out}

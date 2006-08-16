@@ -88,7 +88,7 @@ Or use a different \code{fun}.
     Zhou, M. (2002). 
         Computing censored empirical likelihood ratio 
         by EM algorithm. 
-    \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
+    \emph{JCGS}
 
     Murphy, S. and van der Varrt (1997)
          Semiparametric likelihood ratio inference.

@@ -22,8 +22,8 @@ The log empirical likelihood function been maximized is
     \sum_{d_i=0} \log \frac{1-F(x_i)}{1-F(y_i)}.}
 }
 \arguments{
-    \item{y}{an optional vector containing the observed truncation times.}
-    \item{x}{a vector containing the observed survival times.}
+    \item{y}{an optional vector containing the observed left truncation times.}
+    \item{x}{a vector containing the censored survival times.}
     \item{d}{a vector containing the censoring indicators, 
            1-uncensored; 0-right censored.}
     \item{fun}{a continuous (weight) function used to calculate
@@ -79,6 +79,10 @@ A faster version would use C to do the for-loop part.
         Computing censored and truncated empirical likelihood ratio 
         by EM algorithm. 
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
+
+    Tsai, W. Y., Jewell, N. P., and Wang, M. C. (1987). A note on
+  product-limit estimator under right censoring and left
+  truncation. \emph{Biometrika}, 74, 883-886.
 
     Turnbbull, B. (1976). The empirical distribution function with
    arbitrarily grouped, censored and truncated data. JRSS B 290-295.

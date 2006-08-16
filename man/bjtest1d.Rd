@@ -14,7 +14,7 @@ bjtest1d(y, d, x, beta)
 }
 \description{
     Use the empirical likelihood ratio and Wilks theorem to test if the
-    regression coefficient is equal to beta.
+    regression coefficient is equal to beta. For 1-dim beta only.
 
 The log empirical likelihood been maximized is
 \deqn{ \sum_{d=1} \log \Delta F(e_i) + \sum_{d=0} \log [1-F(e_i)] .}
@@ -23,6 +23,8 @@ The log empirical likelihood been maximized is
 
 In the above likelihood, \eqn{ e_i = y_i - x * beta } is the residuals.
  
+Similar to \code{bjtest( )}, but only for 1-dim beta.
+
 }
 \value{
     A list with the following components:
@@ -39,6 +41,9 @@ In the above likelihood, \eqn{ e_i = y_i - x * beta } is the residuals.
 
   Owen, A. (1990). Empirical likelihood ratio confidence regions. 
     Ann. Statist. \bold{18} 90-120.
+
+  Zhou, M. Li, G. (2004). Empirical likelihood analysis of the
+       Buckley-James estimator. Tech. Report.
 }
 \author{Mai Zhou.}
 \examples{

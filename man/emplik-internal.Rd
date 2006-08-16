@@ -55,7 +55,7 @@ are used by function \code{el.test}. They are from Owen.
 \code{Wdataclean2}, \code{WKM} and \code{solve3.QP} are
 used by function \code{el.cen.test}. WKM is the weighted Kaplan-Meier.
 
-\code{WCY} is the weighted Chang and Yang self-consistant estimator
+\code{WCY} is the weighted Chang and Yang self-consistent estimator
 for doubly censored data.
 
 \code{Wdataclean2} is used by \code{el.cen.EM}.

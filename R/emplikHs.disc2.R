@@ -99,8 +99,8 @@ while( nits < maxit && gsize > tola ){
  arg2 <- as.vector(rsk2 - funtime2 %*% lam)
  ww1 <- as.vector(-llogpp(arg1, 1/N))^.5
  ww2 <- as.vector(-llogpp(arg2, 1/N))^.5
- tt1 <- sqrt(eve1/(1-eve1/arg1))*ww1
- tt2 <- sqrt(eve2/(1-eve2/arg2))*ww2
+ tt1 <- sqrt(eve1/(1-eve1/arg1))*ww1  ##
+ tt2 <- sqrt(eve2/(1-eve2/arg2))*ww2  ## shall we change to max(TINY,tt2)?
 HESS <- t(funtime1 * tt1)%*%(funtime1 * tt1) + 
          t(funtime2 * tt2)%*%(funtime2 * tt2)  
 

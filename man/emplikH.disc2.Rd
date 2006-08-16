@@ -35,13 +35,13 @@ will be infinite. In this case the computation will stop.
     \item{fun1}{a predictable function used to calculate
          the weighted discrete hazard in \eqn{H_0}. 
          \code{fun1(x)} must be able to take a vector input \code{x}.}
-    \item{fun2}{ dido.}
+    \item{fun2}{ same as fun1.}
     \item{tola}{an optional positive real number, the tolerance of
        iteration error in solve the non-linear equation needed in constrained 
         maximization.}
     \item{theta}{a given real number. for Ho constraint. }
-    \item{maxi}{ upper bound for lambda }
-    \item{mini}{ lower bound for lambda }
+    \item{maxi}{ upper bound for lambda, usually positive. }
+    \item{mini}{ lower bound for lambda, usually negative. }
 }
 \value{
     A list with the following components:

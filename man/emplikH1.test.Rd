@@ -17,7 +17,7 @@ function and
 dependent, just have to be `predictable'.
 }
 \arguments{
-   \item{x}{a vector of the observed survival times.}
+   \item{x}{a vector of the censored survival times.}
    \item{d}{a vector of the censoring indicators, 1-uncensor; 0-censor.}
    \item{y}{a vector of the observed left truncation times.}
    \item{theta}{a real number used in the \eqn{H_0} to set the hazard 

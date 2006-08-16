@@ -119,7 +119,7 @@ nstep <- as.vector( nstep %*% grad )
   nits <- nits+1
   if( ninner==0 )nits <- maxit
   if( itertrace )
-    print( c(lam, nlogelr, gsize, ninner) )
+    print( c(lam, ngrad, gsize, ninner) ) # change nlogelr to ngrad 10/9/2005
 }
 
 Hess <- NA 

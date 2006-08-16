@@ -37,7 +37,7 @@ will be infinite. In this case the computation will stop.
          the weighted discrete hazard in \eqn{H_0}. 
          \code{fun1(x)} must be able to take a vector input (length n)
          \code{x}, and output a matrix of n x q.}
-    \item{fun2}{ dido.}
+    \item{fun2}{ Ditto.}
     \item{tola}{an optional positive real number, the tolerance of
        iteration error in solve the non-linear equation needed in constrained 
         maximization.}
@@ -47,9 +47,11 @@ will be infinite. In this case the computation will stop.
 }
 \value{
     A list with the following components:
-    \item{times}{the location of the hazard jumps.}
+    \item{times1}{the location of the hazard jumps in sample 1.}
+    \item{times2}{the location of the hazard jumps in sample 2.}
     \item{lambda}{the final value of the Lagrange multiplier.}
     \item{"-2LLR"}{The -2Log Likelihood ratio.}
+    \item{"-2LLR(sample1)"}{The -2Log Likelihood ratio for sample 1 only.}
     \item{niters}{number of iterations used}
 }
 \details{

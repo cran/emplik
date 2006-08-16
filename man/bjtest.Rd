@@ -12,7 +12,7 @@ bjtest(y, d, x, beta)
     \item{x}{a matrix of size N by q. }
     \item{beta}{a vector of length q. The value of the regression 
            coefficient to be tested in the model 
-            \eqn{y_i = \beta x_i  + \epsilon_i} }.
+            \eqn{y_i = \beta x_i  + \epsilon_i} }
 }
 \description{
     Use the empirical likelihood ratio and Wilks theorem to test if the
@@ -32,7 +32,7 @@ This version can handle the model where beta is a vector (of length q).
 The estimation equations used when maximize the 
 empirical likelihood is 
 \deqn{ 0 = \sum d_i \Delta F(e_i) (x \cdot m[,i])/(n w_i) }
-which was descrided in detail in the reference below.
+which was described in detail in the reference below.
 }
 \value{
     A list with the following components:

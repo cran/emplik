@@ -11,7 +11,7 @@ BJnoint(x, y, delta, beta0 = NA, maxiter=30, error = 0.00001)
     \item{delta}{a vector of length N, delta=0/1 for censored/uncensored.}
     \item{beta0}{an optional vector for starting value of iteration.}
     \item{maxiter}{an optional integer to control iterations.}
-    \item{error}{an optional positive value to control interations.}
+    \item{error}{an optional positive value to control iterations.}
 }
 \description{
     Compute the Buckley-James estimator in the regression model 
@@ -25,7 +25,8 @@ when your model do not have an intercept term.
 Of course, if you include a column of 1's in the x matrix, it is also OK
 with this function and it
 is equivalent to having an intercept term.
-If your model do have an intercept term, then you should use the function
+If your model do have an intercept term, then you probably
+should use the function
 \code{bj( )} in the \code{Design} library. It should be more refined 
 than \code{BJnoint}. 
 

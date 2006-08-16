@@ -5,10 +5,10 @@
 el.test.wt(x, wt, mu)
 }
 \description{
-This program is similar to el.test except
+This program is similar to \code{el.test( )} except
 it takes weights, and is for one dimensional mu.
 
-The mean constraint:
+The mean constraint considered is:
 \deqn{ \sum_{i=1}^n  p_i x_i  = \mu . }
 where \eqn{p_i = \Delta F(x_i)} is a probability.
 Plus the probability constraint: \eqn{ \sum p_i =1}.
@@ -31,7 +31,8 @@ The weighted log empirical likelihood been maximized is
 }
 \details{
 This function used to be an internal function. 
-It becomes external because others may find it useful.
+It becomes external because others may find it useful
+elsewhere.
 
 The constant \code{mu} must be inside 
 \eqn{( \min x_i , \max x_i ) }

@@ -6,10 +6,9 @@ el.test.wt2(x, wt, mu, maxit = 25, gradtol = 1e-07, Hessian = FALSE,
     svdtol = 1e-09, itertrace = FALSE)
 }
 \description{
-This program is similar to el.test except
-it takes weights.
+This program is similar to \code{el.test( )} except it takes weights.
 
-The mean constraint are:
+The mean constraints are:
 \deqn{ \sum_{i=1}^n  p_i x_i  = \mu . }
 Where \eqn{p_i = \Delta F(x_i)} is a probability.
 Plus the probability constraint: \eqn{ \sum p_i =1}.

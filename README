@@ -39,3 +39,12 @@ Version 0.8-3   March 24, 2005
 Version 0.8-4   March 25, 2005
 Version 0.9     April 15, 2005
 Version 0.9-1   April 24, 2005
+Version 0.9-2   Oct. 9,  2005
+
+
+To do list: 10/9/2005  
+The iteration in the el.cen.EM2(), el.test(),
+el.test.wt2() etc.
+could speed up with solve(A,b) instead of finding the
+full inverse matrix by svd and compute A{-1}*b . 
+See emplikH2.test2() for an example.

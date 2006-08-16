@@ -14,7 +14,7 @@ cumulative hazard function;
 (of course the integral must be finite). 
 }
 \arguments{
-    \item{x}{a vector containing the observed survival times.}
+    \item{x}{a vector containing the censored survival times.}
     \item{d}{a vector of the censoring indicators, 1-uncensor; 0-censor.}
     \item{y}{a vector containing the left truncation times.}
     \item{K}{a real number used in the constraint, i.e. to set the
@@ -49,7 +49,7 @@ cumulative hazard function;
 This version works for implicit function \code{ f(t, ...)}.
 
 This function is designed for continuous distributions.
-Thus we do not expect tie in the observations. If you believe
+Thus we do not expect tie in the observation \code{x}. If you believe
 the true underlying distribution is continuous but the
 sample observations have tie due to rounding, then you might want
 to add a small number to the observations to break tie.
@@ -62,7 +62,7 @@ The likelihood used here is the `Poisson' version of the likelihood
 For discrete distributions we recommend
 use \code{emplikdisc.test()}.
 
-Please note here the largest observed time is NOT autometically defined to be
+Please note here the largest observed time is NOT automatically defined to be
 uncensored. In the el.cen.EM(), it is (to make F a proper distribution always).
 
 The constant \code{K} must be inside the so called
