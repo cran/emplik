@@ -87,7 +87,8 @@ infinite.
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
 }
 \examples{
-library(boot)
+if(require("boot", quietly = TRUE)) {
+####library(boot)
 data(channing)
 ymale <- channing[1:97,2]
 dmale <- channing[1:97,5]
@@ -104,6 +105,7 @@ emplikH.disc2(x1=xfemale, d1=dfemale, y1=yfemale, x2=xmale,d2=dmale, y2=ymale, t
 ########################################################
 ### This time you get "-2LLR" = 1.150098 etc. etc.
 ##############################################################
+}
 }
 \keyword{nonparametric}
 \keyword{survival}

@@ -28,11 +28,11 @@ is equivalent to having an intercept term.
 If your model do have an intercept term, then you probably
 should use the function
 \code{bj( )} in the \code{Design} library. It should be more refined 
-than \code{BJnoint}. 
+than \code{BJnoint}. (in the stopping rule for the iterations)
 
 This function is included here mainly to produce the estimator value
 that may provide some useful information with the function \code{bjtest( )}.
-For example you may want to test the beta value close to the
+For example you may want to test the beta value near the
 Buckley-James estimator. 
 
 }

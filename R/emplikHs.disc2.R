@@ -1,5 +1,5 @@
 ####################################################
-#### 2 sample, discrete hazard, q constraints. #####
+#### 2 sample, discrete hazards, q constraints. #####
 #### right censored, left truncated data.      #####
 ####################################################
 emplikHs.disc2 <- function(x1, d1, y1 = -Inf, x2, d2, y2 = -Inf,
@@ -61,7 +61,7 @@ emplikHs.disc2 <- function(x1, d1, y1 = -Inf, x2, d2, y2 = -Inf,
 # funtime12 are matrix of n12 x q. rsk12, eve12 are vectors of length n1/n2.
 ############################################################################
 Kcent <- log(1-(eve1/rsk1))%*%funtime1 - log(1-(eve2/rsk2))%*%funtime2 
-print(Kcent)
+if( itertrace ) print(c("Kcenter=", Kcent))
 ##################################################################
   TINY <- sqrt( .Machine$double.xmin )
   if(tola < TINY) tola <- TINY

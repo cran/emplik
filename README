@@ -1,7 +1,7 @@
 This package is based on R codes el.cen.EM, el.cen.EM2,
 el.trun.test emplikH1, emplikH2, emplikdisc.test and 
 el.cen.test, etc. written by Mai Zhou. 
-The code el.test is based on S code ELM() by Art Owen. 
+The code el.test is ported from S code ELM() by Art Owen. 
 
 el.test() can handle vector means as Ho (several
 mean parameters), but data must be uncensored. 
@@ -9,11 +9,11 @@ When dealing with censored data use el.cen.EM2() to handle
 vector means.
 
 Many other codes in this package can only handle one parameter in Ho.
-But that parameter can be mean/hazard/quantile, and can also take 
-censored/truncated data.
+But that parameter can be mean/hazard/quantile, and the
+function can also take censored/truncated data as inputs.
  
-The name convention: el.xxx    is for the parameter of mean.
-                     emplikxxx is for the parameter of hazard.
+The name convention: el.xxx    is for the parameter of mean(s).
+                     emplikxxx is for the parameter of hazard(s).
 
 Everything is written in R, so porting to Splus should be
 easy. I may put out another version that move some of the
@@ -40,6 +40,7 @@ Version 0.8-4   March 25, 2005
 Version 0.9     April 15, 2005
 Version 0.9-1   April 24, 2005
 Version 0.9-2   Oct. 9,  2005
+Version 0.9-3   Aug.     2006
 
 
 To do list: 10/9/2005  

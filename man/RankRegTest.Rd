@@ -29,16 +29,17 @@ where \eqn{e_i} are the residuals.
 
 The estimator of beta can be obtained by function 
 \code{rankaft( )}
-in the package \code{rankreg}.
+in the package \code{rankreg}. But here you may test other values of 
+beta. If you test the beta value that is obtained from the \code{rankaft( )},
+then the -2LLR should be 0 and the p-value should be 1.
 
 The above likelihood should be understood as the likelihood of the 
-error term, so in the regression model the error epsilon should be iid.
-
+error term, so in the regression model the error \eqn{e_i} should be iid.
 
 The estimation equation used when maximize the 
 empirical likelihood is 
 \deqn{ 0 = \sum_i \phi (e_i)  d_i \Delta F(e_i) (x_i - \bar x_i  )/(n w_i) }
-which was described in detail in the reference below.
+which was described in detail in the references below.
 }
 \value{
     A list with the following components:
@@ -64,7 +65,13 @@ Zhou, M. (2005). Empirical likelihood analysis of the rank
 }
 \author{ Mai Zhou. }
 \examples{
-xx <- c(28,-44,29,30,26,27,22,23,33,16,24,29,24,40,21,31,34,-2,25,19)
+if(require("rankreg", quietly = TRUE)) {
+####library(rankreg)
+data(myeloma)
+RankRegTest(y=myeloma[,1], d=myeloma[,2], x=myeloma[,3], beta= -15.50147)
+# you should get "-2LLR" = 9.050426e-05 (practically zero)
+# The beta value, -15.50147, was obtained by rankaft() from the rankreg package.
+}
 }
 \keyword{nonparametric}
 \keyword{htest}

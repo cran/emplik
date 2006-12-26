@@ -96,11 +96,11 @@ list( "-2LLR"=loglik,  ### drop this output "-2logemLRv2"=loglik2,
 #   fun3 <- function(t1,z){psum(t(outer(z,t1,FUN=">=") ) ) }, z=z1)
 #
 # Now use z1<-c(1,2,3,4,5) and d1<-c(1,1,0,1,1) we get
-# emlik2(z1, d1, sum(0.25* z1),
+# emplik2(z1, d1, sum(0.25* z1),
 #   fun3 <- function(t1,z){psum(t(outer(z,t1,FUN=">=") ) ) }, z=z1)
 #
 # with outputs that include this (and more)
 # $ "-2logemLR":
 # [1] 0.02204689
-#This tests if the (censored) obs. z1 is from exp(0.25)
+# This tests if the (censored) obs. z1 is from exp(0.25)
 

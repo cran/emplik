@@ -1,7 +1,6 @@
-BJnoint                 The Buckley-James censored regression
-                        estimator
-RankRegTest             Test the AFT model Rank Regression estimator
-                        by Empirical Likelihood
+BJnoint                 The Buckley-James censored regression estimator
+RankRegTest             Test the AFT model Rank Regression estimator by
+                        Empirical Likelihood
 WRegEst                 Compute the case weighted regression estimator
                         for AFT model
 WRegTest                Test the case weighted regression estimator by
@@ -10,12 +9,11 @@ bjtest                  Test the Buckley-James estimator by Empirical
                         Likelihood
 bjtest1d                Test the Buckley-James estimator by Empirical
                         Likelihood, 1-dim only
-el.cen.EM               Empirical likelihood ratio for mean with
-                        right, left or doubly censored data, by EM
-                        algorithm
-el.cen.EM2              Empirical likelihood ratio test for a vector
-                        of means with right, left or doubly censored
-                        data, by EM algorithm
+el.cen.EM               Empirical likelihood ratio for mean with right,
+                        left or doubly censored data, by EM algorithm
+el.cen.EM2              Empirical likelihood ratio test for a vector of
+                        means with right, left or doubly censored data,
+                        by EM algorithm
 el.cen.test             Empirical likelihood ratio for mean with right
                         censored data, by QP.
 el.ltrc.EM              Empirical likelihood ratio for mean with left
@@ -41,6 +39,6 @@ emplikH2.test           Empirical likelihood for weighted hazard with
 emplikHs.disc2          Two sample empirical likelihood ratio for
                         discrete hazards with right censored, left
                         truncated data. Many constraints.
-emplikHs.test2          Two sample empirical likelihood ratio for
+emplikHs.test2          Two sample empirical likelihood ratio test for
                         hazards with right censored, left truncated
-                        data
+                        data. Many constraints.

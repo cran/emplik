@@ -46,7 +46,7 @@ funtime21 <- as.matrix( fun2(temp2$times) )
      stop("check the output dim of fun2, and theta")
 
 Kcent <- jump1%*%funtime11 - jump2%*%funtime21
-print(Kcent)
+  if( itertrace ) print(c("Kcenter=", Kcent)) 
 
     index1 <- (jump1 < 1)
     index2 <- (jump2 < 1)

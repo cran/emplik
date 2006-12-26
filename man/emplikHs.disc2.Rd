@@ -96,7 +96,8 @@ In the output, read the -2LLR(sample1).
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
 }
 \examples{
-library(boot)
+if(require("boot", quietly = TRUE)) {
+####library(boot)
 data(channing)
 ymale <- channing[1:97,2]
 dmale <- channing[1:97,5]
@@ -114,6 +115,7 @@ fun2 <- function(x){ cbind(as.numeric(x <= 960), as.numeric(x <= 860))}
 ############ fun2 has matrix output ###############
 emplikHs.disc2(x1=xfemale, d1=dfemale, y1=yfemale, x2=xmale,d2=dmale, y2=ymale, theta=c(0.25,0), fun1=fun2, fun2=fun2)
 ################# you get "-2LLR" = 1.554386, etc ###########
+}
 }
 \keyword{nonparametric}
 \keyword{survival}

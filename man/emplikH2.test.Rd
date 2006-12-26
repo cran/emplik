@@ -67,10 +67,11 @@ uncensored. In the el.cen.EM(), it is (to make F a proper distribution always).
 
 The constant \code{K} must be inside the so called
 feasible region for the computation to continue. This is similar to the
-requirement that in testing the value of the mean, the value must be
-inside the convex hull of the observations.
-It is always true that the NPMLE values are feasible. So when the
-computation stops, that means there is no hazard function satisfy 
+requirement that when testing the value of the mean, the value must be
+inside the convex hull of the observations for the computation to continue.
+It is always true that the NPMLE value is feasible. So when the
+computation cannot continue, that means there is no hazard function 
+dominated by the Nelson-Aalen estimator satisfy 
 the constraint. You may try to move the \code{theta} and \code{K} closer
 to the NPMLE.  When the computation stops, the -2LLR should have value
 infinite.
@@ -85,7 +86,8 @@ emplikH2.test(x=z1,d=d1, K=log(2), fun=fun4, theta=3.5)
 #Next, try one sample log rank test
 indi <- function(x,y){ as.numeric(x >= y) }
 fun3 <- function(t,z){rowsum(outer(z,t,FUN="indi"),group=rep(1,length(z)))} 
-emplikH2.test(x=z1, d=d1, K=sum(0.25* z1), fun=fun3, z=z1) 
+emplikH2.test(x=z1, d=d1, K=sum(0.25*z1), fun=fun3, z=z1) 
+##this is testing if the data is from an exp(0.25) population.
 }
 \keyword{nonparametric}
 \keyword{survival}

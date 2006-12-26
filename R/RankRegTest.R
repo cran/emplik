@@ -1,6 +1,6 @@
 RankRegTest <- function(y, d, x, beta, type="Gehan") {  ## depends on WKM( )
-n <- length(y)                            ## dimension of x must be n x q.
-x <- as.matrix(x)                         ## x must NOT including intercept.
+n <- length(y)                          ## dimension of x must be n x q.
+x <- as.matrix(x)                       ## x must NOT including an intercept.
 xdim <- dim(x)
 if ( xdim[1] != n ) stop("check dim of x")
 if ( length(beta) != xdim[2] ) stop("check dim of beta and x")
@@ -16,7 +16,7 @@ xsort <- as.matrix(x[ordere,])
 dsort[length(dsort)] <- 1       #last one as uncensored always
 
 ## compute KM  (need to be an n vector prob)
-temp0 <- WKM(esort,dsort)
+temp0 <- WKM(esort,dsort, zc=1:n)
 pKM <- temp0$jump
 
 ##xbar <- rev(cumsum(rev(xsort)))/(n:1)
