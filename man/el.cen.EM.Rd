@@ -45,6 +45,7 @@ The empirical log likelihood been maximized is
                    Empirical Log Likelihood Ratio.
                    Should be approx. chi-square distributed under Ho.}
     \item{Pval}{The P-value of the test, using chi-square approximation.}
+    \item{lam}{The Lagrange multiplier. Added 5/2007.}
 }
 \details{
 

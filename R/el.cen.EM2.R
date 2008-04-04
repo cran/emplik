@@ -71,7 +71,9 @@ el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...){
         {wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i]*pnew[k[i]:n]/sur[k[i]]}
      for(j in 1:mleft) {
      wd1new[1:kk[j]] <- wd1new[1:kk[j]] + wd2[j]*pnew[1:kk[j]]/cdf[kk[j]]}
-     pnew <- el.test.wt2(x=funxd1, wt=wd1new, mu=mu)$prob
+     temp8 <- el.test.wt2(x=funxd1, wt=wd1new, mu=mu)
+     pnew <- temp8$prob
+     lam <- temp8$lambda
      num <- num +1
      }
    logel <- sum(wd1*log(pnew)) + sum(wd0*log(sur[k])) + sum(wd2*log(cdf[kk]))
@@ -88,7 +90,9 @@ el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...){
      sur <- rev(cumsum(rev(pnew)))
      for(i in 1:m)
         {wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i]*pnew[k[i]:n]/sur[k[i]]}
-     pnew <- el.test.wt2(x=funxd1, wt=wd1new, mu=mu)$prob
+     temp9 <- el.test.wt2(x=funxd1, wt=wd1new, mu=mu)
+     pnew <- temp9$prob
+     lam <- temp9$lambda
      num <- num+1
      }
    sur <- rev(cumsum(rev(pnew)))
@@ -106,22 +110,26 @@ el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...){
      cdf <- cumsum(pnew) 
      for(j in 1:mleft)
        {wd1new[1:kk[j]] <- wd1new[1:kk[j]] + wd2[j]*pnew[1:kk[j]]/cdf[kk[j]]}
-     pnew <- el.test.wt2(x=funxd1, wt=wd1new, mu=mu)$prob
+     temp7 <- el.test.wt2(x=funxd1, wt=wd1new, mu=mu)
+     pnew <- temp7$prob
+     lam <- temp7$lambda
      num <- num+1
      }
    logel <- sum( wd1*log(pnew)) + sum( wd2*log( cdf[kk] ) )
    dleft <- d 
    dleft[dleft==2] <- 0
-   templeft <- WKM(x=rev(x),d=rev(dleft),zc=rev(xc),w=rev(w))
+   templeft <- WKM(x= -x, d=dleft, zc=xc, w=w)  ### bug fix 3/2008
    logel00 <- templeft$logel   ### ?? do I need a left WKM ??
    }
   if( (m==0) && (mleft==0) ) { 
     num <- 0
-    pnew <- el.test.wt2(x=funxd1, wt=wd1, mu)$prob
+    temp6 <- el.test.wt2(x=funxd1, wt=wd1, mu)
+    pnew <- temp6$prob
+    lam <- temp6$lambda
     logel <- sum( wd1*log(pnew) ) 
     logel00 <- sum( wd1*log( wd1/sum(wd1) ) )
   }
   tval <- 2*(logel00 - logel)
-  list(loglik=logel, times=xd1, prob=pnew, iters=num, 
+  list(loglik=logel, times=xd1, prob=pnew, lam = lam, iters=num, 
              "-2LLR"=tval, Pval= 1-pchisq(tval, df=length(mu)) )
 }

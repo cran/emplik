@@ -24,5 +24,7 @@ else {
  lam0 <- uniroot(lamfun,lower=lo,upper=up,tol=1e-9,xmu=xmu,wt=wt,allw=allw)$root
 }
 pi <- wt/(allw + lam0*xmu)
-list(x=x, wt=wt, prob=pi)
+list(x=x, wt=wt, prob=pi, lam=lam0)
 }
+
+### add output of lam0, 5/2007 

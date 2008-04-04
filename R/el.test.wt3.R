@@ -91,6 +91,8 @@ while(  nits<maxit && gsize > gradtol  ){
 ##  nstep <- as.vector( nstep %*% matrix(wts1/wts2,n,1) )
 
 svdh <- La.svd( hess )
+if( min(svdh$d) < max(svdh$d)*svdtol )
+    svdh$d <- svdh$d + max(svdh$d)*svdtol
 nstep <- t(svdh$vt) %*% (svdh$vt/(svdh$d)^2)
 nstep <- as.vector( nstep %*% grad )
 

@@ -1,4 +1,5 @@
 BJnoint                 The Buckley-James censored regression estimator
+ROCnp                   Test the ROC curve by Empirical Likelihood
 RankRegTest             Test the AFT model Rank Regression estimator by
                         Empirical Likelihood
 WRegEst                 Compute the case weighted regression estimator

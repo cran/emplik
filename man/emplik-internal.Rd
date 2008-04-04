@@ -15,6 +15,7 @@
 \alias{el.test.wt3}
 \alias{LTRC}
 \alias{iter}
+\alias{MMRtime}
 \alias{redistF}
 \alias{gradf2}
 \alias{gradf3}
@@ -36,6 +37,7 @@ WCY(x,d,zc=rep(1,length(d)),wt=rep(1,length(d)),maxit=25,error=1e-09)
 LTRC(x,d,w=rep(1, length(d)),y=rep(-Inf, length(x)))
 el.test.wt3(x,wt,mu,maxit,gradtol,Hessian,svdtol,itertrace)
 iter(x, y, delta, beta)
+MMRtime(x, d, age)
 redistF(y, d, Fdist)
 gradf2(lam, funt1, evt1, rsk1, funt2, evt2, rsk2, K, n)
 gradf3(lam, funt1, evt1, rsk1, funt2, evt2, rsk2, K, n)
@@ -47,13 +49,19 @@ These are not intended to be called by the user.
 \code{Wdataclean2} and
 \code{DnR} are used by the functions \code{emplikH1.test}, 
 \code{emplikH2.test} and \code{emplikdisc.test}.  It is also used by 
-\code{LTRC}.  They basically cleans the data, sort etc.
+\code{LTRC}.  
+
+\code{DnR} too the survival data as input, compute the number at risk 
+and number of observed events, and output only those time points where
+there is some events.
+\code{Wdataclean2} will sort the data and collaps those with a true tie.
 
 \code{logelr}, \code{llog}, \code{llogp} and \code{llogpp} 
 are used by function \code{el.test}. They are from Owen.
 
 \code{Wdataclean2}, \code{WKM} and \code{solve3.QP} are
-used by function \code{el.cen.test}. WKM is the weighted Kaplan-Meier.
+used by function \code{el.cen.test}. 
+WKM() is the weighted Kaplan-Meier.
 
 \code{WCY} is the weighted Chang and Yang self-consistent estimator
 for doubly censored data.

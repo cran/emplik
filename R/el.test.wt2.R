@@ -94,6 +94,8 @@ while(  nits<maxit && gsize > gradtol  ){
 ##  nstep <- as.vector( nstep %*% matrix(wts1/wts2,n,1) )
 
 svdh <- La.svd( hess )
+if( min(svdh$d) < max(svdh$d)*svdtol )
+    svdh$d <- svdh$d + max(svdh$d)*svdtol
 nstep <- t(svdh$vt) %*% (svdh$vt/(svdh$d)^2)
 nstep <- as.vector( nstep %*% grad )
 
@@ -154,7 +156,8 @@ n <- length(wt)
 wts1 <- as.vector( llogp(arg, 1/n) )
 wtwts1<- wt*wts1
 grad <- as.matrix(z*wtwts1)
-as.vector( rowsum( grad, rep(1, nrow(grad)) ) ) 
+##as.vector( rowsum( grad, rep(1, nrow(grad)) ) ) #changed 12/2007
+colSums(grad) 
 }
 
 ##########################################################

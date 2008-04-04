@@ -37,12 +37,13 @@ The log likelihood function is defined as
     \item{d}{a vector containing the censoring indicators, 
            1-uncensored; 0-right censored; 2-left censored.}
     \item{xc}{an optional vector of collapsing control values. 
-              If xc[i] xc[j] has different values then two 
-              (x,d) will not merge into one observation even 
-              if they are identical. Default is to merge.}
-    \item{fun}{a continuous (weight) function that returns a matrix. 
+              If xc[i] xc[j] have different values then 
+              (x[i],d[i]), (x[j], d[j]) will not merge into one 
+              observation with weight two even 
+              if they are identical. Default is not to merge.}
+    \item{fun}{a left continuous (weight) function that returns a matrix. 
          The columns (=k) of the matrix is used to calculate
-         the means as in \eqn{H_0}.
+         the means and will be tested in \eqn{H_0}.
          \code{fun(t)} must be able to take a vector input \code{t}.} 
     \item{mu}{a vector of length k. Used in the constraint, 
                     as the mean of \eqn{f(X)}.}
@@ -63,6 +64,7 @@ The log likelihood function is defined as
                    Should be approx. chi-square distributed under Ho.}
     \item{Pval}{If available, the P-value of the test, 
                using chi-square approximation.}
+    \item{lam}{the Lagrange multiplier in the final EM step. (the M-step)}
 }
 \details{
 
@@ -144,6 +146,23 @@ return(u)
 el.cen.EM2(x=y,d=d,xc=1:12,fun=rqfun1,mu=0,xmat=x,beta=3.08,tau=0.44769875)
 ## default tau=0.5 
 el.cen.EM2(x=y,d=d,xc=1:12,fun=rqfun1,mu=0,xmat=x,beta=3.0799107404)
+###################################################
+### next 2 examples are testing the mean/median residual time
+###################################################
+mygfun <- function(s, age, muage) {as.numeric(s >= age)*(s-(age+muage))}
+mygfun2 <- function(s, age, Mdage) 
+          {as.numeric(s <= (age+Mdage)) - 0.5*as.numeric(s <= age)}
+\dontrun{
+library(survival) 
+time <- cancer$time
+status <- cancer$status-1
+###for mean residual time 
+el.cen.EM2(x=time, d=status, fun=mygfun, mu=0, age=365.25, muage=234)$Pval
+el.cen.EM2(x=time, d=status, fun=mygfun, mu=0, age=365.25, muage=323)$Pval
+### for median resudual time
+el.cen.EM2(x=time, d=status, fun=mygfun2, mu=0.5, age=365.25, Mdage=184)$Pval
+el.cen.EM2(x=time, d=status, fun=mygfun2, mu=0.5, age=365.25, Mdage=321)$Pval
+}
 }
 }
 \keyword{nonparametric}

@@ -33,7 +33,7 @@ diff <- inthaz(0, funtimeTjump, funh, theta)
 
 if( diff == 0 ) { lam <- 0 } else {
     step <- 0.2/sqrt(n) 
-    if(abs(diff) > 9*log(n)*step )
+    if(abs(diff) > 50*log(n)*step )
     stop("given theta value is too far away from theta0")
 
     mini<-0
@@ -62,8 +62,8 @@ onepluslamh<- 1 + lam * funh   ### this is 1 + lam Zi in Ref.
 weights <- jump/onepluslamh  #need to change last jump to 1? NO. see above
 
 loglik <- 2*(sum(log(onepluslamh)) - sum((onepluslamh-1)/onepluslamh) ) 
-#?is that right? YES  see (3.2) in Ref. above. This ALR, or Poisson LR.
-
+#?is that right? YES  see (3.2) in Ref. above. This is ALR, or Poisson LR.
+# log() function may generate NaN.
 #last <- length(jump)    ## to compute loglik2, we need to drop last jump
 #if (jump[last] == 1) {
 #                     risk1 <- risk[-last]

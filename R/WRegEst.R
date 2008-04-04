@@ -18,6 +18,8 @@ x <- as.matrix(x)
 xdim <- dim(x)
 if ( xdim[1] != n ) stop("check dim of x")
 if ( length(delta) != n ) stop("check length of delta")
+if(any((delta!=0)&(delta!=1)))
+   stop("delta must be 0(right-censored) or 1(uncensored)")
 
 
 temp <- WKM(x=y, d=delta, zc=1:n)

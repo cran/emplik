@@ -43,7 +43,7 @@ will be infinite. In this case the computation will stop.
     \item{times}{the location of the hazard jumps.}
     \item{wts}{the jump size of hazard function at those locations.}
     \item{lambda}{the final value of the Lagrange multiplier.}
-    \item{"-2LLR"}{The -2Log Likelihood ratio.}
+    \item{"discrete.-2LLR"}{The -2Log Likelihood ratio.}
     \item{Pval}{P-value}
     \item{niters}{number of iterations used}
 }

@@ -7,7 +7,7 @@ WRegTest <- function(x, y, delta, beta0, psifun=function(t){t}) {
 # This coresponds to the bootstrapping the cases in the linear model.
 
 # This estimator in the AFT model is studied by 
-# Koul Susarla Van Ryzin (1982), Zhou (1992) and Stute (1993) etc.
+# Koul-Susarla-Van Ryzin (1982), Zhou (1992) and Stute (1993) etc.
 # For empirical likelihood analysis, please see Zhou, Bathke, Kim (2006).
 # The EL is defined as
 # The constraint equation is
