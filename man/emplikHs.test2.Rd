@@ -27,23 +27,25 @@ constraint and the -2 Log empirical likelihood ratio
 will be infinite. In this case the computation will stop.
 }
 \arguments{
-    \item{x1}{a vector, the observed survival times, sample 1.}
+    \item{x1}{a vector of length n1, the observed survival times, sample 1.}
     \item{d1}{a vector, the censoring indicators, 1-uncensor; 0-censor.}
     \item{y1}{optional vector, the left truncation times.}
-    \item{x2}{a vector, the observed survival times, sample 2.}
+    \item{x2}{a vector of length n2, the observed survival times, sample 2.}
     \item{d2}{a vector, the censoring indicators, 1-uncensor; 0-censor.}
     \item{y2}{optional vector, the left truncation times.}
     \item{fun1}{a predictable function used to calculate
-         the weighted discrete hazard in \eqn{H_0}. 
-         \code{fun1(x)} must be able to take a vector input (length n)
-         \code{x}, and output a matrix of n x q.}
-    \item{fun2}{ Ditto.}
+         the weighted discrete hazard to form the null hypothesis \eqn{H_0}. 
+         \code{fun1(x)} must be able to take a vector input (length n1)
+         \code{x}, and output a matrix of n1 x q. 
+           When q=1, the output can also be a vector.}
+    \item{fun2}{ Ditto. but for length n2}
     \item{tola}{an optional positive real number, the tolerance of
        iteration error in solve the non-linear equation needed in constrained 
         maximization.}
     \item{theta}{a given vector of length q. for Ho constraint. }
-    \item{maxit}{integer, maximum number of iteration. }
-    \item{itertrace}{ Logocal, lower bound for lambda }
+    \item{maxit}{integer, maximum number of Newton-Raphson type iterations. }
+    \item{itertrace}{ Logocal, 
+            if the results of each iteration needs to be printed. }
 }
 \value{
     A list with the following components:
@@ -51,7 +53,6 @@ will be infinite. In this case the computation will stop.
     \item{lambda}{the final value of the Lagrange multiplier.}
     \item{"-2LLR(sample1)"}{The -2Log empirical likelihood ratio for sample 
                             one only. Useful in one sample problems.}
-    \item{niters}{number of iterations used}
 }
 \details{
 The log likelihood been maximized is the Poisson likelihood:
@@ -85,8 +86,9 @@ infinite.
 
 You can also use this function for one sample problems. 
 You need to artificially supply data for sample two of minimal size
-(like size 2q+2), and specify a fun2() that ALWAYS return 0
-(zero vector, or zero matrix).
+(like size 2q+2), and specify a fun2() that ALWAYS return 0's
+(zero vector, with length=n2 vector length, 
+or zero matrix,  with dim n2 x q as the input).
 Then, look for -2LLR(sample1) in the output.
 
 }
@@ -96,6 +98,7 @@ Then, look for -2LLR(sample1) in the output.
     ``Empirical likelihood ratio for 2 sample problems for censored data''. 
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
 }
+\seealso{ emplikH2.test }
 \examples{
 if(require("boot", quietly = TRUE)) {
 ####library(boot)

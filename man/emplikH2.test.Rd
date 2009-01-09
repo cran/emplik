@@ -3,11 +3,11 @@
 \title{Empirical likelihood for weighted hazard with 
         right censored, left truncated data}
 \usage{
-emplikH2.test(x, d, y= -Inf, K, fun, tola=.Machine$double.eps^.25,...)
+emplikH2.test(x, d, y= -Inf, K, fun, tola=.Machine$double.eps^.5,...)
 }
 \description{Use empirical likelihood ratio and Wilks theorem to test 
 the null hypothesis that 
-\deqn{\int f(t, ... ) dH(t) = K }
+\deqn{ \int f(t, ... ) dH(t) = K }
 with right censored, left truncated data, where \eqn{ H(t) } is the (unknown)
 cumulative hazard function;
 \eqn{ f(t, ... )} can be any given left continuous function in \eqn{t};
@@ -16,7 +16,8 @@ cumulative hazard function;
 \arguments{
     \item{x}{a vector containing the censored survival times.}
     \item{d}{a vector of the censoring indicators, 1-uncensor; 0-censor.}
-    \item{y}{a vector containing the left truncation times.}
+    \item{y}{a vector containing the left truncation times. If left as default
+             value, -Inf, it means no truncation. }
     \item{K}{a real number used in the constraint, i.e. to set the
                weighted integral of hazard to this value.}
     \item{fun}{a left continuous (in \code{t}) weight function
@@ -63,7 +64,7 @@ For discrete distributions we recommend
 use \code{emplikdisc.test()}.
 
 Please note here the largest observed time is NOT automatically defined to be
-uncensored. In the el.cen.EM(), it is (to make F a proper distribution always).
+uncensored. In the el.cen.EM( ), it is (to make F a proper distribution always).
 
 The constant \code{K} must be inside the so called
 feasible region for the computation to continue. This is similar to the
@@ -73,9 +74,11 @@ It is always true that the NPMLE value is feasible. So when the
 computation cannot continue, that means there is no hazard function 
 dominated by the Nelson-Aalen estimator satisfy 
 the constraint. You may try to move the \code{theta} and \code{K} closer
-to the NPMLE.  When the computation stops, the -2LLR should have value
+to the NPMLE.  When the computation cannot continue, 
+the -2LLR should have value
 infinite.
 }
+\seealso{ emplikHs.test2 }
 \examples{
 z1<-c(1,2,3,4,5)
 d1<-c(1,1,0,1,1)

@@ -3,7 +3,7 @@
 \title{Empirical likelihood for hazard with right censored, 
                  left truncated data}
 \usage{
-emplikH1.test(x, d, y= -Inf, theta, fun, tola=.Machine$double.eps^.25)
+emplikH1.test(x, d, y= -Inf, theta, fun, tola=.Machine$double.eps^.5)
 }
 \description{Use empirical likelihood ratio and Wilks theorem to test 
 the null hypothesis that 

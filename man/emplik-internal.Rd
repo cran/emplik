@@ -51,10 +51,13 @@ These are not intended to be called by the user.
 \code{emplikH2.test} and \code{emplikdisc.test}.  It is also used by 
 \code{LTRC}.  
 
-\code{DnR} too the survival data as input, compute the number at risk 
+\code{DnR} take the survival data as input, compute the number at risk 
 and number of observed events, and output only those time points where
-there is some events.
-\code{Wdataclean2} will sort the data and collaps those with a true tie.
+there is some events. Notice the input must be ordered! We should use
+Wdataclean2/3/5( ) first and then use the outpt there as the input of DnR.
+
+\code{Wdataclean2} will sort the data and collaps those that are true ties,
+and the number of tied value is in the weights.
 
 \code{logelr}, \code{llog}, \code{llogp} and \code{llogpp} 
 are used by function \code{el.test}. They are from Owen.
@@ -70,13 +73,16 @@ for doubly censored data.
 
 \code{LTRC} is for Left Truncated and Right Censored data.
 
-\code{gradf3} is used by the function emplikHs.test2.
+\code{gradf3} is used by the function emplikHs.test2. (and stored there)
 
 \code{el.test.wt3} are similar to \code{el.test.wt} and \code{el.test.wt2}, 
 but can take vector mean as constraint. \code{llog}, \code{llogp} and
 \code{llogpp} are used by both \code{el.test.wt3} and
 \code{el.test.wt2}. In addition \code{logwelr}
 is used by \code{el.test.wt3}.
+
+\code{MMRtime} estimate the Mean and Median residual life time at age
+               with right censored data.
 
 \code{iter} is for perform one iteration of EM in the Buckley-James
             censored regression estimation.

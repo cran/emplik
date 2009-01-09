@@ -27,7 +27,7 @@ Wdataclean5 <- function(z,d,zc=rep(1,length(z)),wt=rep(1,length(z)),xmat)
 ##############################################################
 # this function sorts the data, and collaps them
 # if there are true tie. and number of tie counted in weight.
-# zc acts as a control of coolaps: even if (z[i],d[i]) = (z[j],d[j])
+# zc acts as a control of collaps: even if (z[i],d[i]) = (z[j],d[j])
 # but zc[i] != zc[j], obs. i and j will not collaps into one.
 # the matrix is also sorted according to (z -d).
 ##############################################################

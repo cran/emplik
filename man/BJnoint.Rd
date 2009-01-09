@@ -20,15 +20,15 @@ with right censored \eqn{y_i}.
 
 }
 \details{
-This function can be used to compute the Buckley-James estimator 
+This function compute the Buckley-James estimator 
 when your model do not have an intercept term.
-Of course, if you include a column of 1's in the x matrix, it is also OK
-with this function and it
+Of course, if you include a column of 1's in the x matrix, 
+it is also OK with this function and it
 is equivalent to having an intercept term.
 If your model do have an intercept term, then you probably
 should use the function
 \code{bj( )} in the \code{Design} library. It should be more refined 
-than \code{BJnoint}. (in the stopping rule for the iterations)
+than \code{BJnoint} in the stopping rule for the iterations.
 
 This function is included here mainly to produce the estimator value
 that may provide some useful information with the function \code{bjtest( )}.

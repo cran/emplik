@@ -52,16 +52,16 @@ which was described in detail in the references below.
 }
 \references{
 Kalbfleisch, J. and Prentice, R. (2002)
-{\em The Statistical Analysis of Failure Time Data}. 2nd Ed.
+The Statistical Analysis of Failure Time Data. 2nd Ed.
 Wiley, New York.  (Chapter 7)
 
 Jin, Z., Lin, D.Y., Wei, L. J. and Ying, Z. (2003).
 Rank-based inference for the accelerated failure time model.
-{\em Biometrika}, {\bf 90}, 341-353.
+Biometrika, 90, 341-53.
 
 Zhou, M. (2005). Empirical likelihood analysis of the rank
         estimator for the censored accelerated failure time model. 
-      {\em Biometrika},  \bold{92}, 492-98.
+      Biometrika, 92, 492-98.
 }
 \author{ Mai Zhou. }
 \examples{

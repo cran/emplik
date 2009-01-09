@@ -9,6 +9,8 @@ WRegEst <- function(x, y, delta, LS=TRUE, tau=0.5) {
 # delta is a vector of length N. delta =1 means (y) is not censored.
 #           delta = 0 means y is right censored, i.e. the true
 #        response is larger than y.
+# LS  indicates if this is a least square regression or quantile regression
+# tau if LS=TRUE then this is ignored, otherwise tau used in rqfit
 #
 # Output:
 # the estimate, \hat beta. 

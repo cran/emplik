@@ -164,7 +164,6 @@ el.cen.EM2(x=time, d=status, fun=mygfun2, mu=0.5, age=365.25, Mdage=184)$Pval
 el.cen.EM2(x=time, d=status, fun=mygfun2, mu=0.5, age=365.25, Mdage=321)$Pval
 }
 }
-}
 \keyword{nonparametric}
 \keyword{survival}
 \keyword{htest}

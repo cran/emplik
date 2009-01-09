@@ -10,7 +10,7 @@ This program uses EM algorithm to compute the maximized
 (wrt \eqn{p_i}) empirical
 log likelihood function for right, left or doubly censored data with 
 the MEAN constraint:
-\deqn{ \sum_{d_i=1}  p_i f(x_i)  = \int f(t) dF(t) = \mu ~. }
+\deqn{ \sum_{d_i=1}  p_i f(x_i)  = \int f(t) dF(t) = \mu . }
 Where \eqn{p_i = \Delta F(x_i)} is a probability,
 \eqn{d_i} is the censoring indicator, 1(uncensored), 0(right censored),
 2(left censored). 

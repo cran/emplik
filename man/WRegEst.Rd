@@ -1,6 +1,6 @@
 \name{WRegEst}
 \alias{WRegEst}
-\title{Compute the case weighted regression estimator for AFT model}
+\title{Compute the casewise weighted regression estimator for AFT model}
 \usage{
 WRegEst(x, y, delta, LS=TRUE, tau=0.5)
 }
@@ -22,6 +22,11 @@ For the AFT model, this function computes the case weighted estimator of
 beta. Either the least squares estimator or the regression quantile estimator.
 }
 \details{
+Due to the readily available minimizer, we only provide least squares
+and quantile regression here. However, in the companion testing function
+\code{WRegTest } the user can supply a self defined psi function,
+corresponding to the general M-estimation in the regression modeling.
+(since there is no minimization needed)
 
 The estimator is the minimizer of
 \deqn{ \sum_{i=1}^n w_i \rho (Y_i - X_i b) }
@@ -31,12 +36,13 @@ Assuming a correlation model
 
 }
 \value{
-the estimator \eqn{ \hat \beta}.
+The estimator \eqn{ \hat \beta}.
 }
 \references{
     Zhou, M.; Bathke, A. and Kim, M. (2006). 
        Empirical likelihood analysis of the
-       Heteroscastic AFT model. Tech. Report. 
+       Heteroscastic AFT model. Dept. of Statistics, Univ. of Kentucky
+       Tech. Report. 
 }
 \author{ Mai Zhou. }
 \examples{
@@ -49,6 +55,12 @@ WRegEst(x=cbind(1,smallcell[,1],smallcell[,2]),
 #### you should get         x1         x2         x3
 ####                 -59.22126 -488.41306   16.03259
 ####################################################
+WRegEst(x=cbind(1,smallcell[,1],smallcell[,2]), 
+        y=log10(smallcell[,3]), delta=smallcell[,4], LS=FALSE) 
+########################################################
+#### you should get      
+####     [1]     2.603342985  -0.263000044  0.003836832
+########################################################
 xx <- c(28,-44,29,30,26,27,22,23,33,16,24,29,24,40,21,31,34,-2,25,19)
 }
 }

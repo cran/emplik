@@ -1,0 +1,54 @@
+
+We first provide an overview of the package emplik.
+Then we gave some longer examples.
+
+###  Here is an example of finding the confidence interval for R(t0), with t0=0.5.
+###  Note: We are finding the confidence interval of R(0.5). So we are testing  R(0.5)= 0.35, 0.36, 0.37, 0.38, etc
+###  try to find values L and U that testing R(0.5) = L, or U has p-value of 0.10,  
+###  then [L,  U] is the 90% confidence interval for R(0.5)
+
+
+> set.seed(123)
+> t1 <- rexp(200)
+> t2 <- rexp(200)
+> ROCnp( t1=t1, d1=rep(1, 200), t2=t2, d2=rep(1, 200), b0=0.5, t0=0.5)$"-2LLR"
+
+###  since the -2LLR value is less than  2.705543 = qchisq(0.9, df=1),  so the confidence interval
+###  contains b0=0.5.
+
+ 
+> gridpoints <- 350:650/1000
+> ELvalues <- gridpoints
+> for( i in 1:301 ) ELvalues[i] <- ROCnp( t1=t1, d1=rep(1, 200), t2=t2, d2=rep(1, 200), b0=gridpoints[i], t0=0.5)$"-2LLR"
+> myfun1 <- approxfun(x=gridpoints, y=ELvalues)
+> qchisq(0.9, df=1)
+[1] 2.705543
+> 
+> uniroot( f= function(x){myfun1(x)-2.705543}, interval= c(0.35, 0.5) )
+$root
+[1] 0.4478605
+
+$f.root
+[1] -6.778798e-05
+
+$iter
+[1] 5
+
+$estim.prec
+[1] 9.502673e-05
+
+> uniroot( f= function(x){myfun1(x)-2.705543}, interval= c(0.5, 0.65) )
+$root
+[1] 0.5883669
+
+$f.root
+[1] 0.007179575
+
+$iter
+[1] 7
+
+$estim.prec
+[1] 6.103516e-05
+
+#### So, the 90% confidence interval in this case is [0.4478605,   0.5883669]
+

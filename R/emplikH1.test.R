@@ -3,7 +3,7 @@
 ###################################
 
 emplikH1.test <- function(x, d, y= -Inf, theta, fun, 
-	              tola = .Machine$double.eps^.25)
+	              tola = .Machine$double.eps^.5)
 {
 n <- length(x)
 if( n <= 2 ) stop("Need more observations")
@@ -22,7 +22,7 @@ risk <- temp$n.risk
 jump <- (temp$n.event)/risk
 
 funtime <- fun(time)
-funh <- (n/risk) * funtime    # that is Zi 
+funh <- sqrt(n) * funtime/risk    # that is Zi/sqrt(n) 
 funtimeTjump <- funtime * jump 
 
 if(jump[length(jump)] >= 1) funh[length(jump)] <- 0  #for inthaz and weights
@@ -33,8 +33,8 @@ diff <- inthaz(0, funtimeTjump, funh, theta)
 
 if( diff == 0 ) { lam <- 0 } else {
     step <- 0.2/sqrt(n) 
-    if(abs(diff) > 50*log(n)*step )
-    stop("given theta value is too far away from theta0")
+    ####  if(abs(diff) > 50*log(n)*step )
+    ####  stop("given theta value is too far away from theta0")
 
     mini<-0
     maxi<-0
@@ -79,7 +79,7 @@ loglik <- 2*(sum(log(onepluslamh)) - sum((onepluslamh-1)/onepluslamh) )
 ##? this likelihood seems have negative values sometimes???
 
 list( "-2LLR"=loglik,  ### logemlikv2=loglik2, 
-      lambda=lam, times=time, wts=weights, 
+      lambda=lam/sqrt(n), times=time, wts=weights, 
       nits=temp2$nf, message=temp2$message )
 }
 

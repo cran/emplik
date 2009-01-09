@@ -3,7 +3,7 @@
 ###############################################
 
 emplikH2.test <- function(x, d, y= -Inf, K, fun, 
-	                tola = .Machine$double.eps^.25,...)
+	                tola = .Machine$double.eps^.5,...)
 {
 if(!is.numeric(x)) stop("x must be numeric values -- observed times")
 n <- length(x) 
@@ -22,7 +22,7 @@ risk <- temp$n.risk
 jump <- (temp$n.event)/risk
 
 funtime <- fun(Dtime,...)
-funh <- (n/risk) * funtime                      # that is Zi  
+funh <- sqrt(n) * funtime/risk                      # that is Zi/sqrt(n)  
 funtimeTjump <- funtime * jump 
 
 if(jump[length(jump)] >= 1) funh[length(jump)] <- 0  #for inthaz and weights
@@ -33,19 +33,19 @@ diff <- inthaz(0, funtimeTjump, funh, K)
 
 if( diff == 0 ) { lam <- 0 } else {
     step <- 0.2/sqrt(n) 
-    if(abs(diff) > 99*log(n)*step )        ##why 99*log(n)? no reason, you 
-    stop("given theta value is too far away from theta0") # need something.
+    ### if(abs(diff) > 99*log(n)*step )        ##why 99*log(n)? no reason, you 
+    ### stop("given theta value is too far away from theta0") # need something.
 
     mini<-0
     maxi<-0 
     if(diff > 0) { 
     maxi <- step 
-    while(inthaz(maxi, funtimeTjump, funh, K) > 0  && maxi < 50*log(n)*step) 
+    while(inthaz(maxi, funtimeTjump, funh, K) > 0  && maxi < 99*log(n)*step) 
     maxi <- maxi+step 
     } 
     else { 
     mini <- -step 
-    while(inthaz(mini, funtimeTjump, funh, K) < 0 && mini > - 50*log(n)*step) 
+    while(inthaz(mini, funtimeTjump, funh, K) < 0 && mini > - 99*log(n)*step) 
     mini <- mini - step 
     } 
 
@@ -80,7 +80,7 @@ loglik <- 2*(sum(log(onepluslamh)) - sum((onepluslamh-1)/onepluslamh) )
 # this version of LR seems to give negative value sometime???
 
 list( "-2LLR"=loglik,  ### drop this output "-2logemLRv2"=loglik2, 
-      lambda=lam, times=Dtime, wts=weights, 
+      lambda=lam/sqrt(n), times=Dtime, wts=weights, 
       nits=temp2$nf, message=temp2$message )
 }
 # what should be the fun() and K if I want to perform a (1-sample) 
