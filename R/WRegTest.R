@@ -14,7 +14,8 @@ WRegTest <- function(x, y, delta, beta0, psifun=function(t){t}) {
 
 # Input:
 # x is a matrix of N rows (covariates).
-# y is the observed (censored) responses --- a vector of length N.
+# y is usually the LOG of observed (censored) responses, 
+#                     --- a vector of length N.
 # delta is a vector of length N. delta =1 means (y) is not censored.
 #           delta = 0 means y is right censored, i.e. the true
 #        response is larger than y.
@@ -29,6 +30,8 @@ xdim <- dim(xx)
 if ( xdim[1] != n ) stop("check dim of x")
 if ( m != xdim[2] ) stop("check dim of x and beta0")
 if ( length(delta) != n ) stop("check length of delta")
+if (any((delta!=0)&(delta!=1)))
+    stop("delta must be 0(right-censored) or 1(uncensored)")
 
 ###### define the estimating/constraint function ####
 

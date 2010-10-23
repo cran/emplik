@@ -32,7 +32,7 @@ This version can handle the model where beta is a vector (of length q).
 
 The estimation equations used when maximize the 
 empirical likelihood is 
-\deqn{ 0 = \sum delta_i \Delta F(Y_i) X_i ( Y_i - X_i beta0 ) }
+\deqn{ 0 = \sum \delta_i \Delta F(Y_i) X_i ( Y_i - X_i \beta0 ) }
 which was described in detail in the reference below.
 
 For median regression (Least Absolute Deviation) estimator, you should

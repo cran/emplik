@@ -10,8 +10,8 @@ emplikHs.test2(x1, d1, y1= -Inf, x2, d2, y2 = -Inf,
 Use empirical likelihood ratio and Wilks theorem to test 
 the null hypothesis that
 \deqn{ 
-\int{f_1(t) dH_1(t))} -
-\int{f_2(t) dH_2(t))} = \theta 
+\int{f_1(t) dH_1(t)} -
+\int{f_2(t) dH_2(t)} = \theta 
 }
 where \eqn{H_*(t)} is the (unknown) cumulative
 hazard functions; \eqn{f_*(t)} can be any predictable  
@@ -49,10 +49,11 @@ will be infinite. In this case the computation will stop.
 }
 \value{
     A list with the following components:
-    \item{"-2LLR"}{The -2Log Likelihood ratio.}
+    \item{"-2LLR"}{The -2Log empirical Likelihood ratio.}
     \item{lambda}{the final value of the Lagrange multiplier.}
     \item{"-2LLR(sample1)"}{The -2Log empirical likelihood ratio for sample 
                             one only. Useful in one sample problems.}
+    \item{"Llog(sample1)"}{The numerator only of the above "-2LLR(sample1)", without -2.}
 }
 \details{
 The log likelihood been maximized is the Poisson likelihood:
@@ -113,7 +114,8 @@ fun1 <- function(x) { as.numeric(x <= 960) }
 ########################################################
 fun2 <- function(x){ cbind(as.numeric(x <= 960), as.numeric(x <= 860))}
 ############ fun2 has matrix output ###############
-emplikHs.test2(x1=xfemale, d1=dfemale, y1=yfemale, x2=xmale,d2=dmale, y2=ymale, theta=c(0,0), fun1=fun2, fun2=fun2)
+emplikHs.test2(x1=xfemale, d1=dfemale, y1=yfemale, 
+ x2=xmale, d2=dmale, y2=ymale, theta=c(0,0), fun1=fun2, fun2=fun2)
 }
 #############################################
 ###################### Second example:

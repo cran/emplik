@@ -43,3 +43,5 @@ emplikHs.disc2          Two sample empirical likelihood ratio for
 emplikHs.test2          Two sample empirical likelihood ratio test for
                         hazards with right censored, left truncated
                         data. Many constraints.
+myeloma                 Multiple Myeloma Data
+smallcell               Smallcell Lung Cancer Data

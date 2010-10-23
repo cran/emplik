@@ -2,7 +2,7 @@ WRegEst <- function(x, y, delta, LS=TRUE, tau=0.5) {
 # This R function computes the case weighted regression 
 # estimator for randomly right censored data. It can compute the
 # least squares estimator or quantile regression estimator. In the
-# later case you need to load the quantreg() package.
+# later case, it calls a function in the quantreg() package.
 # Input:
 # x is a matrix of N rows (covariates).
 # y is the observed (censored) responses --- a vector of length N.
@@ -10,7 +10,7 @@ WRegEst <- function(x, y, delta, LS=TRUE, tau=0.5) {
 #           delta = 0 means y is right censored, i.e. the true
 #        response is larger than y.
 # LS  indicates if this is a least square regression or quantile regression
-# tau if LS=TRUE then this is ignored, otherwise tau used in rqfit
+# tau if LS=TRUE then this is ignored, otherwise tau is used in rqfit
 #
 # Output:
 # the estimate, \hat beta. 

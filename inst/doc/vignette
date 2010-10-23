@@ -2,10 +2,14 @@
 We first provide an overview of the package emplik.
 Then we gave some longer examples.
 
-###  Here is an example of finding the confidence interval for R(t0), with t0=0.5.
-###  Note: We are finding the confidence interval of R(0.5). So we are testing  R(0.5)= 0.35, 0.36, 0.37, 0.38, etc
-###  try to find values L and U that testing R(0.5) = L, or U has p-value of 0.10,  
-###  then [L,  U] is the 90% confidence interval for R(0.5)
+The example below is to find the confidence interval for ROC curve.
+
+## Here is an example of finding the confidence interval for R(t0), with t0=0.5.
+## Note: We are finding the confidence interval of R(0.5). So we are testing 
+## R(0.5)= 0.35, 0.36, 0.37, 0.38, etc
+## try to find values L and U that testing R(0.5) = L, or U has 
+## p-values of 0.10,  
+## then [L,  U] is the 90% confidence interval for R(0.5)
 
 
 > set.seed(123)
@@ -50,5 +54,5 @@ $iter
 $estim.prec
 [1] 6.103516e-05
 
-#### So, the 90% confidence interval in this case is [0.4478605,   0.5883669]
+### So, the 90% confidence interval in this case is [0.4478605,   0.5883669]
 

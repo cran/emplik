@@ -153,19 +153,21 @@ HESS <- - ( t(funtime1 * tt1)%*%(funtime1 * tt1) +
 lamfun1 <- as.vector(funtime1 %*% lam )
 lamfun2 <- as.vector(funtime2 %*% lam )
 onePlamh1 <- (rsk1 + lamfun1)/rsk1   ### this is 1 + lam Zi in Ref.
-oneMlamh2 <- (rsk2 - lamfun2)/rsk2   ### this is 1 + lam Zi in Ref.
+oneMlamh2 <- (rsk2 - lamfun2)/rsk2   ### this is 1 - lam Zi in Ref.
 
 ###weights <- jump/onepluslamh  
 ###need to change last jump to 1? NO. see above
 
 loglik1 <- (sum( eve1*llog(onePlamh1, 1/N)) - 
                  sum(eve1*(lamfun1)/(rsk1 + lamfun1)) )
+loglik1fenzi <- - sum( eve1*llog((rsk1+lamfun1), 1/N)) - sum( eve1/onePlamh1 )
 loglik2 <- (sum( eve2*llog(oneMlamh2, 1/N)) - 
                  sum(eve2*(-lamfun2)/(rsk2 - lamfun2)) )
 loglik <- 2*(loglik1 + loglik2)
 #?is that right? YES  see (3.2) in Ref. above. This ALR, or Poisson LR.
 
-list( "-2LLR"=loglik, lambda=lam, "-2LLR(sample1)"=2*loglik1 )
+list( "-2LLR"=loglik, lambda=lam, "-2LLR(sample1)"=2*loglik1, 
+                                  "Llik(sample1)"=loglik1fenzi )
 }
 
 gradf3 <- function(lam, funt1, evt1, rsk1, funt2, evt2, rsk2, K, n) {

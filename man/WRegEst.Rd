@@ -6,7 +6,8 @@ WRegEst(x, y, delta, LS=TRUE, tau=0.5)
 }
 \arguments{
     \item{x}{a matrix of size N by q. }
-    \item{y}{a vector of length N, containing the censored responses.}
+    \item{y}{a vector of length N, containing the censored responses. Usually 
+             the log of the original observed failure times. }
     \item{delta}{a vector (length N) of either 1's or 0's. 
               d=1 means y is uncensored;
 	      d=0 means y is right censored. }
@@ -26,14 +27,13 @@ Due to the readily available minimizer, we only provide least squares
 and quantile regression here. However, in the companion testing function
 \code{WRegTest } the user can supply a self defined psi function,
 corresponding to the general M-estimation in the regression modeling.
-(since there is no minimization needed)
+(since there is no minimization needed).
 
 The estimator is the minimizer of
 \deqn{ \sum_{i=1}^n w_i \rho (Y_i - X_i b) }
-
 Assuming a correlation model
-\eqn{ Y_i = X_i \beta + \sigma(X_i) \epsilon_i }.
-
+\deqn{ Y_i = X_i \beta + \sigma(X_i) \epsilon_i },
+where \eqn{\rho( )} is either the square or the absolute value function.
 }
 \value{
 The estimator \eqn{ \hat \beta}.

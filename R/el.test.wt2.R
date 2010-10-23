@@ -81,7 +81,6 @@ while(  nits<maxit && gsize > gradtol  ){
 #  Use svd on hess to get a stable solution.
 #
 
-## may try La.svd() in R (v. > 1.0) for better LAPACK
 ## or better, use QR decomposition on hess to solve it.
 ## QR is faster than svd! 
 
@@ -93,11 +92,12 @@ while(  nits<maxit && gsize > gradtol  ){
 #### nstep <- t(svdh$vt) %*% (t(svdh$u)/svdh$d)
 ##  nstep <- as.vector( nstep %*% matrix(wts1/wts2,n,1) )
 
-svdh <- La.svd( hess )
+# svdh <- La.svd( hess )
+svdh <- svd( hess, nu=0 )  ## changed 9/9/2009. should be faster
 if( min(svdh$d) < max(svdh$d)*svdtol )
     svdh$d <- svdh$d + max(svdh$d)*svdtol
-nstep <- t(svdh$vt) %*% (svdh$vt/(svdh$d)^2)
-nstep <- as.vector( nstep %*% grad )
+nstep <- as.vector( svdh$v %*% (t(svdh$v)/(svdh$d)^2) %*% grad )
+##  nstep <- as.vector( nstep )  ## changed 9/9/2009
 
   gstep <- grad
   if( sum(nstep^2) < sum(gstep^2) )

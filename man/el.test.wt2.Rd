@@ -18,25 +18,38 @@ The weighted log empirical likelihood been maximized is
 }
 \arguments{
     \item{x}{a matrix (of size nxp) or vector containing the observations.}
-    \item{wt}{a vector of length n, containing the weights.}
+    \item{wt}{a vector of length n, containing the weights. If weights are 
+              all 1, this is very simila to el.test. }
     \item{mu}{a vector of length p, used in the constraint. weighted
                 mean value of \eqn{f(X)}.}
     \item{maxit}{the maximum number of iteration.}
-    \item{gradtol}{the tol for a solution}
+    \item{gradtol}{the tolerance for a solution}
     \item{Hessian}{if the Hessian needs to be computed?}
-    \item{svdtol}{ tol in perform SVD of the matrix. }
+    \item{svdtol}{ tolerance in perform SVD of the Hessian matrix. }
     \item{itertrace}{TRUE/FALSE, if the intermediate steps needs to be printed.}
 }
 \value{
     A list with the following components:
-    \item{lambda}{the Lagrange multiplier.}
+    \item{lambda}{the Lagrange multiplier. Solution.}
     \item{wt}{the vector of weights.}
+    \item{grad}{The gradian at the final solution.}
+    \item{nits}{number of iterations performed. }
     \item{prob}{The probabilities that maximized the weighted 
                   empirical likelihood under mean constraint.}
 }
 \details{
 This function used to be an internal function. 
 It becomes external because others may find it useful.
+
+It is similar to the function el.test( ) with the following
+differences: 
+
+(1) The output lambda in el.test.wts, when divided by n
+(the sample size or sum of all the weights) should be equal to the
+output lambda in el.test.
+
+(2) The Newton step of iteration in el.test.wts is different from
+those in el.test. (even when all the weights are one).
 
 }
 \author{ Mai Zhou }
