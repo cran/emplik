@@ -65,13 +65,10 @@ Zhou, M. (2005). Empirical likelihood analysis of the rank
 }
 \author{ Mai Zhou. }
 \examples{
-if(require("rankreg", quietly = TRUE)) {
-####library(rankreg)
 data(myeloma)
 RankRegTest(y=myeloma[,1], d=myeloma[,2], x=myeloma[,3], beta= -15.50147)
 # you should get "-2LLR" = 9.050426e-05 (practically zero)
 # The beta value, -15.50147, was obtained by rankaft() from the rankreg package.
-}
 }
 \keyword{nonparametric}
 \keyword{htest}

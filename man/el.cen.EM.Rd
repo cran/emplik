@@ -43,7 +43,7 @@ The empirical log likelihood been maximized is
     \item{prob}{the jump size of CDF at those locations.}
     \item{"-2LLR"}{If available, it is Minus two times the 
                    Empirical Log Likelihood Ratio.
-                   Should be approx. chi-square distributed under Ho.}
+                   Should be approximately chi-square distributed under Ho.}
     \item{Pval}{The P-value of the test, using chi-square approximation.}
     \item{lam}{The Lagrange multiplier. Added 5/2007.}
 }
@@ -82,6 +82,12 @@ to the NPMLE ---
 \deqn{ \sum_{d_i=1} p_i^0 f(x_i) } 
 \eqn{p_i^0} taken to be the jumps of the NPMLE of CDF. 
 Or use a different \code{fun}. 
+
+Difference to the function \code{el.cen.EM2}: here duplicate (input) observations 
+are collapsed (with weight 2, 3, ... etc.) but those
+will stay separate by default in the \code{el.cen.EM2}. This will lead to
+a different \code{loglik} value. But the \code{-2LLR} value should be same
+in either version. 
 
 }
 \author{ Mai Zhou }

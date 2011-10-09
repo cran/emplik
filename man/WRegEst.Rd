@@ -46,8 +46,6 @@ The estimator \eqn{ \hat \beta}.
 }
 \author{ Mai Zhou. }
 \examples{
-if(require("rankreg", quietly = TRUE)) {
-####library(rankreg)
 data(smallcell)
 WRegEst(x=cbind(1,smallcell[,1],smallcell[,2]), 
         y=smallcell[,3], delta=smallcell[,4]) 
@@ -62,6 +60,5 @@ WRegEst(x=cbind(1,smallcell[,1],smallcell[,2]),
 ####     [1]     2.603342985  -0.263000044  0.003836832
 ########################################################
 xx <- c(28,-44,29,30,26,27,22,23,33,16,24,29,24,40,21,31,34,-2,25,19)
-}
 }
 \keyword{nonparametric}

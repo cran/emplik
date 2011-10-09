@@ -1,11 +1,4 @@
 BJnoint                 The Buckley-James censored regression estimator
-ROCnp                   Test the ROC curve by Empirical Likelihood
-RankRegTest             Test the AFT model Rank Regression estimator by
-                        Empirical Likelihood
-WRegEst                 Compute the casewise weighted regression
-                        estimator for AFT model
-WRegTest                Test the case weighted regression estimator by
-                        Empirical Likelihood
 bjtest                  Test the Buckley-James estimator by Empirical
                         Likelihood
 bjtest1d                Test the Buckley-James estimator by Empirical
@@ -44,4 +37,12 @@ emplikHs.test2          Two sample empirical likelihood ratio test for
                         hazards with right censored, left truncated
                         data. Many constraints.
 myeloma                 Multiple Myeloma Data
+RankRegTest             Test the AFT model Rank Regression estimator by
+                        Empirical Likelihood
+ROCnp                   Test the ROC curve by Empirical Likelihood
+ROCnp2                  Test the ROC curve by Empirical Likelihood
 smallcell               Smallcell Lung Cancer Data
+WRegEst                 Compute the casewise weighted regression
+                        estimator for AFT model
+WRegTest                Test the case weighted regression estimator by
+                        Empirical Likelihood

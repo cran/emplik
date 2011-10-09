@@ -1,8 +1,8 @@
-\name{ROCnp}
-\alias{ROCnp}
+\name{ROCnp2}
+\alias{ROCnp2}
 \title{Test the ROC curve by Empirical Likelihood}
 \usage{
-ROCnp(t1, d1, t2, d2, b0, t0)
+ROCnp2(t1, d1, t2, d2, b0, t0)
 }
 \arguments{
     \item{t1}{a vector of length n. Observed times, may be right censored.}
@@ -26,13 +26,16 @@ The log empirical likelihood been maximized is
 This empirical likelihood ratio has a chi square limit under Ho.
 }
 \details{
-Basically, we first test (1-b0)th quantile of sample 1 = c
+First, we test (1-b0)th quantile of sample 1 = c
 and also test (1-t0)th quantile of sample 2 = c. 
 This way we obtain two log likelihood ratios. 
 
 Then we minimize the sum of the
-two log likelihood ratio over c.
+two log likelihood ratios over c.
  
+This version use an exhaust search for the minimum (over c). 
+Since the objective (log lik) are piecewise constants, the
+optimum( ) function in R do not work well.
 See the tech report below for details on a similar setting.
 }
 \value{
@@ -42,14 +45,14 @@ See the tech report below for details on a similar setting.
     \item{cstar}{the estimated common quantile.}
 }
 \references{
-    Zhou, M. and Liang, H (2008). 
+    Su, Haiyan; Zhou, Mai and Liang, Hua (2008). 
        Empirical Likelihood for Hybrid Two Sample Problem with
        Censored Data. Tech. Report. 
 }
-\author{ Mai Zhou. }
+\author{Mai Zhou}
 \examples{
 #### An example of testing the equality of two medians. No censoring.
-ROCnp(t1=rexp(100), d1=rep(1,100), t2=rexp(120), d2=rep(1,120), b0=0.5, t0=0.5)
+ROCnp2(t1=rexp(100), d1=rep(1,100), t2=rexp(120), d2=rep(1,120), b0=0.5, t0=0.5)
 ##########################################################################
 #### Next, an example of finding 90 percent confidence interval of R(0.5)
 ####  Note: We are finding confidence interval for R(0.5). So we are testing  
@@ -64,13 +67,14 @@ ROCnp(t1=rexp(100), d1=rep(1,100), t2=rexp(120), d2=rep(1,120), b0=0.5, t0=0.5)
 #### confidence interval contains 0.5.
 #gridpoints <- 35:65/100
 #ELvalues <- gridpoints
-#for( i in 1:31 ) ELvalues[i] <- ROCnp(t1=t1, d1=rep(1, 200), 
+#for( i in 1:31 ) ELvalues[i] <- ROCnp2(t1=t1, d1=rep(1, 200), 
 #                 t2=t2, d2=rep(1, 200), b0=gridpoints[i], t0=0.5)$"-2LLR"
 #myfun1 <- approxfun(x=gridpoints, y=ELvalues)
 #uniroot( f= function(x){myfun1(x)-2.705543}, interval= c(0.35, 0.5) )
 #uniroot( f= function(x){myfun1(x)-2.705543}, interval= c(0.5, 0.65) )
 #### So, taking the two roots, we see the 90 percent confidence interval for R(0.5) 
-#### in this case is [0.4478081,  0.5889425].
+#### in this case is [0.4457862,  0.5907723].
+#####
 }
 \keyword{nonparametric}
 \keyword{htest}

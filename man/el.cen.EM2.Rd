@@ -102,6 +102,12 @@ to the NPMLE ---
 where \eqn{p_i^0} taken to be the jumps of the NPMLE of CDF. 
 Or use a different \code{fun}. 
 
+Difference to the function \code{el.cen.EM}: due to the introduction of
+input \code{xc} here in this function, the output \code{loglik} may be different
+compared to the function \code{el.cen.EM}
+due to not collapsing of duplicated input survival values.
+The \code{-2LLR} should be the same from both functions.
+
 }
 \author{ Mai Zhou }
 \references{
