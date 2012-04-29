@@ -36,8 +36,8 @@ if(  missing(lam)  )
 # tolerances too small.
 #
 
-if(  svdtol < TINY )svdtol <- TINY
-if(  gradtol < TINY)gradtol <- TINY
+if( svdtol < TINY )svdtol <- TINY
+if( gradtol < TINY)gradtol <- TINY
 
 #
 #    Preset the weights for combining Newton and gradient
@@ -143,27 +143,27 @@ return( - sum( llog(arg,1/n) ) )
 #
 
 llog <- function( z, eps ){
-
 ans <- z
-lo <- (z<eps)
+avoidNA <- !is.na(z)
+lo <- (z<eps) & avoidNA  ### added 3/2012
 ans[ lo  ] <- log(eps) - 1.5 + 2*z[lo]/eps - 0.5*(z[lo]/eps)^2
 ans[ !lo ] <- log( z[!lo] )
 ans
 }
 
 llogp <- function( z, eps ){
-
 ans <- z
-lo <- (z<eps)
+avoidNA <- !is.na(z)    ###added 3/2012
+lo <- (z<eps) & avoidNA
 ans[ lo  ] <- 2.0/eps - z[lo]/eps^2
 ans[ !lo ] <- 1/z[!lo]
 ans
 }
 
 llogpp <- function( z, eps ){
-
 ans <- z
-lo <- (z<eps)
+avoidNA <- !is.na(z) 
+lo <- (z<eps) & avoidNA    ### added same avoidNA as above
 ans[ lo  ] <- -1.0/eps^2
 ans[ !lo ] <- -1.0/z[!lo]^2
 ans

@@ -1,5 +1,5 @@
-a4fbe0beb06647ad86f22bf2a4a1a2c6 *DESCRIPTION
-d74fe1a8f8afb4d8c87142afebd97ebd *INDEX
+b345b6d4dd85897377365addbdaef7a6 *DESCRIPTION
+64eead2390dd392b2a68a969d4764e8e *NAMESPACE
 ec4cecb257114d5259119b3d10918e18 *R/BJnoint.R
 b45a448d0a072638d579afa035591fcd *R/DnR.R
 3e909fe63386917022f5dfe49bdf8c01 *R/LTRC.R
@@ -20,7 +20,7 @@ c33874a15f480169f1bba5fd2c75d4e2 *R/el.cen.EM.R
 2e8e69e7a1491493b9f77d7971d5d406 *R/el.cen.EM2.R
 cfec0a2a81eeef6f6962e79d5c240992 *R/el.cen.test.R
 3ad620c67a6bf9e698daf4f82e1927b2 *R/el.ltrc.EM.R
-c8ad9a8397788b014243729f2934dd3d *R/el.test.R
+ba703619b59d52eb73b2c7fc1b3f0c3b *R/el.test.R
 c2f429eab7d81715914a8d09c615f848 *R/el.test.wt.R
 e08f051fb859bef5471c934489b3d100 *R/el.test.wt2.R
 ba466ff54e778bad594f7014f6c16239 *R/el.test.wt3.R
@@ -34,9 +34,9 @@ f6a9ac2d97a7d63cfbfe324aa03eab1b *R/emplikHs.disc2.R
 aa684b616a66ea2a913bdcd85da38746 *R/iter.R
 5a1c3131f39e827917d28d8aa53b4ca7 *R/redistF.R
 1bc7918fcde9ae53e1e6360ce6d5e7fe *R/solve3.QP.R
-411e8244b61002885e6451992b0e5b22 *README
-f0f4815f902386dbedcda3d02e19eb17 *data/myeloma.rda
-e97f8d9ea7cb1a5053a129b14c76ceb1 *data/smallcell.rda
+95d9d8be2e439f6c35e8e014fc12f1a5 *README
+312c26b6e41dd34a9ed1bd10d4796012 *data/myeloma.rda
+347d21ed30882b2a120a2eaddc023981 *data/smallcell.rda
 99de2044efbcd12bbd51852da8c526f9 *inst/doc/Examples.pdf
 938a4c75faf5fc30cb75a7742b4d1aef *inst/doc/FAQ.txt
 35ac0be3da2d23e00d8f1c7d4542e3e6 *inst/doc/vignette
