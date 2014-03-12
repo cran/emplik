@@ -151,7 +151,7 @@ HESS <- t(funtime1 * tt1)%*%(funtime1 * tt1) +
 #print(MZ)
 
 list("-2LLR" = loglikR, lambda = lam, "-2LLR(sample1)"=2*loglik1,
-      times1 = tm1, times2=tm2 )
+      times1 = tm1, times2 = tm2 )
 }
 
 

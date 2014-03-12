@@ -5,9 +5,9 @@
 #### Or testing the (1-b0)th quantile of sample one equals to
 #### the (1-t0)th quantile of sample two.
 #### The original version ROCnp try to minimize using the R
-#### function optimize( ). Dur the the fact that the functions 
-#### piecewise constants, the optimize may find a false min.
-#### This version does an exhaust search. Slow but find the min.
+#### function optimize( ). Due the the fact that the functions 
+#### are piecewise constants, the optimize() may find a false min.
+#### This version does an exhaustive search. Slow but find the min.
 #### input: t1; right censored times, sample 1.
 ####        d1; censoring status, d1=1 means uncensored.
 

@@ -25,8 +25,7 @@ if(dim(A)[2]!=meq) stop("dimention of A not match with meq")
          temp <- rep(0,meq)
          if(any(b!=0)) {temp<-forwardsolve(t(qr.R(QRout)),b)}
          temp2 <- temp - t(qr.Q(QRout)) %*% (D * d)
-         eta <- backsolve(qr.R(QRout), temp2)
+         eta <- base::backsolve(qr.R(QRout), temp2)    #### added 2014/1/16 because SparseM also have a backsolve
          sol <- D^2 * (d + A %*% eta )
 list( solution=sol )
 }
-

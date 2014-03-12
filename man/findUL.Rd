@@ -22,8 +22,8 @@ see the pdf vignettes file.
     \item{step}{a positive number. The starting step size of the search. Reasonable value should be about 1/5 of the SD of MLE. }
     \item{initStep}{a nonnegative number. The first step size of the search. Sometimes, you may want to put a larger innitStep to speed the search.}
     \item{fun}{a function that returns a list. One of the item in the list should be "-2LLR", which is the -2 log (empirical) likelihood ratio. 
- The first input of \code{fun} must be called \code{theta}, the parameter for which we seek the confidence interval. (The MLE or NPMLE of this parameter should be supplied as in the input MLE). The rest of the input to \code{fun} are typically the data.
-  If \code{theta} is set to MLE, then the returned -2LLR should be 0.} 
+ The first input of \code{fun} must be the parameter for which we are seeking the confidence interval. (The MLE or NPMLE of this parameter should be supplied as in the input MLE). The rest of the input to \code{fun} are typically the data.
+  If the first input of \code{fun} is set to MLE, then the returned -2LLR should be 0.} 
     \item{MLE}{The MLE of the parameter. No need to be exact, as long as it is inside the confidence interval.}
     \item{level}{an optional positive number, controls the confidence level. Default to 3.84 = chisq(0.95, df=1). Change to 2.70=chisq(0.90, df=1) to get a 90\% confidence interval. }
    \item{...}{additional arguments, if any, to pass to \code{fun}.}

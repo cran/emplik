@@ -19,7 +19,6 @@ Everything is written in R, so porting to Splus should be
 easy. I may put out another version that move some of the
 loops to C function, but never found enough incentive to do so. 
 (The current code seems fast enough, is there such need?)
-This will also make S porting harder.
 
 Release History: 
 Pre-beta           1998--1999

@@ -43,7 +43,7 @@ will be infinite. In this case the computation will stop.
     \item{times}{the location of the hazard jumps.}
     \item{wts}{the jump size of hazard function at those locations.}
     \item{lambda}{the final value of the Lagrange multiplier.}
-    \item{"discrete.-2LLR"}{The -2Log Likelihood ratio.}
+    \item{"-2LLR"}{The discrete -2Log Likelihood ratio.}
     \item{Pval}{P-value}
     \item{niters}{number of iterations used}
 }
@@ -92,7 +92,7 @@ x <- c(1, 2, 3, 4, 5, 6, 5, 4, 3, 4, 1, 2.4, 4.5)
 d <- c(1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1)
 # test if -H(4) = -0.7 
 emplikH.disc(x=x,d=d,K=-0.7,fun=fun4,theta=4)
-# we should get "discrete.-2logemlikRatio" 0.1446316  etc....
+# we should get "-2LLR" 0.1446316  etc....
 y <- c(-2,-2, -2, 1.5, -1)
 emplikH.disc(x=x,d=d,y=y,K=-0.7,fun=fun4,theta=4)
 }
