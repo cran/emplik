@@ -67,10 +67,10 @@ el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...){
      wd1new <- wd1
      sur <- rev(cumsum(rev(pnew)))
      cdf <- 1 - c(sur[-1],0)
-     for(i in 1:m)
-        {wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i]*pnew[k[i]:n]/sur[k[i]]}
-     for(j in 1:mleft) {
-     wd1new[1:kk[j]] <- wd1new[1:kk[j]] + wd2[j]*pnew[1:kk[j]]/cdf[kk[j]]}
+     #for(i in 1:m){wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i]*pnew[k[i]:n]/sur[k[i]]}
+       wd1new=wd1newtruncRC(wd1new,wd0=wd0,k,pnew,sur,m,n)
+	 #for(j in 1:mleft) {wd1new[1:kk[j]] <- wd1new[1:kk[j]] + wd2[j]*pnew[1:kk[j]]/cdf[kk[j]]}
+       wd1new=wd1newtruncRCLeft(wd1new,wd2=wd2,kk,pnew,cdf,mleft,n)
      temp8 <- el.test.wt2(x=funxd1, wt=wd1new, mu=mu)
      pnew <- temp8$prob
      lam <- temp8$lambda
@@ -88,8 +88,8 @@ el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...){
    while(num < maxit) {
      wd1new <- wd1
      sur <- rev(cumsum(rev(pnew)))
-     for(i in 1:m)
-        {wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i]*pnew[k[i]:n]/sur[k[i]]}
+     ## for(i in 1:m){wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i]*pnew[k[i]:n]/sur[k[i]]}
+	  wd1new=wd1newtruncRC(wd1new,wd0=wd0,k,pnew,sur,m,n)
      temp9 <- el.test.wt2(x=funxd1, wt=wd1new, mu=mu)
      pnew <- temp9$prob
      lam <- temp9$lambda
@@ -108,8 +108,8 @@ el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...){
    while(num < maxit) {
      wd1new <- wd1
      cdf <- cumsum(pnew) 
-     for(j in 1:mleft)
-       {wd1new[1:kk[j]] <- wd1new[1:kk[j]] + wd2[j]*pnew[1:kk[j]]/cdf[kk[j]]}
+     ## for(j in 1:mleft){wd1new[1:kk[j]] <- wd1new[1:kk[j]] + wd2[j]*pnew[1:kk[j]]/cdf[kk[j]]}
+       wd1new=wd1newtruncRCLeft(wd1new,wd2=wd2,kk,pnew,cdf,mleft,n)
      temp7 <- el.test.wt2(x=funxd1, wt=wd1new, mu=mu)
      pnew <- temp7$prob
      lam <- temp7$lambda

@@ -2,7 +2,7 @@
 \alias{el.test.wt}
 \title{Weighted Empirical Likelihood ratio for mean, uncensored data}
 \usage{
-el.test.wt(x, wt, mu)
+el.test.wt(x, wt, mu,usingC=TRUE)
 }
 \description{
 This program is similar to \code{el.test( )} except
@@ -21,6 +21,7 @@ The weighted log empirical likelihood been maximized is
     \item{wt}{a vector containing the weights.}
     \item{mu}{a real number used in the constraint, weighted
                 mean value of \eqn{f(X)}.}
+    \item{usingC}{TRUE: use C function, which may be benifit when sample size is large; FALSE: use R function.}
 }
 \value{
     A list with the following components:
