@@ -179,7 +179,7 @@ for (;i<L;i++) re+=wt[i]*(x[i]-mu)/(allw+lambda*(x[i]-mu));
 return(re);
 }
 
-inline double summm(double *x,int L){
+static inline double summm(double *x,int L){
 int i=0;double re=0.;
 for (;i<L;i++){
 re+=x[i];
@@ -187,7 +187,7 @@ re+=x[i];
 return(re);
 }
 
-inline double maxabs(double *x, double mu,int L){
+static inline double maxabs(double *x, double mu,int L){
 int i=0;double re=fabs(x[0]-mu);
 for(;i<L;i++){
 if (fabs(x[i]-mu)>re) re=fabs(x[i]-mu);

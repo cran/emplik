@@ -1,4 +1,4 @@
-b6ce5132bd3ad483bf70b0c5342fef68 *DESCRIPTION
+5e215d6088f833408e2fc46b6c222434 *DESCRIPTION
 b00f5378368f7580da7504459bbd77ce *NAMESPACE
 ec4cecb257114d5259119b3d10918e18 *R/BJnoint.R
 b45a448d0a072638d579afa035591fcd *R/DnR.R
@@ -69,4 +69,4 @@ c8b51e773c259431d249fc3cff7cb43f *man/emplikHs.test2.Rd
 54eabdbf0a9d71a6c97a723c4a6ae23c *man/findUL.Rd
 ba4598f7234869de602f692f117bccbf *man/myeloma.Rd
 60e2e63d442fa1c1a425f2252f17324d *man/smallcell.Rd
-485f211aa06b681e3066d0e1df352b90 *src/cumsumsurv.c
+e6b53c34f0188277a6b8e9fc905ef42b *src/cumsumsurv.c
