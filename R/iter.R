@@ -28,7 +28,7 @@ iter <- function(x, y, delta, beta)
 
 temp <- WKM(x=resorder, d=dorder, zc=1:N)  # add  ( , zc=1:N )  2005, 3
 
-jifen <- rev( cumsum( rev(resorder * temp$jump)) )
+jifen <- cumsumsurv(resorder * temp$jump)  ## rev( cumsum( rev(resorder * temp$jump)) ) 3/2015 MZ
 Sresorder <- temp$surv
 
 for (i in 1:N) if (dorder[i] == 0) {

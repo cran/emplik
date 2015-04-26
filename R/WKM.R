@@ -9,7 +9,7 @@ dd[length(dd)] <- 1
 
 ######why not use DnR?
 
-allrisk <- rev(cumsum(rev(ww)))
+allrisk <- cumsumsurv(ww)   ## rev(cumsum(rev(ww)))  3/2015  MZ
 survP <- cumprod( 1 -  (dd*ww)/allrisk )
 jumps <- -diff( c(1, survP) )
 

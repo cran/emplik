@@ -2,20 +2,20 @@ eltestwtinC<-function(x,wt,mu){
 	pi=x;
 	Lx=length(x);
 	lam0=0;
- 	if (sum(is.na(x))>0)stop('NaNs');	
+ 	if(any(is.na(x))) stop('NaNs');    ## if (sum(is.na(x))>0)stop('NaNs');	
  	re=.C('eltestwt',
 		x=as.numeric(x),
 		wt=as.numeric(wt),
-		mu1=mu,
+		mu1=as.double(mu),   ##added as.double() 3/2015 by M Zhou
 		Lx1=Lx,
 		pi=as.numeric(pi),
-		lamre=lam0
+		lamre=as.double(lam0)  ##added as.double() 3/2015 by M Zhou
 	     )
 	return(list(x=re$x, wt=re$wt, prob=re$pi, lam=re$lamre));
  }
 
 
-el.test.wt <- function(x, wt, mu,usingC=TRUE) {
+el.test.wt <- function(x, wt, mu, usingC=TRUE) {
 #x <- as.matrix(x)
 #if( ncol(x) != 1 ) stop("x must be a vector") 
 

@@ -1,25 +1,22 @@
 #include <math.h>
-#include <stdio.h>
 #include <R.h>
 #include <Rconfig.h>
 #include <Rdefines.h>
 #include <float.h>
-#include <Rinternals.h>
+
 #include <R_ext/Applic.h>
 
 #define EPSILON DBL_EPSILON
 
+/* R_zeroin2() is faster for "expensive" f(), in those typical cases where
+ *             f(ax) and f(bx) are available anyway : */
 double lamfunC(double lambda,double * x, double mu,double * wt,double allw,int L);
 
-/* R_zeroin2() is faster for "expensive" f(), in those typical cases where
- *             f(ax) and f(bx) are available anyway :
- */
-
-double R_zeroin2surv(
-    double ax,                                          /* Left border | of the range	*/
-    double bx,                                          /* Right border| the root is seeked*/
-    double *Tol,                                        /* Acceptable tolerance		*/
-    int *Maxit,                                         /* Max # of iterations */
+double R_zeroin2surv(			/* An estimate of the root */
+    double ax,				/* Left border | of the range	*/
+    double bx,				/* Right border| the root is seeked*/
+    double *Tol,			/* Acceptable tolerance		*/
+    int *Maxit,				/* Max # of iterations */
     double * x, double mu,double * wt,double allw,int L /*par of f*/
     )				
 {
@@ -129,49 +126,12 @@ void cumsumsurv(double * x, double * s,int *LLL)
 {
     double sum = 0.;
     int LL=LLL[0]-1;
-	int i=0;
-	for ( ; i < LLL[0] ; i++) {
+    for (R_xlen_t i = 0 ; i < LLL[0] ; i++) {
 	sum += x[LL-i];
 	s[LL-i] = (double) sum;
     }
 }
 
-/*
-for (i in 1:m) {
-wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i] * pnew[k[i]:n]/sur[k[i]]
-}
- C-port:
- wd1new=wd1newtruncRC(wd1new,wd0=wd0,k,pnew,sur,m,n)
- 
- wd1newtruncRC<-function(wd1new,wd0,k,pnew,sur,m,n){
- re<-.C('wd1newtrunc',
- wd1new=wd1new,
- wd0=as.numeric(wd0),
- k=as.integer(k),
- pnew=as.numeric(pnew),
- surv=as.numeric(sur),
- mLength=as.integer(m),
- nSampleSize=as.integer(n)
- )
- return(re$wd1new);
- }
-*/
-
-void wd1newtrunc(double * wd1new,double *wd0,int *k,double * pnew, double * surv,int * mLength,int *nSampleSize){
-    int i=0,j=0;
-    for (i=0;i<mLength[0];i++){
-        for (j=k[i]-1;j<nSampleSize[0];j++)
-            wd1new[j]=wd1new[j]+wd0[i]*pnew[j]/surv[k[i]-1];
-    }
-}
-
-void wd1newtruncLeft(double * wd1enw,double *wd2,int *k,double * pnew, double * cdf,int * mLength,int *nSampleSize){
-    int i=0,j=0;
-    for (i=0;i<mLength[0];i++){
-        for (j=0;j<k[i];j++)
-            wd1enw[j]=wd1enw[j]+wd2[i]*pnew[j]/cdf[k[i]-1];
-    }
-}
 
 double lamfunC(double  lambda,double * x, double mu,double * wt,double allw,int L){
 int i=0; double re=0.;
@@ -179,7 +139,7 @@ for (;i<L;i++) re+=wt[i]*(x[i]-mu)/(allw+lambda*(x[i]-mu));
 return(re);
 }
 
-static inline double summm(double *x,int L){
+inline double summm(double *x,int L){
 int i=0;double re=0.;
 for (;i<L;i++){
 re+=x[i];
@@ -187,7 +147,7 @@ re+=x[i];
 return(re);
 }
 
-static inline double maxabs(double *x, double mu,int L){
+inline double maxabs(double *x, double mu,int L){
 int i=0;double re=fabs(x[0]-mu);
 for(;i<L;i++){
 if (fabs(x[i]-mu)>re) re=fabs(x[i]-mu);
@@ -201,14 +161,14 @@ double Lx=Lx1[0];
 double allw = summm(wt,Lx);
 double BU = 0.02*allw/maxabs(x,mu,Lx);
 double lam0=0.,lo,up;
-double toldouble[1]={1e-9};/*tolerance used in root searching*/
+double toldouble[1]={1e-9};
 int MAXITER[1]={1000};
 int i=0;
 if (lamfunC(0,x,mu,wt,allw,Lx) == 0){ 
-  lam0 = 0.;
+  lam0 = 0;
 } else {
  if( lamfunC(0,x,mu,wt,allw,Lx) > 0 ) {
-   lo = 0.;
+   lo = 0;
    up = BU;
     while(lamfunC(up,x,mu,wt,allw,Lx)>0){
          up += BU;
@@ -217,9 +177,17 @@ if (lamfunC(0,x,mu,wt,allw,Lx) == 0){
     up = 0;
     lo = - BU;
       while(lamfunC(lo,x,mu,wt,allw,Lx) < 0 ){
-           lo  = lo - BU;
+           lo  -= BU;
       }
      }
+     /*
+     double ax,				
+    double bx,				
+    double (*f)(double x),	
+    double *Tol,		
+    int *Maxit)
+     */
+     
  lam0 = R_zeroin2surv(lo,up,toldouble,MAXITER,x,mu,wt,allw,Lx);
 }
 
@@ -227,8 +195,3 @@ for (i=0;i<Lx;i++){ pi[i] = wt[i]/(allw + lam0*(x[i]-mu));}
 lamre[0]=lam0;
 
 }
-/*
-void eltestwt2 (double *x, double *wt, double * mu1,int *Lx1,double *pi,double * HessianMatrix,int useHessian,double *lamre){
-
-}
- */

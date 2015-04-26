@@ -1,32 +1,3 @@
-wd1newtruncRC<-function(wd1enw,wd0,k,pnew,sur,m,n){
-    re<-.C('wd1newtrunc',
-    wd1enw=as.numeric(wd1enw),
-    wd0=as.numeric(wd0),
-    k=as.integer(k),
-    pnew=as.numeric(pnew),
-    surv=as.numeric(sur),
-    mLength=as.integer(m),
-    nSampleSize=as.integer(n)
-    )
-    return(re$wd1enw);
-}
-
-wd1newtruncRCLeft<-function(wd1enw,wd2,kk,pnew,cdf,m,n){
-    re<-.C('wd1newtruncLeft',
-    wd1enw=as.numeric(wd1enw),
-    wd2=as.numeric(wd2),
-    k=as.integer(kk),
-    pnew=as.numeric(pnew),
-    cdf=as.numeric(cdf),
-    mLength=as.integer(m),
-    nSampleSize=as.integer(n)
-    )
-    return(re$wd1enw);
-}
-
-
-
-
 el.cen.EM <- function(x,d,fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
    xvec <- as.vector(x)
    nn <- length(xvec)
@@ -76,14 +47,10 @@ el.cen.EM <- function(x,d,fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
      wd1new <- wd1
      sur <- cumsumsurv(pnew)
      cdf <- 1 - c(sur[-1],0)
-       ## TODO: use C-Lv functions
-       #for(i in 1:m)
-       #{wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i]*pnew[k[i]:n]/sur[k[i]]}
-       wd1new=wd1newtruncRC(wd1new,wd0=wd0,k,pnew,sur,m,n)
-       #for(j in 1:mleft)
-       #{wd1new[1:kk[j]] <- wd1new[1:kk[j]] + wd2[j]*pnew[1:kk[j]]/cdf[kk[j]]}
-       wd1new=wd1newtruncRCLeft(wd1new,wd2=wd2,kk,pnew,cdf,mleft,n)
-
+     for(i in 1:m)
+        {wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i]*pnew[k[i]:n]/sur[k[i]]}
+     for(j in 1:mleft)
+        {wd1new[1:kk[j]] <- wd1new[1:kk[j]] + wd2[j]*pnew[1:kk[j]]/cdf[kk[j]]}
      temp8 <- el.test.wt(funxd1, wt=wd1new, mu)
      pnew <- temp8$prob
      lam <- temp8$lam
@@ -106,16 +73,15 @@ el.cen.EM <- function(x,d,fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
    num <- 1
    while(num < maxit) {
      wd1new <- wd1
-       sur <- cumsumsurv(pnew)# right cen: c-level function >> KMC
-       #  for(i in 1:m)
-       #{wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i]*pnew[k[i]:n]/sur[k[i]]}
-       wd1new=wd1newtruncRC(wd1new,wd0=wd0,k,pnew,sur,m,n)
+     sur <- cumsumsurv(pnew)  ## rev(cumsum(rev(pnew))) 3/2015 MZ
+     for(i in 1:m)
+        {wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i]*pnew[k[i]:n]/sur[k[i]]}
      temp9 <- el.test.wt(funxd1, wt=wd1new, mu)
      pnew <- temp9$prob
      lam <- temp9$lam
      num <- num +1
      }
-   sur <- rev(cumsum(rev(pnew)))
+   sur <- cumsumsurv(pnew)   ## rev(cumsum(rev(pnew)))  3/2015  MZ
    logel <- sum( wd1*log(pnew)) + sum( wd0*log(sur[k]) )
   }
   if( (m==0) && (mleft>0) ) {
@@ -127,10 +93,8 @@ el.cen.EM <- function(x,d,fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
    while(num < maxit) {
      wd1new <- wd1
      cdf <- cumsum(pnew) 
-       #     for(j in 1:mleft)
-       #{wd1new[1:kk[j]] <- wd1new[1:kk[j]] + wd2[j]*pnew[1:kk[j]]/cdf[kk[j]]}
-       wd1new=wd1newtruncRCLeft(wd1new,wd2=wd2,kk,pnew,cdf,mleft,n)
-
+     for(j in 1:mleft)
+        {wd1new[1:kk[j]] <- wd1new[1:kk[j]] + wd2[j]*pnew[1:kk[j]]/cdf[kk[j]]}
      temp7 <- el.test.wt(funxd1, wt=wd1new, mu)
      pnew <- temp7$prob
      lam <- temp7$lam

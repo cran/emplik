@@ -45,7 +45,7 @@ WCY <- function(x, d, zc = rep(1, length(d)),
         num <- 1
         while (num < maxit) {
             wd1new <- wd1
-            sur <- rev(cumsum(rev(pnew)))
+            sur <- cumsumsurv(pnew)   ## rev(cumsum(rev(pnew)))   3/2015 MZ
             cdf <- 1 - c(sur[-1], 0)
             for (i in 1:m) {
             wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i] * pnew[k[i]:n]/sur[k[i]]
@@ -56,7 +56,7 @@ WCY <- function(x, d, zc = rep(1, length(d)),
             pnew <- wd1new/sum(wd1new)
             num <- num + 1
         }
-        sur <- rev(cumsum(rev(pnew)))
+        sur <- cumsumsurv(pnew)   ## rev(cumsum(rev(pnew)))   3/2015 MZ
         cdf <- 1 - c(sur[-1], 0)
  logel<-sum(wd1*log(pnew))+sum(wd0*log(sur[k])) + sum(wd2*log(cdf[kk]))
     }

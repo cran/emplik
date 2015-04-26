@@ -4,7 +4,7 @@ WRegTest <- function(x, y, delta, beta0, psifun=function(t){t}) {
 #
 # This estimator assumes a random design or a correlation model as 
 # defined by Freedman (1981). 
-# This coresponds to the bootstrapping the cases in the linear model.
+# This corresponds to the bootstrapping the cases in the linear model.
 
 # This estimator in the AFT model is studied by 
 # Koul-Susarla-Van Ryzin (1982), Zhou (1992) and Stute (1993) etc.
@@ -41,7 +41,5 @@ myfun <- function(y, xmat, beta) {
       }
 ##### now test if the estimating function is/are zero ####
 
-temp2 <- el.cen.EM2(x=y,d=delta, fun=myfun, mu=rep(0,m), xmat=xx, beta=beta0)
-EL <- temp2$"-2LLR"
-return(EL)
+el.cen.EM2(x=y,d=delta, fun=myfun, mu=rep(0,m), xmat=xx, beta=beta0)
 }

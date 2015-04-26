@@ -19,6 +19,8 @@
 \alias{redistF}
 \alias{gradf2}
 \alias{gradf3}
+\alias{cumsumsurv}
+\alias{emplikHs.test22}
 \title{Internal emplik functions}
 \usage{
 logelr(x,mu,lam)
@@ -41,6 +43,10 @@ MMRtime(x, d, age)
 redistF(y, d, Fdist)
 gradf2(lam, funt1, evt1, rsk1, funt2, evt2, rsk2, K, n)
 gradf3(lam, funt1, evt1, rsk1, funt2, evt2, rsk2, K, n)
+cumsumsurv(x)
+emplikHs.test22(x1, d1, y1 = -Inf, x2, d2, y2 = -Inf, 
+                theta, fun1, fun2, maxit = 25, 
+                tola = 1e-07, itertrace = FALSE, ...)
 }
 \description{ Internal emplik functions }
 \details{
@@ -54,9 +60,9 @@ These are not intended to be called by the user.
 \code{DnR} take the survival data as input, compute the number at risk 
 and number of observed events, and output only those time points where
 there is some events. Notice the input must be ordered! We should use
-Wdataclean2/3/5( ) first and then use the outpt there as the input of DnR.
+Wdataclean2/3/5( ) first and then use the output there as the input of DnR.
 
-\code{Wdataclean2} will sort the data and collaps those that are true ties,
+\code{Wdataclean2} will sort the data and collapse those that are true ties,
 and the number of tied value is in the weights.
 
 \code{logelr}, \code{llog}, \code{llogp} and \code{llogpp} 
@@ -87,6 +93,9 @@ is used by \code{el.test.wt3}.
 \code{iter} is for perform one iteration of EM in the Buckley-James
             censored regression estimation.
 \code{redistF} is for redistribution of probability, according to Fdist.
-Used in BJtest().
+Used in BJtest() and BJtestII().
+
+\code{cumsumsurv} is similar to rev(cumsum( rev()) ) but faster.
+\code{emplikHs.test22} similar to emplikHs.test2; and is used by RankRegTestH() only. 
 }
 \keyword{internal}

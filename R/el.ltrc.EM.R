@@ -51,7 +51,7 @@ el.ltrc.EM <- function(y,x,d,fun=function(t){t},mu,maxit=30,error=1e-9) {
    while(num <= maxit) {
      wd1new <- wd1
 ##########right censor 
-     sur <- rev(cumsum(rev(pnew)))
+     sur <- cumsumsurv(pnew)  ## rev(cumsum(rev(pnew)))  3/2015 MZ
      for(i in 1:mright)
         {wd1new[k[i]:n] <- wd1new[k[i]:n] + wd0[i]*pnew[k[i]:n]/sur[k[i]]}
 #########left truncated
@@ -61,10 +61,10 @@ el.ltrc.EM <- function(y,x,d,fun=function(t){t},mu,maxit=30,error=1e-9) {
      pnew <- el.test.wt(funxd1, wt=wd1new, mu=mu)$prob
      num <- num +1
      }
-   sur <- rev(cumsum(rev(pnew)))
+   sur <- cumsumsurv(pnew)  ## rev(cumsum(rev(pnew)))  3/2015 MZ
    pvec <- as.vector( pnew %*% uij )
    logel <- sum(wd1*log(pnew))+sum(wd0*log(sur[k]))-sum(log(pvec))
-   sur0 <- rev(cumsum(rev(p0)))
+   sur0 <- cumsumsurv(p0)  ## rev(cumsum(rev(p0)))  3/2015 MZ
    pvec0 <- as.vector( p0 %*% uij )
    logel0 <- sum(wd1*log(p0))+sum(wd0*log(sur0[k]))-sum(log(pvec0))
    WILKS <- 2*(logel0 - logel)

@@ -23,7 +23,7 @@ pKM <- temp0$jump
 
 xbar <- xsort
 ####for(j in 1:(n-1)) xbar[j,] <- colMeans(xsort[j:n,])
-for(j in 1:xdim[2]) xbar[,j] <- rev(cumsum(rev(xsort[,j])))/(n:1)
+for(j in 1:xdim[2]) xbar[,j] <- cumsumsurv(xsort[,j])/(n:1)  ## rev(cumsum(rev(xsort[,j])))/(n:1) 3/2015 MZ
 
 if(type == "Gehan") {A <- (n:1) * (xsort - xbar)/pKM}
  else {if(type == "Logrank") A <- (xsort - xbar)/pKM

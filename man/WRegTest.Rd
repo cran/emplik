@@ -42,8 +42,8 @@ or \eqn{ =0}.
 }
 \value{
     A list with the following components:
-    \item{"-2LLR"}{the -2 loglikelihood ratio; have approximate chisq 
-                  distribution under \eqn{H_o}.}
+    \item{"-2LLR"}{the -2 log likelihood ratio; have approximate chisq 
+                  distribution under \eqn{H_0}.}
     \item{P-val}{the p-value using the chi-square approximation.}
 }
 \references{

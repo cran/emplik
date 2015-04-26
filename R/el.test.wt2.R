@@ -82,19 +82,7 @@ while(  nits<maxit && gsize > gradtol  ){
 #
 
 ## or better, use QR decomposition on hess to solve it.
-## QR is faster than svd!
-    
-    ## yifan: considering: Hessian*beta = y, in each iteration
-    #  newton's scalor is beta_LSE. The fatest algorithm is
-    #  done by 'sweeping method'/Cholesky Decomposition.
-    #  The simpliest reason is that:  H > 0
-    #  If we tend not to check the condition, then:
-    #  Cholesky:
-    #  H= LL', L is low tri-angle matrix
-    #  [H,y]'[H,y]= [  L  0  ] [ L' l ]
-    #               [  l' d  ] [ 0  d ]
-    #   =>    L l= X'y    ,     L' beta = l
-    #  d^2=|y-hat(y)|^2
+## QR is faster than svd! 
 
 ##  svdh <- svd( hess )
 ####  svdh <- La.svd( hess )
