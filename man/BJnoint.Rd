@@ -16,7 +16,7 @@ BJnoint(x, y, delta, beta0 = NA, maxiter=30, error = 0.00001)
 \description{
     Compute the Buckley-James estimator in the regression model 
 \deqn{ y_i = \beta x_i + \epsilon_i } 
-with right censored \eqn{y_i}.
+with right censored \eqn{y_i}. Iteration method.
 
 }
 \details{
@@ -25,14 +25,13 @@ when your model do not have an intercept term.
 Of course, if you include a column of 1's in the x matrix, 
 it is also OK with this function and it
 is equivalent to having an intercept term.
-If your model do have an intercept term, then you probably
-should use the function
+If your model do have an intercept term, then you could also (probably should) use the function
 \code{bj( )} in the \code{Design} library. It should be more refined 
 than \code{BJnoint} in the stopping rule for the iterations.
 
 This function is included here mainly to produce the estimator value
 that may provide some useful information with the function \code{bjtest( )}.
-For example you may want to test the beta value near the
+For example you may want to test a beta value near the
 Buckley-James estimator. 
 
 }

@@ -67,7 +67,7 @@ it by infinity when the weights do not sum to nearly n.
 }
 \references{
     Owen, A. (1990). Empirical likelihood ratio confidence regions. 
-    Ann. Statist. \bold{18} 90-120.
+    \emph{Ann. Statist.} \bold{18}, 90-120.
 }
 \author{ Original Splus code by Art Owen. Adapted to R by Mai Zhou. }
 \examples{

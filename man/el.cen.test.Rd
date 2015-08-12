@@ -64,7 +64,7 @@ The constant \code{mu} must be inside
 \eqn{( \min f(x_i) , \max f(x_i) ) }
 for the computation to continue. 
 It is always true that the NPMLE values are feasible. So when the
-computation stops, try move the \code{mu} closer
+computation cannot continue, try move the \code{mu} closer
 to the NPMLE, or use a different \code{fun}. 
 
 This function depends on Wdataclean2(), WKM() and solve3.QP() 
@@ -77,14 +77,20 @@ on a 1GHz, 256MB PC, about 19 seconds on a 3 GHz 512MB PC.
 }
 \author{ Mai Zhou, Kun Chen }
 \references{
-    Pan, X. and Zhou, M. (1999). Empirical likelihood ratio, one parameter
-                         sub-family of distributions and censored data.
+    Pan, X. and Zhou, M. (1999). Using 1-parameter sub-family 
+ of distributions in empirical likelihood ratio with 
+ censored data.
     \emph{J. Statist. Plann. Inference}. \bold{75}, 379-392.
 
     Chen, K. and Zhou, M. (2000). 
         Computing censored empirical likelihood ratio 
         using Quadratic Programming. 
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
+
+    Zhou, M. and Chen, K. (2007). Computation of the empirical
+     likelihood ratio from censored data.
+  \emph{Journal of Statistical Computing and Simulation}, 
+  \bold{77}, 1033-1042. 
 }
 \examples{
 el.cen.test(rexp(100), c(rep(0,25),rep(1,75)), mu=1.5)
@@ -97,4 +103,3 @@ el.cen.test(x,d,mu=3.5)
 \keyword{nonparametric}
 \keyword{survival}
 \keyword{htest}
-

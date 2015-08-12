@@ -45,10 +45,11 @@ which was described in detail in the reference below.
 }
 \references{
     Buckley, J. and James, I. (1979). Linear regression with censored data.
-      Biometrika,  \bold{66} 429-36.
+      \emph{Biometrika},  \bold{66} 429-36.
 
-    Zhou, M. and Li, G. (2004). Empirical likelihood analysis of the
-       Buckley-James estimator. Tech. Report. 
+    Zhou, M. and Li, G. (2008). Empirical likelihood analysis of the Buckley-James estimator. \emph{Journal of Multivariate Analysis} \bold{99}, 649-664. 
+
+    Zhou, M. (2016) Empirical Likelihood Method in Survival Analysis. CRC Press.
 }
 \author{ Mai Zhou. }
 \examples{

@@ -41,7 +41,7 @@ cumulative hazard function;
 }
 \author{ Mai Zhou } 
 \references{
-    Pan and Zhou (2002),
+    Pan, XR and Zhou, M. (2002),
     ``Empirical likelihood in terms of cumulative
       hazard for censored data''. 
     \emph{Journal of Multivariate Analysis} \bold{80}, 166-188.
@@ -55,7 +55,7 @@ the true underlying distribution is continuous but the
 sample observations have tie due to rounding, then you might want
 to add a small number to the observations to break tie.
 
-The likelihood used here is the `Poisson' version of the likelihood
+The likelihood used here is the `Poisson' version of the empirical likelihood
 \deqn{
 \prod_{i=1}^n ( dH(x_i) )^{\delta_i} \exp [-H(x_i)+H(y_i)] . 
 }

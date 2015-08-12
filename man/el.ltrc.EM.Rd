@@ -82,10 +82,15 @@ A faster version would use C to do the for-loop part.
 
     Tsai, W. Y., Jewell, N. P., and Wang, M. C. (1987). A note on
   product-limit estimator under right censoring and left
-  truncation. \emph{Biometrika}, 74, 883-886.
+  truncation. \emph{Biometrika}, \bold{74}, 883-886.
 
-    Turnbbull, B. (1976). The empirical distribution function with
-   arbitrarily grouped, censored and truncated data. JRSS B 290-295.
+    Turnbbull, B. (1976). The empirical distribution 
+    function with arbitrarily grouped, censored and 
+    truncated data. JRSS B, 290-295.
+
+Zhou, M. (2005). Empirical likelihood ratio with arbitrarily censored/truncated data by EM algorithm. 
+ \emph{Journal of Computational and Graphical Statistics} 
+ \bold{14}, 643-656.
 }
 \examples{
 ## example with tied observations

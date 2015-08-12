@@ -22,4 +22,5 @@ export(redistF)
 export(gradf, gradf2, gradf3)
 export(findUL)
 
-importFrom(quantreg, rq.wfit)
+importFrom("stats", "coef", "lm", "lm.wfit", "optimize", "pchisq", "uniroot")
+importFrom("quantreg", "rq.wfit")

@@ -95,7 +95,7 @@ is used by \code{el.test.wt3}.
 \code{redistF} is for redistribution of probability, according to Fdist.
 Used in BJtest() and BJtestII().
 
-\code{cumsumsurv} is similar to rev(cumsum( rev()) ) but faster.
+\code{cumsumsurv} is similar to rev(cumsum(rev( ))) but faster.
 \code{emplikHs.test22} similar to emplikHs.test2; and is used by RankRegTestH() only. 
 }
 \keyword{internal}

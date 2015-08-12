@@ -19,12 +19,12 @@ The weighted log empirical likelihood been maximized is
 \arguments{
     \item{x}{a matrix (of size nxp) or vector containing the observations.}
     \item{wt}{a vector of length n, containing the weights. If weights are 
-              all 1, this is very simila to el.test. }
+              all 1, this is very simila to el.test. wt have to be positive.}
     \item{mu}{a vector of length p, used in the constraint. weighted
                 mean value of \eqn{f(X)}.}
-    \item{maxit}{the maximum number of iteration.}
-    \item{gradtol}{the tolerance for a solution}
-    \item{Hessian}{if the Hessian needs to be computed?}
+    \item{maxit}{an integer, the maximum number of iteration.}
+    \item{gradtol}{a positive real number, the tolerance for a solution}
+    \item{Hessian}{logical. if the Hessian needs to be computed?}
     \item{svdtol}{ tolerance in perform SVD of the Hessian matrix. }
     \item{itertrace}{TRUE/FALSE, if the intermediate steps needs to be printed.}
 }
@@ -41,8 +41,8 @@ The weighted log empirical likelihood been maximized is
 This function used to be an internal function. 
 It becomes external because others may find it useful.
 
-It is similar to the function el.test( ) with the following
-differences: 
+It is similar to the function \code{el.test( )} with the
+ following differences: 
 
 (1) The output lambda in el.test.wts, when divided by n
 (the sample size or sum of all the weights) should be equal to the
@@ -54,6 +54,9 @@ those in el.test. (even when all the weights are one).
 }
 \author{ Mai Zhou }
 \references{
+Owen, A. (1990). Empirical likelihood ratio confidence regions. 
+    \emph{Ann. Statist.} \bold{18}, 90-120.
+
     Zhou, M. (2002). 
         Computing censored empirical likelihood ratio 
         by EM algorithm. 

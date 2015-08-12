@@ -44,7 +44,7 @@ The final test is carried out by \code{el.test}. So the output is similar to the
                under estimating equation.}
 }
 \references{
-    Zhou, M. (2015) Empirical Likelihood Methods in Survival
+    Zhou, M. (2016) Empirical Likelihood Methods in Survival
         Analysis. CRC Press.
  
     Buckley, J. and James, I. (1979). Linear regression with censored data.
@@ -52,11 +52,11 @@ The final test is carried out by \code{el.test}. So the output is similar to the
 
     Zhou, M. and Li, G. (2008). Empirical likelihood analysis 
       of the Buckley-James estimator.
-      Journal of multivariate analysis, \bold{99},  649--664.
+      Journal of Multivariate Analysis, \bold{99},  649--664.
     
     Zhu, H. (2007) Smoothed Empirical Likelihood for Quantiles
   and Some Variations/Extension of Empirical Likelihood for Buckley-James Estimator,
-     Ph.D. dissertation, University of Kentucky.
+     Ph.D. dissertation, University of Kentucky. 
 }
 \author{ Mai Zhou. }
 \examples{

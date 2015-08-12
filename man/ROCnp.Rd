@@ -44,7 +44,11 @@ See the tech report below for details on a similar setting.
 \references{
     Zhou, M. and Liang, H (2008). 
        Empirical Likelihood for Hybrid Two Sample Problem with
-       Censored Data. Tech. Report. 
+       Censored Data. \emph{Univ. Kentucky Tech. Report.}
+
+     Su, H., Zhou, M. and Liang, H. (2011). Semi-parametric
+   hybrid empirical likelihood inference for two-sample comparison with censored data. \emph{Lifetime Data Analysis},
+\bold{17}, 533-551. 
 }
 \author{ Mai Zhou. }
 \examples{

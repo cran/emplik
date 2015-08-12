@@ -42,8 +42,9 @@ Similar to \code{bjtest( )}, but only for 1-dim beta.
   Owen, A. (1990). Empirical likelihood ratio confidence regions. 
     Ann. Statist. \bold{18} 90-120.
 
-  Zhou, M. Li, G. (2004). Empirical likelihood analysis of the
-       Buckley-James estimator. Tech. Report.
+  Zhou, M. and Li, G. (2008). Empirical likelihood analysis 
+of the Buckley-James estimator. Journal of Multivariate Analysis.
+649-664.
 }
 \author{Mai Zhou.}
 \examples{

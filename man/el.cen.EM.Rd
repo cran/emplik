@@ -92,12 +92,11 @@ in either version.
 }
 \author{ Mai Zhou }
 \references{
-    Zhou, M. (2002). 
-        Computing censored empirical likelihood ratio 
-        by EM algorithm. 
-    \emph{JCGS}
 
-    Murphy, S. and van der Varrt (1997)
+Zhou, M. (2005). Empirical likelihood ratio with arbitrary censored/truncated data by EM algorithm. 
+ \emph{Journal of Computational and Graphical Statistics}, 643-656.
+
+    Murphy, S. and van der Vaart (1997)
          Semiparametric likelihood ratio inference.
          \emph{Ann. Statist.} \bold{ 25}, 1471-1509.
 }

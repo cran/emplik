@@ -40,6 +40,8 @@ The estimation equation used when maximize the
 empirical likelihood is 
 \deqn{ 0 = \sum_i \phi (e_i)  d_i \Delta F(e_i) (x_i - \bar x_i  )/(n w_i) }
 which was described in detail in the references below.
+
+See also the function \code{RankRegTestH}, which is based on the hazard likelihood.
 }
 \value{
     A list with the following components:
@@ -48,7 +50,7 @@ which was described in detail in the references below.
     \item{logel2}{the log empirical likelihood, under estimating equation.}
     \item{logel}{the log empirical likelihood of the Kaplan-Meier of e's.}
     \item{prob}{the probabilities that max the empirical likelihood 
-               under rank estimating equation.}
+               under rank estimating equation constraint.}
 }
 \references{
 Kalbfleisch, J. and Prentice, R. (2002)
@@ -57,11 +59,11 @@ Wiley, New York.  (Chapter 7)
 
 Jin, Z., Lin, D.Y., Wei, L. J. and Ying, Z. (2003).
 Rank-based inference for the accelerated failure time model.
-Biometrika, 90, 341-53.
+Biometrika, \bold{90}, 341-53.
 
 Zhou, M. (2005). Empirical likelihood analysis of the rank
         estimator for the censored accelerated failure time model. 
-      Biometrika, 92, 492-98.
+      Biometrika, \bold{92}, 492-98.
 }
 \author{ Mai Zhou. }
 \examples{

@@ -44,7 +44,7 @@ will be infinite. In this case the computation will stop.
         maximization.}
     \item{theta}{a given vector of length q. for Ho constraint. }
     \item{maxit}{integer, maximum number of Newton-Raphson type iterations. }
-    \item{itertrace}{ Logocal, 
+    \item{itertrace}{Logocal, 
             if the results of each iteration needs to be printed. }
 }
 \value{

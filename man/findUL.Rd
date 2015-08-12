@@ -11,6 +11,7 @@ limits based on the -2 log likelihood ratio, which the required input \code{fun}
 Basically, starting from \code{MLE}, we search on both 
 directions, by \code{step} away
 from \code{MLE}, until we find values that have -2LLR = level.
+(the value of -2LLR at MLE is supposed to be zero.)
 
 At curruent implimentation, only handles one dimesional parameter, i.e. only
 confidence intervals, not confidence regions.
@@ -43,11 +44,13 @@ Basically we repeatedly testing the value of the parameter, until we find those
 which the -2 log likelihood value is equal to 3.84 (or other level, if set differently).
 
 If there is no value exactly equal to 3.84, we stop at the value which result
-a -2 log likelihood just below 3.84. (as in the discrete case, like quantile.)
+a -2 log likelihood just below 3.84. (as in the discrete case, like quantiles.)
 
 }
 \author{ Mai Zhou }
 \references{
+    Zhou, M. (2016). Empirical Likelihood Method in Survival Analysis. CRC Press.
+
     Zhou, M. (2002). 
         Computing censored empirical likelihood ratio 
         by EM algorithm. 

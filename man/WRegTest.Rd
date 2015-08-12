@@ -39,6 +39,8 @@ For median regression (Least Absolute Deviation) estimator, you should
 define the 
 \code{psifun} as \eqn{+1, -1} or \eqn{0} when \eqn{t} is \eqn{>0, <0 }
 or \eqn{ =0}.
+
+For ordinary least squares estimator, \code{psifun} should be the identity function psifun <- function(t){t}.
 }
 \value{
     A list with the following components:
@@ -47,9 +49,10 @@ or \eqn{ =0}.
     \item{P-val}{the p-value using the chi-square approximation.}
 }
 \references{
-    Zhou, M.; Bathke, A. and Kim, M. (2006). 
+    Zhou, M.; Bathke, A. and Kim, M. (2012). 
        Empirical likelihood analysis of the case weighted estimator in 
-       heteroscastic AFT model. Tech. Report. 
+       heteroscastic AFT model.  
+    \emph{Statistica Sinica}, \bold{22}, 295-316.
 }
 \author{ Mai Zhou. }
 \examples{

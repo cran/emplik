@@ -34,7 +34,7 @@ This function is designed for the case where the
 true distributions are all continuous.
 So there should be no tie in the data.
 
-The log empirical likelihood used here is the `Poisson' version likelihood:
+The log empirical likelihood used here is the `Poisson' version empirical likelihood:
 \deqn{  
 \sum_{i=1}^n \delta_i \log (dH(x_i))  - [ H(x_i) - H(y_i) ]  ~.
 }

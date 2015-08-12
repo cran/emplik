@@ -9,7 +9,8 @@ el.cen.EM2(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...)
 This function is similar to \code{el.cen.EM()}, but for multiple constraints.
 In the input there is a vector of observations 
 \eqn{x = (x_1, \cdots , x_n)} and a 
-function \code{fun}. The function \code{fun} should return the (nxk) matrix
+function \code{fun}. The function \code{fun} should return the 
+(n by k) matrix
 \deqn{
           ( f_1(x), f_2(x), \cdots, f_k (x) ) . 
 }
@@ -111,6 +112,9 @@ The \code{-2LLR} should be the same from both functions.
 }
 \author{ Mai Zhou }
 \references{
+    Zhou, M. (2005). Empirical likelihood ratio with arbitrary censored/truncated data by EM algorithm. 
+ \emph{Journal of Computational and Graphical Statistics}, 643-656.
+
     Zhou, M. (2002). 
         Computing censored empirical likelihood ratio 
         by EM algorithm. 

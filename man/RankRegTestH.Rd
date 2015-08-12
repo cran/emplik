@@ -46,7 +46,7 @@ where all notation was described in detail in the references below.
     \item{logel}{the log empirical likelihood of the Kaplan-Meier of e's.}
 }
 \references{
-Zhou, M. (2015) Empirical Likelihood Methods in Survival
+Zhou, M. (2016) Empirical Likelihood Methods in Survival
         Analysis. CRC Press.
 
 Kalbfleisch, J. and Prentice, R. (2002)
@@ -55,7 +55,7 @@ Wiley, New York.  (Chapter 7)
 
 Jin, Z., Lin, D.Y., Wei, L. J. and Ying, Z. (2003).
 Rank-based inference for the accelerated failure time model.
-Biometrika, 90, 341-53.
+Biometrika, \bold{90}, 341-53.
 
 Zhou, M. (2005). Empirical likelihood analysis of the rank
         estimator for the censored accelerated failure time

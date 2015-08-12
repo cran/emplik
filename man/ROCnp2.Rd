@@ -10,7 +10,7 @@ ROCnp2(t1, d1, t2, d2, b0, t0)
               d=1 means t is uncensored; d=0 means t is right censored. }
     \item{t2}{a vector of length m. Observed times, sample 2. may be right censored.}
     \item{d2}{a vector of length m, censoring status.}
-    \item{b0}{a scalar between 0 and 1. }
+    \item{b0}{a scalar, between 0 and 1. }
     \item{t0}{a scalar, betwenn 0 and 1. }
 }
 \description{
@@ -46,7 +46,8 @@ See the tech report below for details on a similar setting.
 }
 \references{
     Su, Haiyan; Zhou, Mai and Liang, Hua (2011). 
-       Semi-parametric Hybrid Empirical Likelihood Inference for  Two Sample Comparison with Censored Data.  Lifetime Data Analysis, 17, 533-551.
+       Semi-parametric Hybrid Empirical Likelihood Inference for  Two Sample Comparison with Censored Data.  
+\emph{Lifetime Data Analysis}, \bold{17}, 533-551.
 }
 \author{Mai Zhou}
 \examples{

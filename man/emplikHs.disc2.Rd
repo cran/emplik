@@ -55,7 +55,7 @@ will be infinite. In this case the computation will stop.
     \item{niters}{number of iterations used}
 }
 \details{
-The log likelihood been maximized is the binomial likelihood:
+The log empirical likelihood been maximized is the `binomial empirical likelihood':
 \deqn{ 
 \sum D_{1i} \log w_i  + (R_{1i}-D_{1i}) \log [1-w_i] + 
 \sum D_{2j} \log v_j  + (R_{2j}-D_{2j}) \log [1-v_j] 
@@ -63,7 +63,7 @@ The log likelihood been maximized is the binomial likelihood:
 where \eqn{w_i = \Delta H_1(t_i)} is the jump 
 of the cumulative hazard function at \eqn{t_i}, 
 \eqn{D_{1i}} is the number of failures
-observed at \eqn{t_i}, \eqn{R_{1i}} is 
+observed at \eqn{t_i}, and \eqn{R_{1i}} is 
 the number of subjects at risk at
 time \eqn{t_i} (for sample one). Similar for sample two.
 

@@ -65,18 +65,19 @@ Or use a different \code{fun}.
 }
 \author{ Mai Zhou }
 \references{
-    Zhou, M. (2002). 
-        Computing censored empirical likelihood ratio 
-        by EM algorithm. 
-    \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
 
-    Li, G. (1995)
-        Nonparametric likelihood ratio estimation of probabilities
-        for truncated data. \emph{JASA} 90, 997-1003.
+Zhou, M. (2005). Empirical likelihood ratio with arbitrary censored/truncated data by EM algorithm. 
+ \emph{Journal of Computational and Graphical Statistics}, 
+\bold{14}, 643-656.
+
+    Li, G. (1995).
+        Nonparametric likelihood ratio estimation 
+    of probabilities for truncated data. 
+   \emph{JASA} \bold{90}, 997-1003.
     
-    Turnbull (1976)
+    Turnbull (1976).
        The empirical distribution function with arbitrarily grouped, censored
-and truncated data. \emph{JRSS} B 38, 290-295.
+and truncated data. \emph{JRSS} B \bold{38}, 290-295.
 
 }
 \examples{

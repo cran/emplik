@@ -2,7 +2,7 @@
 \alias{el.test.wt}
 \title{Weighted Empirical Likelihood ratio for mean, uncensored data}
 \usage{
-el.test.wt(x, wt, mu,usingC=TRUE)
+el.test.wt(x, wt, mu, usingC=TRUE)
 }
 \description{
 This program is similar to \code{el.test( )} except
@@ -21,7 +21,7 @@ The weighted log empirical likelihood been maximized is
     \item{wt}{a vector containing the weights.}
     \item{mu}{a real number used in the constraint, weighted
                 mean value of \eqn{f(X)}.}
-    \item{usingC}{TRUE: use C function, which may be benifit when sample size is large; FALSE: use R function.}
+    \item{usingC}{TRUE: use C function, which may be benifit when sample size is large; FALSE: use pure R function.}
 }
 \value{
     A list with the following components:
@@ -40,8 +40,12 @@ The constant \code{mu} must be inside
 for the computation to continue. 
 
 }
-\author{ Mai Zhou }
+\author{ Mai Zhou, Y.F. Yang for C part. }
 \references{
+   Owen, A. (1990). Empirical likelihood ratio 
+    confidence regions. 
+    \emph{Ann. Statist.} \bold{18}, 90-120.
+
     Zhou, M. (2002). 
         Computing censored empirical likelihood ratio 
         by EM algorithm. 

@@ -48,7 +48,7 @@ will be infinite. In this case the computation will stop.
     \item{niters}{number of iterations used}
 }
 \details{
-The log likelihood been maximized is the binomial likelihood:
+The log likelihood been maximized is the `binomial' empirical likelihood:
 \deqn{ \sum D_i \log w_i  + (R_i-D_i) \log [1-w_i] }
 where \eqn{w_i = \Delta H(t_i)} is the jump 
 of the cumulative hazard function, \eqn{D_i} is the number of failures
@@ -85,6 +85,7 @@ with a \code{theta} input, just to match the arguments.
 
     Zhou, M. and Fang, H. (2006). 
     A comparison of Poisson and binomial empirical likelihood.
+\emph{Tech Report, Univ. of Kentucky, Dept of Statistics}
 }
 \examples{
 fun4 <- function(x, theta) { as.numeric(x <= theta) }

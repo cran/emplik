@@ -155,7 +155,7 @@ if (fabs(x[i]-mu)>re) re=fabs(x[i]-mu);
 return(re);
 }
 
-void eltestwt (double *x, double *wt, double * mu1,int *Lx1,double *pi,double *lamre) {
+void eltestwt(double *x, double *wt, double * mu1,int *Lx1,double *pi,double *lamre) {
 double mu=mu1[0];
 double Lx=Lx1[0];
 double allw = summm(wt,Lx);

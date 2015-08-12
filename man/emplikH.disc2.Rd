@@ -35,7 +35,7 @@ will be infinite. In this case the computation will stop.
     \item{fun1}{a predictable function used to calculate
          the weighted discrete hazard in \eqn{H_0}. 
          \code{fun1(x)} must be able to take a vector input \code{x}.}
-    \item{fun2}{ same as fun1.}
+    \item{fun2}{ similar to fun1, but for sample 2.}
     \item{tola}{an optional positive real number, the tolerance of
        iteration error in solve the non-linear equation needed in constrained 
         maximization.}
@@ -53,7 +53,7 @@ will be infinite. In this case the computation will stop.
     \item{niters}{number of iterations used}
 }
 \details{
-The log likelihood been maximized is the binomial likelihood:
+The log likelihood been maximized is the `binomial' empirical likelihood:
 \deqn{ 
 \sum D_{1i} \log w_i  + (R_{1i}-D_{1i}) \log [1-w_i] + 
 \sum D_{2j} \log v_j  + (R_{2j}-D_{2j}) \log [1-v_j] 
@@ -72,7 +72,7 @@ since \eqn{ \log( 1- dH(\cdot))} do not make sense.
 
 The constants \code{theta} must be inside the so called
 feasible region for the computation to continue. This is similar to the
-requirement that in testing the value of the mean, the value must be
+requirement that in ELR testing the value of the mean, the value must be
 inside the convex hull of the observations.
 It is always true that the NPMLE values are feasible. So when the
 computation stops, try move the \code{theta} closer

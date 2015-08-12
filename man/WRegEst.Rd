@@ -13,10 +13,10 @@ WRegEst(x, y, delta, LS=TRUE, tau=0.5)
 	      d=0 means y is right censored. }
     \item{LS}{a logical value. If TRUE then the function will 
               return the least squares estimator. If FALSE then the
-              function will return the regression quantile estimator,
-              with quantile specified by tau. }.
+              function will return the quantile regression estimator,
+              with the quantile level specified by tau. }.
     \item{tau}{a scalar, between 0 and 1. The quantile to be used in
-                 quantile regression. If LS=TRUE, then it is ignored.}
+                 quantile regression. If tau=0.5 then it is the median regression. If LS=TRUE, then it is ignored.}
 }
 \description{
 For the AFT model, this function computes the case weighted estimator of
@@ -39,10 +39,10 @@ where \eqn{\rho( )} is either the square or the absolute value function.
 The estimator \eqn{ \hat \beta}.
 }
 \references{
-    Zhou, M.; Bathke, A. and Kim, M. (2006). 
+    Zhou, M.; Bathke, A. and Kim, M. (2012). 
        Empirical likelihood analysis of the
-       Heteroscastic AFT model. Dept. of Statistics, Univ. of Kentucky
-       Tech. Report. 
+       Heteroscastic Accelerated Failure Time model. 
+\emph{Statistica Sinica}, \bold{22}, 295-316.
 }
 \author{ Mai Zhou. }
 \examples{
