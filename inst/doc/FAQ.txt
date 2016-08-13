@@ -8,12 +8,12 @@ and stop computing.
 A1. 
 Short answer: the constraints/hypothesis must be feasible. 
 If multiple constraints are involved, they must be compatible 
-and non-redundant.
+and non-redundant. If not, the computing will stop.
 
 Longer answer: This is often due to the fact that: the constrain(s) given, 
 or the hypothesis been tested is/are too extreme or impossible. 
 For example, if the g( ) function is always non-negative, but the 
-hypothesis to be tested is "the mean of g equals -2". 
+hypothesis to be tested is "the mean of g(X) equals -2". 
 [this is called non-feasible] 
 
 This is impossible, and therefore there is no CDF satisfy this hypothesis. 
@@ -32,7 +32,7 @@ We can either treat those "no result, stop computation" case as p-value 0
 (since it is impossible) or change the hypothesis.
 
 This problem some time happens in the simulation runs: in 100 runs 
-only 3 had problems. This is because the samples are random, and for 
+only 3 had problems etc. This is because the samples are random, and for 
 some samples, there exist a tilted empirical CDF that satisfy the 
 hypothesis, yet for other samples, there may be no tilted empirical
 CDF that satisfy the hypothesis. (remember our search of max is 
@@ -44,7 +44,7 @@ extend of possible tilting (probability has to be between 0 and 1)
 produces limited change in mean value 
 for smaller samples. For larger samples, a small tilting can result 
 in a larger change in the mean value, therefore it usually covers 
-more "feasible values"
+more "feasible values".
  
 
  

@@ -122,7 +122,7 @@ double R_zeroin2surv(			/* An estimate of the root */
 
 
 
-void cumsumsurv(double * x, double * s,int *LLL)
+void cumsumsurv(double * x, double * s, int *LLL)
 {
     double sum = 0.;
     int LL=LLL[0]-1;

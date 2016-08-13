@@ -39,8 +39,8 @@ The log likelihood function is defined as
            1-uncensored; 0-right censored; 2-left censored.}
     \item{xc}{an optional vector of collapsing control values. 
               If xc[i] xc[j] have different values then 
-              (x[i],d[i]), (x[j], d[j]) will not merge into one 
-              observation with weight two even 
+              (x[i], d[i]), (x[j], d[j]) will not merge into one 
+              observation with weight two, even 
               if they are identical. Default is not to merge.}
     \item{fun}{a left continuous (weight) function that returns a matrix. 
          The columns (=k) of the matrix is used to calculate
@@ -153,6 +153,8 @@ y <- 0.5 - (u - (u)^3/15)*3/(4*sqrt(5))
 u[ INDE ] <- y[ INDE ]
 return(u)
 }
+## myfun55 is a smoothed indicator fn. 
+## eps should be between (1/sqrt(n), 1/n^0.75) [Chen and Hall]
 el.cen.EM2(x=y,d=d,xc=1:12,fun=rqfun1,mu=0,xmat=x,beta=3.08,tau=0.44769875)
 ## default tau=0.5 
 el.cen.EM2(x=y,d=d,xc=1:12,fun=rqfun1,mu=0,xmat=x,beta=3.0799107404)

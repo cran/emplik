@@ -1,4 +1,4 @@
-el.cen.EM <- function(x,d,fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
+el.cen.EM <- function(x,d,wt=rep(1, length(d)),fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
    xvec <- as.vector(x)
    nn <- length(xvec)
    if(nn <= 1) stop ("Need more observations")
@@ -7,8 +7,9 @@ el.cen.EM <- function(x,d,fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
      stop("d must be 0(right-censored) or 1(uncensored) or 2(left-censored)")
    if(!is.numeric(xvec)) stop("x must be numeric")
    if(length(mu)!=1) stop("check the dim of constraint mu")
+   if(any(wt < 0)) warning("negative weights?")
 
-   temp <- Wdataclean2(xvec,d)
+   temp <- Wdataclean2(xvec,d,wt=wt)
    x <- temp$value
    d <- temp$dd
    w <- temp$weight

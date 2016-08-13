@@ -1,4 +1,4 @@
-ff9aaea7e5c483920ec2b45561f502a6 *DESCRIPTION
+01b2691fed921fd3bfaf37a4f664981f *DESCRIPTION
 501b58effce96395e16d725fab054bf2 *NAMESPACE
 ec4cecb257114d5259119b3d10918e18 *R/BJnoint.R
 05b05cb6cd700e8c712e4fd5ccdc32d2 *R/DnR.R
@@ -19,7 +19,7 @@ a1549d887c1a9c191b4180b8cb2055e0 *R/Wdataclean5.R
 e5b5869b9712c766251e8226a41dc6e3 *R/bjtest1d.R
 26a7bad52e6216b2ede683d95421a552 *R/bjtestII.R
 186dbce8f477a64f514aee736d265b8d *R/cumsumsurv.R
-d068ed15325c317520975ee5cd922568 *R/el.cen.EM.R
+66fb1ac8d83c9c9ca24a141b5929052d *R/el.cen.EM.R
 c27ab8c99c144b6ad6c1c131befcab18 *R/el.cen.EM2.R
 cfec0a2a81eeef6f6962e79d5c240992 *R/el.cen.test.R
 eb92918123caecaf007ce6c99cd9abd6 *R/el.ltrc.EM.R
@@ -43,7 +43,8 @@ e5cfe6e3fa55667cb95a27ba4c7fa337 *R/emplikH.disc2.R
 312c26b6e41dd34a9ed1bd10d4796012 *data/myeloma.rda
 347d21ed30882b2a120a2eaddc023981 *data/smallcell.rda
 99de2044efbcd12bbd51852da8c526f9 *inst/doc/Examples.pdf
-938a4c75faf5fc30cb75a7742b4d1aef *inst/doc/FAQ.txt
+e352b4b2ea1d8dd00213078642f1de0b *inst/doc/FAQ.txt
+195b5f9af0c107c3fc7539f10fa47778 *inst/doc/MoreExamples.pdf
 cc688a1b9bfef942c0366ea145459cc2 *inst/doc/WilksExample.pdf
 35ac0be3da2d23e00d8f1c7d4542e3e6 *inst/doc/vignette
 9edec393c359d6a6eebfb3f57dd1bc2d *man/BJnoint.Rd
@@ -56,8 +57,8 @@ c2eee3b90589fd338db2ac9fe3e3f1fb *man/RankRegTestH.Rd
 002f14644f54497b5d13359445973380 *man/bjtest.Rd
 5255890d6aa238323bbb2bf4255c20d4 *man/bjtest1d.Rd
 b82b216beef3e472449d761bae7eb59e *man/bjtestII.Rd
-c6884cc3aad496089fb8d96160fc72f3 *man/el.cen.EM.Rd
-1d26912ea223ecc3b02dea63c65e6699 *man/el.cen.EM2.Rd
+f1a4674e0785fe2d79a417c608bd725f *man/el.cen.EM.Rd
+78e1329b183d1eae86ad8fc1435753ae *man/el.cen.EM2.Rd
 3d38784b3248ad3793916416bfe9a52a *man/el.cen.test.Rd
 455ab1e108f6d2ca1db18d3c6d5b05dd *man/el.ltrc.EM.Rd
 9cce6381ef4584d69a11d9fe029d0ecb *man/el.test.Rd
@@ -74,4 +75,4 @@ ae7dcb0ad4ab3795ead5dd1165f14ae3 *man/emplikH1.test.Rd
 705464d75aaf975f1a0ba0a19c4c7bc4 *man/findUL.Rd
 7b0b28e080c939b2e763f9a8d55d8b94 *man/myeloma.Rd
 60e2e63d442fa1c1a425f2252f17324d *man/smallcell.Rd
-1fbbaf8490f8982bb81ac8b0d4eac7f9 *src/cumsumsurv.c
+8e0d3142e689f2f2e955954d16e56d13 *src/cumsumsurv.c

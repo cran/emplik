@@ -3,7 +3,7 @@
 \title{Empirical likelihood ratio for mean 
 with right, left or doubly censored data, by EM algorithm}
 \usage{
-el.cen.EM(x,d,fun=function(t){t},mu,maxit=25,error=1e-9,...)
+el.cen.EM(x,d,wt=rep(1,length(d)),fun=function(t){t},mu,maxit=25,error=1e-9,...)
 }
 \description{
 This program uses EM algorithm to compute the maximized 
@@ -24,11 +24,12 @@ The empirical log likelihood been maximized is
     \item{x}{a vector containing the observed survival times.}
     \item{d}{a vector containing the censoring indicators, 
            1-uncensored; 0-right censored; 2-left censored.}
-    \item{fun}{a continuous (weight) function used to calculate
+    \item{wt}{a weight vector (case weight). positive. same length as d}
+    \item{fun}{a left continuous (weight) function used to calculate
          the mean as in \eqn{H_0}.
          \code{fun(t)} must be able to take a vector input \code{t}.
          Default to the identity function \eqn{f(t)=t}.} 
-    \item{mu}{a real number used in the constraint, mean value of \eqn{f(X)}.}
+    \item{mu}{a real number used in the constraint, the mean value of \eqn{f(X)}.}
     \item{maxit}{an optional integer, used to control maximum number of
              iterations. }
     \item{error}{an optional positive real number specifying the tolerance of
@@ -116,6 +117,13 @@ u[ INDE ] <- y[ INDE ]
 return(u)
 }
 el.cen.EM(x, d, fun=myfun5, mu=0.5, theta=3.5, eps=0.1)
+## example of using wt in the input. Since the x-vector contain
+## two 5 (both d=1), and two 2(both d=0), we can also do
+xx <- c(1, 1.5, 2, 3, 4, 5, 6, 4, 1, 4.5)
+dd <- c(1,   1, 0, 1, 0, 1, 1, 1, 0,   1)
+wt <- c(1,   1, 2, 1, 1, 2, 1, 1, 1,   1)
+el.cen.EM(x=xx, d=dd, wt=wt, mu=3.5)
+## this should be the same as the first example.
 }
 \keyword{nonparametric}
 \keyword{survival}
