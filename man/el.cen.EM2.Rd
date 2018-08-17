@@ -175,6 +175,72 @@ el.cen.EM2(x=time, d=status, fun=mygfun, mu=0, age=365.25, muage=323)$Pval
 el.cen.EM2(x=time, d=status, fun=mygfun2, mu=0.5, age=365.25, Mdage=184)$Pval
 el.cen.EM2(x=time, d=status, fun=mygfun2, mu=0.5, age=365.25, Mdage=321)$Pval
 }
+\dontrun{
+#### For right censor only data (Kaplan-Meier) we can use this function to get a faster computation
+#### by calling the kmc 0.2-2 package.
+el.cen.R <- function (x, d, xc = 1:length(x), fun, mu, error = 1e-09, ...)
+{
+xvec <- as.vector(x)
+d <- as.vector(d)
+mu <- as.vector(mu)
+xc <- as.vector(xc)
+n <- length(d)
+if (length(xvec) != n)
+stop("length of d and x must agree")
+if (length(xc) != n)
+stop("length of xc and d must agree")
+if (n <= 2 * length(mu) + 1)
+stop("Need more observations")
+if (any((d != 0) & (d != 1) ))
+stop("d must be 0(right-censored) or 1(uncensored)")
+if (!is.numeric(xvec))
+stop("x must be numeric")
+if (!is.numeric(mu))
+stop("mu must be numeric")
+
+funx <- as.matrix(fun(xvec, ...))
+pp <- ncol(funx)
+if (length(mu) != pp)
+stop("length of mu and ncol of fun(x) must agree")
+temp <- Wdataclean5(z = xvec, d, zc = xc, xmat = funx)
+x <- temp$value
+d <- temp$dd
+w <- temp$weight
+funx <- temp$xxmat
+d[length(d)] <- 1
+xd1 <- x[d == 1]
+if (length(xd1) <= 1)
+stop("need more distinct uncensored obs.")
+funxd1 <- funx[d == 1, ]
+xd0 <- x[d == 0]
+wd1 <- w[d == 1]
+wd0 <- w[d == 0]
+m <- length(xd0)
+
+pnew <- NA
+num <- NA
+if (m > 0) {
+gfun <- function(x) { return( fun(x, ...) - mu ) }
+temp <- kmc.solve(x=x, d=d, g=list(gfun))
+logel <- temp$loglik.h0
+logel00 <- temp$loglik.null
+lam <- - temp$lambda
+}
+if (m == 0) {
+num <- 0
+temp6 <- el.test.wt2(x = funxd1, wt = wd1, mu)
+pnew <- temp6$prob
+lam <- temp6$lambda
+logel <- sum(wd1 * log(pnew))
+logel00 <- sum(wd1 * log(wd1/sum(wd1)))
+}
+tval <- 2 * (logel00 - logel)
+list(loglik = logel, times = xd1, prob = pnew, lam = lam,
+iters = num, `-2LLR` = tval, Pval = 1 - pchisq(tval,
+df = length(mu)))
+}
+
+}
 }
 \keyword{nonparametric}
 \keyword{survival}

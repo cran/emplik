@@ -1,11 +1,11 @@
-\name{findUL}
-\alias{findUL}
+\name{findULold}
+\alias{findULold}
 \title{Find the Wilks Confidence Interval from the Given (empirical) Likelihood Ratio Function}
 \usage{
-findUL (step = 0.01, initStep =0, fun, MLE, level = 3.84, ...)
+findULold (step = 0.01, initStep =0, fun, MLE, level = 3.84, ...)
 }
 \description{
-This program uses uniroot( ) to find the upper and lower (Wilks) confidence
+This program uses simple search to find the upper and lower (Wilks) confidence
 limits based on the -2 log likelihood ratio, which the required input \code{fun} is supposed to supply.
 
 Basically, starting from \code{MLE}, we search on both 
@@ -59,7 +59,7 @@ d <- c(1,   1, 0, 1, 0, 1, 1, 1, 1, 0, 0,  1)
 myfun6 <- function(theta, x, d) {
 el.cen.EM2(x, d, fun=function(t){t}, mu=theta)
 }
-findUL(step=0.2, fun=myfun6, MLE=4.0659, x=x, d=d)
+findULold(step=0.2, fun=myfun6, MLE=4.0659, level = qchisq(0.9, df=1) , x=x, d=d)
 }
 \keyword{nonparametric}
 \keyword{htest}

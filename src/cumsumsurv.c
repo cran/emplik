@@ -4,15 +4,24 @@
 #include <Rdefines.h>
 #include <float.h>
 
+#include "foo.h"
+
 #include <R_ext/Applic.h>
 
 #define EPSILON DBL_EPSILON
 
 /* R_zeroin2() is faster for "expensive" f(), in those typical cases where
  *             f(ax) and f(bx) are available anyway : */
-double lamfunC(double lambda,double * x, double mu,double * wt,double allw,int L);
 
-double R_zeroin2surv(			/* An estimate of the root */
+ /* double lamfunC(double lambda,double * x, double mu,double * wt,double allw,int L); */
+
+static inline double lamfunC(double lambda,double * x, double mu,double * wt,double allw,int L){
+int i=0; double re=0.;
+for (;i<L;i++) re+=wt[i]*(x[i]-mu)/(allw+lambda*(x[i]-mu));
+return(re);
+}
+
+static double R_zeroin2surv(			/* An estimate of the root */
     double ax,				/* Left border | of the range	*/
     double bx,				/* Right border| the root is seeked*/
     double *Tol,			/* Acceptable tolerance		*/
@@ -133,13 +142,7 @@ void cumsumsurv(double * x, double * s, int *LLL)
 }
 
 
-double lamfunC(double  lambda,double * x, double mu,double * wt,double allw,int L){
-int i=0; double re=0.;
-for (;i<L;i++) re+=wt[i]*(x[i]-mu)/(allw+lambda*(x[i]-mu));
-return(re);
-}
-
-inline double summm(double *x,int L){
+static inline double summm(double *x,int L){
 int i=0;double re=0.;
 for (;i<L;i++){
 re+=x[i];
@@ -195,3 +198,5 @@ for (i=0;i<Lx;i++){ pi[i] = wt[i]/(allw + lam0*(x[i]-mu));}
 lamre[0]=lam0;
 
 }
+
+

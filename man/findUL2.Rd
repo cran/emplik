@@ -1,12 +1,14 @@
-\name{findUL}
-\alias{findUL}
+\name{findUL2}
+\alias{findUL2}
 \title{Find the Wilks Confidence Interval from the Given (empirical) Likelihood Ratio Function}
 \usage{
-findUL (step = 0.01, initStep =0, fun, MLE, level = 3.84, ...)
+findUL2(step=0.01, initStep=0, fun, MLE, level=3.84, tol=.Machine$double.eps^0.5, ...)
 }
 \description{
-This program uses uniroot( ) to find the upper and lower (Wilks) confidence
+This program uses simple search and uniroot( ) to find the upper and lower (Wilks) confidence
 limits based on the -2 log likelihood ratio, which the required input \code{fun} is supposed to supply.
+
+This function is faster than \code{findUL( )}.
 
 Basically, starting from \code{MLE}, we search on both 
 directions, by \code{step} away
@@ -27,7 +29,8 @@ see the pdf vignettes file.
   If the first input of \code{fun} is set to MLE, then the returned -2LLR should be 0.} 
     \item{MLE}{The MLE of the parameter. No need to be exact, as long as it is inside the confidence interval.}
     \item{level}{an optional positive number, controls the confidence level. Default to 3.84 = chisq(0.95, df=1). Change to 2.70=chisq(0.90, df=1) to get a 90\% confidence interval. }
-   \item{...}{additional arguments, if any, to pass to \code{fun}.}
+    \item{tol}{tolerance to pass to uniroot( ). Default to .Machine$double.eps^0.5 }
+	\item{...}{additional arguments, if any, to pass to \code{fun}.}
 }
 \value{
     A list with the following components:
@@ -50,6 +53,11 @@ a -2 log likelihood just below 3.84. (as in the discrete case, like quantiles.)
 \author{ Mai Zhou }
 \references{
     Zhou, M. (2016). Empirical Likelihood Method in Survival Analysis. CRC Press.
+
+    Zhou, M. (2002). 
+        Computing censored empirical likelihood ratio 
+        by EM algorithm. 
+    \emph{JCGS}
 }
 \examples{
 ## example with tied observations. Kaplan-Meier mean=4.0659.
@@ -59,7 +67,7 @@ d <- c(1,   1, 0, 1, 0, 1, 1, 1, 1, 0, 0,  1)
 myfun6 <- function(theta, x, d) {
 el.cen.EM2(x, d, fun=function(t){t}, mu=theta)
 }
-findUL(step=0.2, fun=myfun6, MLE=4.0659, x=x, d=d)
+findUL2(step=0.2, fun=myfun6, MLE=4.0659, x=x, d=d)
 }
 \keyword{nonparametric}
 \keyword{htest}
