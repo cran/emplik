@@ -43,7 +43,8 @@ see the pdf vignettes file.
 Basically we repeatedly testing the value of the parameter, until we find those
 which the -2 log likelihood value is equal to 3.84 (or other level, if set differently).
 
-If there is no value exactly equal to 3.84, we stop at the value which result
+If there is no value exactly equal to 3.84, it is better to use findULold( ), where
+we stop at the value which result
 a -2 log likelihood just below 3.84. (as in the discrete case, like quantiles.)
 
 }

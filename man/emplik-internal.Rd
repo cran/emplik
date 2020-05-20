@@ -2,6 +2,7 @@
 \alias{Wdataclean2}
 \alias{Wdataclean3}
 \alias{Wdataclean5}
+\alias{kmc.clean}
 \alias{DnR}
 \alias{logelr}
 \alias{logwelr}
@@ -20,6 +21,7 @@
 \alias{gradf2}
 \alias{gradf3}
 \alias{cumsumsurv}
+\alias{omega.lambda}
 \alias{emplikHs.test22}
 \title{Internal emplik functions}
 \usage{
@@ -32,6 +34,7 @@ llogpp(z, eps)
 Wdataclean2(z,d,wt=rep(1,length(z)))
 Wdataclean3(z,d,zc=rep(1, length(z)),wt=rep(1,length(z)))
 Wdataclean5(z,d,zc=rep(1, length(z)),wt=rep(1,length(z)),xmat)
+kmc.clean(kmc.time, delta)
 DnR(x,d,w,y=rep(-Inf,length(x)))
 solve3.QP(D, d, A, b, meq, factorized=FALSE)
 WKM(x,d,zc=rep(1,length(d)),w=rep(1,length(d)))
@@ -44,6 +47,7 @@ redistF(y, d, Fdist)
 gradf2(lam, funt1, evt1, rsk1, funt2, evt2, rsk2, K, n)
 gradf3(lam, funt1, evt1, rsk1, funt2, evt2, rsk2, K, n)
 cumsumsurv(x)
+omega.lambda(lambda, delta, gt)
 emplikHs.test22(x1, d1, y1 = -Inf, x2, d2, y2 = -Inf, 
                 theta, fun1, fun2, maxit = 25, 
                 tola = 1e-07, itertrace = FALSE, ...)
@@ -96,6 +100,7 @@ is used by \code{el.test.wt3}.
 Used in BJtest() and BJtestII().
 
 \code{cumsumsurv} is similar to rev(cumsum(rev( ))) but faster.
+\code{omega.lambda} is a recursive, either C or R, to compute jumps of KaplaMeier under Lagrange multiplier lambda.
 \code{emplikHs.test22} similar to emplikHs.test2; and is used by RankRegTestH() only. 
 }
 \keyword{internal}

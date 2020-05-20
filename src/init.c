@@ -15,7 +15,7 @@ static R_CMethodDef cMethods[] = {
     {NULL, NULL, 0, NULL}
 };
 
-void attribute_visible R_init_fooR(DllInfo *info)
+void attribute_visible R_init_fooR(DllInfo *info)    /* change fooR to emplik? */
 {
     R_registerRoutines(info, cMethods, NULL, NULL, NULL);
     R_useDynamicSymbols(info, FALSE);

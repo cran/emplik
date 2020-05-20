@@ -45,7 +45,7 @@ funtime21 <- as.matrix( fun2(temp2$times) )
   if( ncol(funtime21) != q ) 
      stop("check the output dim of fun2, and theta")
 
-Kcent <- jump1%*%funtime11 - jump2%*%funtime21
+Kcent <- sum(jump1%*%funtime11) - sum(jump2%*%funtime21) 
   if( itertrace ) print(c("Kcenter=", Kcent)) 
 
     index1 <- (jump1 < 1)
@@ -82,7 +82,7 @@ Kcent <- jump1%*%funtime11 - jump2%*%funtime21
   TINY <- sqrt( .Machine$double.xmin )
   if(tola < TINY) tola <- TINY
   lam <- rep(0,q)
-  N <- n1+n2
+  N <- n1+n2   ## shall we make it bigger?? max( c(2*(n1+n2),10000)
 ######################## replace tola if it is too small #####
 #
 #    Preset the weights for combining Newton and gradient

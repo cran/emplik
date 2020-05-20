@@ -1,4 +1,4 @@
-el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...){
+el.cen.EM2 <- function(x,d,xc=1:length(x),fun,mu,maxit=50,error=1e-9,...){
 ####
 #### xc is collaps control: if for index i and j, (x[] d[]) are identical
 ####     should they be merged into one obs. with weight 2?

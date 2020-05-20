@@ -17,7 +17,7 @@ where \eqn{H_*(t)} is the (unknown) discrete cumulative
 hazard function; \eqn{f_*(t)} can be any predictable  
 functions of \eqn{t}. 
 \eqn{\theta} is the parameter. The given value of \eqn{\theta}
-in these computation are the value to be tested.
+in these computation is the value to be tested.
 The data can be right censored and left truncated.
 
 When the given constants \eqn{\theta} is too far

@@ -59,7 +59,7 @@ d <- c(1,   1, 0, 1, 0, 1, 1, 1, 1, 0, 0,  1)
 myfun6 <- function(theta, x, d) {
 el.cen.EM2(x, d, fun=function(t){t}, mu=theta)
 }
-findULold(step=0.2, fun=myfun6, MLE=4.0659, level = qchisq(0.9, df=1) , x=x, d=d)
+## findULold(step=0.2, fun=myfun6, MLE=4.0659, level = qchisq(0.9, df=1) , x=x, d=d)
 }
 \keyword{nonparametric}
 \keyword{htest}

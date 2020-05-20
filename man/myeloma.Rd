@@ -44,8 +44,8 @@ Data are from
 
 }
 \references{
-Krall, J.M., Uthoff, V.A., and Harley, J. B. (1975), 
-A Step-up Procedure for Selecting Variables Associated with Survival, 
+Krall, J.M., Uthoff, V.A., and Harley, J. B. (1975). 
+A Step-up Procedure for Selecting Variables Associated with Survival. 
 Biometrics, 31, 49-57.
 }
 \keyword{datasets}

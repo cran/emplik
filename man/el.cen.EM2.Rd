@@ -3,7 +3,7 @@
 \title{Empirical likelihood ratio test for a vector of means 
 with right, left or doubly censored data, by EM algorithm}
 \usage{
-el.cen.EM2(x,d,xc=1:length(x),fun,mu,maxit=25,error=1e-9,...)
+el.cen.EM2(x,d,xc=1:length(x),fun,mu,maxit=50,error=1e-9,...)
 }
 \description{
 This function is similar to \code{el.cen.EM()}, but for multiple constraints.

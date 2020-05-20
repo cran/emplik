@@ -85,6 +85,10 @@ even when other later computations do not go.
  When the computation stops, the -2LLR should have value
 infinite.
 
+This function uses the llog etc. function, so sometimes it may produce
+different result from the one sample result. which use the regular log function.
+The advantage is that we avoid the possible log(0) situation.
+
 You can also use this function for one sample problems. 
 You need to artificially supply data for sample two of minimal size
 (like size 2q+2), and specify a fun2() that ALWAYS return 0's

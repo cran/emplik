@@ -3,7 +3,7 @@
 \title{Empirical likelihood ratio for mean 
 with right, left or doubly censored data, by EM algorithm}
 \usage{
-el.cen.EM(x,d,wt=rep(1,length(d)),fun=function(t){t},mu,maxit=25,error=1e-9,...)
+el.cen.EM(x,d,wt=rep(1,length(d)),fun=function(t){t},mu,maxit=50,error=1e-9,...)
 }
 \description{
 This program uses EM algorithm to compute the maximized 
@@ -35,12 +35,14 @@ The empirical log likelihood been maximized is
     \item{error}{an optional positive real number specifying the tolerance of
        iteration error. This is the bound of the
        \eqn{L_1} norm of the difference of two successive weights.}
-   \item{...}{additional arguments, if any, to pass to fun.}
+   \item{...}{additional arguments, if any, to pass to \code{fun}.}
 }
 \value{
     A list with the following components:
-    \item{loglik}{the maximized empirical log likelihood under the constraint.}
-    \item{times}{locations of CDF that have positive mass.}
+    \item{loglik}{the maximized empirical log likelihood under the constraint. This may be different from the result of el.cen.EM2
+	               because here the tied observations are collapes into 1 with weight. (while el.cen.EM2 do not). 
+				   However, the -2LLR should be the same.}
+    \item{times}{locations of CDF that have positive mass. tied obs. are collapesd}
     \item{prob}{the jump size of CDF at those locations.}
     \item{"-2LLR"}{If available, it is Minus two times the 
                    Empirical Log Likelihood Ratio.

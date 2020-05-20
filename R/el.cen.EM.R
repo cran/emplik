@@ -1,4 +1,4 @@
-el.cen.EM <- function(x,d,wt=rep(1, length(d)),fun=function(t){t},mu,maxit=25,error=1e-9, ...) {
+el.cen.EM <- function(x,d,wt=rep(1, length(d)),fun=function(t){t},mu,maxit=50,error=1e-9, ...) {
    xvec <- as.vector(x)
    nn <- length(xvec)
    if(nn <= 1) stop ("Need more observations")

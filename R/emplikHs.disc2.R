@@ -60,13 +60,13 @@ emplikHs.disc2 <- function(x1, d1, y1 = -Inf, x2, d2, y2 = -Inf,
 ##################################################################
 # funtime12 are matrix of n12 x q. rsk12, eve12 are vectors of length n1/n2.
 ############################################################################
-Kcent <- log(1-(eve1/rsk1))%*%funtime1 - log(1-(eve2/rsk2))%*%funtime2 
+Kcent <- sum(log(1-jmp1)%*%funtime1) - sum(log(1-jmp2)%*%funtime2) 
 if( itertrace ) print(c("Kcenter=", Kcent))
 ##################################################################
   TINY <- sqrt( .Machine$double.xmin )
   if(tola < TINY) tola <- TINY
   lam <- rep(0,q)
-  N <- n1+n2
+  N <- n1+n2  ## this is used in llog function. May be we should make it larger?
 #
 #    Preset the weights for combining Newton and gradient
 # steps at each of 16 inner iterations, starting with
