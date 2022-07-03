@@ -1,3 +1,5 @@
+## 5/2020  Note: the indicator function in the fun definition needs smoothing
+
 #### Oct. 2011.
 #### For two samples of right censored data.
 #### Both samples use nonparametric likelihood = EL. 

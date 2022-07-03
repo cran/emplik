@@ -1,25 +1,28 @@
 omega.lambda <- function(lambda, delta, gt){
-  n <- length(delta)   ###  delta is sorted according to kmc.time
-  delta[n] <- 1        ###  Assume kmc.time already been kmc.cleaned
-  lambda <-as.vector(lambda)   ### added 4/2020
-  u.omega <- rep(0, n)   ##### all w = 0 to begin
-  S <- rep(1, n)
+   n <- length(delta)    ###  delta is sorted according to kmc.time
+   delta[n] <- 1         ###  Assume kmc.time already been kmc.clean-ed, so this is not needed.
+   if( length(lambda) > 1 ) stop("lambda should be a scalar")
+   lambda <- as.vector(lambda)   ### added 4/2020. not used in 1d, but for future.
+   u.omega <- rep(0, n)   ##### all w = 0 to begin
+   S <- rep(1, n)
   
-  ###  S.cen <- 0
-  ###  u.omega[1] <- 1/(n - lambda*gt[1])   
+   S.cen <- 0
+   u.omega[1] <- 1/(n - lambda*gt[1])   
   
-  ###   for (k in 2:n){
-  ###     if (delta[k]==0){S[k] <- S[k-1] - u.omega[k-1]
-  ###                      S.cen <- S.cen + 1/S[k]}
-  ###     else{u.omega[k] <- 1/(n - lambda*gt[k] - S.cen)
-  ###          S[k] <- S[k-1] - u.omega[k-1] }
-  ###   }
+     for (k in 2:n){
+       if(delta[k]==0){ S[k] <- S[k-1] - u.omega[k-1]
+                        S.cen <- S.cen + 1/S[k] }
+       else{ u.omega[k] <- 1/(n - lambda*gt[k] - S.cen)
+             S[k] <- S[k-1] - u.omega[k-1] }
+     }
   
-    temp <- .C('wlam', DDD=as.integer(delta), gti=as.numeric(gt), SSS=as.numeric(S), lam=as.numeric(lambda), LLL=as.integer(n))
+###### temp <- .C('wlam', DDD=as.integer(delta), gti=as.numeric(gt), SSS=as.numeric(S), lam=as.numeric(lambda), LLL=as.integer(n))
+######  
+######    u.omega <- temp$gti
+######    S <- temp$SSS
+######  There are pure R version and C version.  
   
-    u.omega <- temp$gti
-    Sur <- temp$SSS
-  return(list(S=Sur,omega=u.omega, mea= sum(gt*u.omega)))
+ list(Surv=S, omega=u.omega, mea= sum(gt*u.omega))
 }
 
 

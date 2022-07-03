@@ -34,7 +34,7 @@ llogpp(z, eps)
 Wdataclean2(z,d,wt=rep(1,length(z)))
 Wdataclean3(z,d,zc=rep(1, length(z)),wt=rep(1,length(z)))
 Wdataclean5(z,d,zc=rep(1, length(z)),wt=rep(1,length(z)),xmat)
-kmc.clean(kmc.time, delta)
+kmc.clean(Xtime, delta)
 DnR(x,d,w,y=rep(-Inf,length(x)))
 solve3.QP(D, d, A, b, meq, factorized=FALSE)
 WKM(x,d,zc=rep(1,length(d)),w=rep(1,length(d)))
@@ -100,7 +100,7 @@ is used by \code{el.test.wt3}.
 Used in BJtest() and BJtestII().
 
 \code{cumsumsurv} is similar to rev(cumsum(rev( ))) but faster.
-\code{omega.lambda} is a recursive, either C or R, to compute jumps of KaplaMeier under Lagrange multiplier lambda.
+\code{omega.lambda} is a recursive function, either R or C (future), to compute jumps of KaplaMeier given Lagrange multiplier lambda.
 \code{emplikHs.test22} similar to emplikHs.test2; and is used by RankRegTestH() only. 
 }
 \keyword{internal}

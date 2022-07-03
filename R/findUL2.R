@@ -1,4 +1,4 @@
-findUL2 <- function(step = 0.01, initStep = 0, fun, MLE, level = 3.84, 
+findUL2 <- function(step = 0.01, initStep = 0, fun, MLE, level = 3.84146, 
                   tol = .Machine$double.eps^0.5, ...) 
 {
     value <- 0

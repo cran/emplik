@@ -38,13 +38,15 @@ Version 0.9-1   April 24, 2005
 Version 0.9-2   Oct. 9,  2005
 Version 0.9-3   Aug.     2006
 
+Add function findLnew(), findUnew(). 6/2022.
 
-To do list: 10/9/2005  
+Add function el.cen.kmc1d() in version 1.1-2, which is much faster
+than el.cen.EM(). But it sometimes fail to find the right answer.
+
+To do list:  
 
 Speed up with solve(A,b) instead of finding the
 full inverse matrix by svd and compute A{-1}*b . 
 See emplikH2.test2() for an example.
-
-To do list: 3/2015
 
 Integrate the kmc package into emplik package.

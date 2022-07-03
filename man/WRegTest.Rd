@@ -32,7 +32,7 @@ This version can handle the model where beta is a vector (of length q).
 
 The estimation equations used when maximize the 
 empirical likelihood is 
-\deqn{ 0 = \sum \delta_i \Delta F(Y_i) X_i ( Y_i - X_i \beta0 ) }
+\deqn{ 0 = \sum \delta_i \Delta F(Y_i) X_i \psi( Y_i - X_i \beta0 ) }
 which was described in detail in the reference below.
 
 For median regression (Least Absolute Deviation) estimator, you should
@@ -49,7 +49,7 @@ For ordinary least squares estimator, \code{psifun} should be the identity funct
     \item{P-val}{the p-value using the chi-square approximation.}
 }
 \references{
-    Zhou, M.; Bathke, A. and Kim, M. (2012). 
+    Zhou, M.; Kim, M. and Bathke, A. (2012). 
        Empirical likelihood analysis of the case weighted estimator in 
        heteroscastic AFT model.  
     \emph{Statistica Sinica}, \bold{22}, 295-316.

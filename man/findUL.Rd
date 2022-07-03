@@ -2,7 +2,7 @@
 \alias{findUL}
 \title{Find the Wilks Confidence Interval from the Given (empirical) Likelihood Ratio Function}
 \usage{
-findUL (step = 0.01, initStep =0, fun, MLE, level = 3.84, ...)
+findUL (step = 0.01, initStep =0, fun, MLE, level = 3.84146, ...)
 }
 \description{
 This program uses uniroot( ) to find the upper and lower (Wilks) confidence

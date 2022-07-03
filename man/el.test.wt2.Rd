@@ -57,7 +57,11 @@ those in el.test. (even when all the weights are one).
 Owen, A. (1990). Empirical likelihood ratio confidence regions. 
     \emph{Ann. Statist.} \bold{18}, 90-120.
 
-    Zhou, M. (2002). 
+Zhou, M. (2005). Empirical likelihood ratio with arbitrary censored/truncated data by EM algorithm. 
+ \emph{Journal of Computational and Graphical Statistics}, 
+\bold{14}, 643-656. 
+
+   Zhou, M. (2002). 
         Computing censored empirical likelihood ratio 
         by EM algorithm. 
     \emph{Tech Report, Univ. of Kentucky, Dept of Statistics}

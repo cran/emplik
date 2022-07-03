@@ -1,4 +1,4 @@
-findUL <- function(step = 0.01, initStep = 0, fun, MLE, level = 3.84, ...)
+findUL <- function(step = 0.01, initStep = 0, fun, MLE, level = 3.84146, ...)
 {
 value <- 0
 step1 <- step

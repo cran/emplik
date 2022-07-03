@@ -1,3 +1,5 @@
+## 5/2020 Note: The indicator in the function definition needs SMOOTHING!
+
 #### Modified by Mai Zhou, 9/2007, 10/2007.
 #### For two samples of right censored data.
 #### Both samples use nonparametric likelihood = EL. 

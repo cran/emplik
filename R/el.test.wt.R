@@ -49,3 +49,5 @@ return(list(x=x, wt=wt, prob=pi, lam=lam0));
 }
 }
 ### add output of lam0, 5/2007 
+###  Can simplify by use the uniroot() option entendInt="yes".
+###  Comment added 10/28/2021  M Zhou
