@@ -12,6 +12,8 @@ emplikH2B <- function(lambda, x1, d1, x2, d2, fun1, fun2, CIforTheta=FALSE) {
     if (!is.numeric(lambda)) stop("lambda must be a numeric value, the tilt")
 
     newdata1 <- Wdataclean2(z=x1, d=d1)
+    newdata1$dd[length(newdata1$dd)] <- 1     #### added July, 2022. MZ
+
     temp1 <- DnR(newdata1$value, newdata1$dd, newdata1$weight)
     jump1 <- (temp1$n.event)/temp1$n.risk
 
@@ -32,6 +34,8 @@ emplikH2B <- function(lambda, x1, d1, x2, d2, fun1, fun2, CIforTheta=FALSE) {
     if (!is.numeric(x2)) stop("x2 must be numeric values -- observed times")
 
     newdata2 <- Wdataclean2(z=x2, d=d2)
+    newdata2$dd[length(newdata2$dd)] <- 1     #### added July 2022. MZ
+
     temp2 <- DnR(newdata2$value, newdata2$dd, newdata2$weight)
     jump2 <- (temp2$n.event)/temp2$n.risk
     index2 <- (jump2 < 1)

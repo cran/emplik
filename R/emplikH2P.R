@@ -27,9 +27,16 @@ emplikH2P <- function(lambda, x1, d1, x2, d2, fun1, fun2, CIforTheta=FALSE) {
         stop("x2 must be numeric -- observed times")
 
     newdata1 <- Wdataclean2(z=x1, d=d1)
+    newdata1$dd[length(newdata1$dd)] <- 1     #### Do we need this? There is already a K12?? yes. MZ
+
     temp1 <- DnR(newdata1$value, newdata1$dd, newdata1$weight)
     newdata2 <- Wdataclean2(z=x2, d=d2)
+    newdata2$dd[length(newdata2$dd)] <- 1     #### Yes. This results a jump ==1 and then pick up by K12.
+	############################################## Otherwise, ther is no jump ==1.  July 2022. MZ
+
     temp2 <- DnR(newdata2$value, newdata2$dd, newdata2$weight)
+
+
 
     jump1 <- (temp1$n.event)/temp1$n.risk
     jump2 <- (temp2$n.event)/temp2$n.risk

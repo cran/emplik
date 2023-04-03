@@ -40,12 +40,12 @@ if( diff == 0 ) { lam <- 0 } else {
     maxi<-0
     if(diff > 0) {
     maxi <- step
-    while(inthaz(maxi, funtimeTjump, funh, theta) > 0 && maxi < 50*log(n)*step) 
+    while(inthaz(maxi, funtimeTjump, funh, theta) > 0 && maxi < 300*log(n)*step) 
     maxi <- maxi+step 
-    } 
+    }                    ##### maximum steps increased from 50 to 300, two places. 9/2022 MZ
     else { 
     mini <- -step 
-    while(inthaz(mini, funtimeTjump, funh, theta) < 0 && mini > - 50*log(n)*step) 
+    while(inthaz(mini, funtimeTjump, funh, theta) < 0 && mini > - 300*log(n)*step) 
     mini <- mini - step 
     } 
 

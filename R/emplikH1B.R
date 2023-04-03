@@ -8,6 +8,8 @@ if(!is.numeric(x)) stop("x must be numeric values -- observed times")
 if(!is.numeric(lambda)) stop("lambda must be a numeric value -- tilt")
 
 newdata <- Wdataclean2(x,d)
+newdata$dd[length(newdata$dd)] <- 1    #### added July 2022 MZ
+
 temp <- DnR(newdata$value, newdata$dd, newdata$weight)
 otime <- temp$times # only uncensored time? Yes.
 orisk <- temp$n.risk
