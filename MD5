@@ -1,4 +1,4 @@
-e97aceb181c712be9965cb9ef4d9992b *DESCRIPTION
+5b55a5d301ccc73919a6ac709bb1585f *DESCRIPTION
 dd84972bab3e2a628c9b17b18c1c20f5 *NAMESPACE
 ec4cecb257114d5259119b3d10918e18 *R/BJnoint.R
 05b05cb6cd700e8c712e4fd5ccdc32d2 *R/DnR.R
@@ -78,7 +78,7 @@ e28168d79e69430423ebb5aa4dae2b29 *man/el.cen.kmc1d.Rd
 06103add6d727f9ac0e0b92daf57d2fa *man/el.test.wt2.Rd
 018ce8ee9660f23f24ec5b704a08a5b8 *man/el.trun.test.Rd
 23d15a15b722b5134d2ac568261fa6c1 *man/emplik-internal.Rd
-e4dac045ea252384149995d045c88d32 *man/emplik-package.Rd
+8b6494acea30e83c7e8632c245e004d1 *man/emplik-package.Rd
 2f68c463090ca424878f6e2dd83da967 *man/emplikH.disc.Rd
 eeda5fb28d5084c18947752fa14299e6 *man/emplikH.disc2.Rd
 ae7dcb0ad4ab3795ead5dd1165f14ae3 *man/emplikH1.test.Rd
