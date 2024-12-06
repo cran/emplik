@@ -19,13 +19,15 @@ bjtestII(y, d, x, beta)
     regression coefficient is equal to beta, based on the estimating equations.
 
 The log empirical likelihood been maximized is
-\deqn{ \sum_{j=1}^n \log p_j ; ~  \sum p_j =1 }
+\deqn{ \log EL = \sum_{j=1}^n \log p_j ; ~  \sum p_j =1 }
 where the probability \eqn{p_j} is for the jth martingale differences of the estimating equations.
 }
 \details{
 
-The above likelihood should be understood as the likelihood of the martingale difference terms. For the definition of the Buckley-James martingale or estimating equation, please see the (2015) book
-in the reference list.
+The above likelihood should be understood as the likelihood of the 
+martingale difference terms. For the definition of the Buckley-James martingale 
+or the related estimating equation, please see the (2016) book
+in the reference list below.
 
 The estimation equations used when maximize the 
 empirical likelihood is 

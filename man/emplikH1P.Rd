@@ -7,8 +7,7 @@ emplikH1P(lambda, x, d, fung, CIforTheta=FALSE)
 \description{Compute the Poisson empirical likelihood ratio for the given tilt parameter lambda. 
 Most useful for the construction of Wilks confidence intervals.
 The null hypothesis or constraint is defined by the parameter \eqn{\theta}, where 
-\deqn{\int fung(t) dH(t) = \theta }.
-
+\deqn{\int fung(t) dH(t) = \theta }
 
 Where \eqn{H(t)} is the unknown
 cumulative hazard

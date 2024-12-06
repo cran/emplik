@@ -22,12 +22,13 @@ with right censored \eqn{y_i}. Iteration method.
 \details{
 This function compute the Buckley-James estimator 
 when your model do not have an intercept term.
-Of course, if you include a column of 1's in the x matrix, 
+Of course, if you include a column of 1's in the \code{x} matrix, 
 it is also OK with this function and it
 is equivalent to having an intercept term.
-If your model do have an intercept term, then you could also (probably should) use the function
+If your model do have an intercept term, then you could also use the function
 \code{bj( )} in the \code{Design} library. It should be more refined 
-than \code{BJnoint} in the stopping rule for the iterations.
+than \code{BJnoint} in the stopping rule for the iterations. However, the variance
+estimator \code{bj( )} provided is not consistent.
 
 This function is included here mainly to produce the estimator value
 that may provide some useful information with the function \code{bjtest( )}.
@@ -43,6 +44,8 @@ Buckley-James estimator.
 \references{
     Buckley, J. and James, I. (1979).  Linear regression with censored data.
    \emph{Biometrika}, \bold{66} 429-36.
+   
+    Zhou, M. (2016). Empirical Likelihood Method in Survival Analysis. CRC Publishing.
 }
 \author{ Mai Zhou. }
 \examples{

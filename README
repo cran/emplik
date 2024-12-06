@@ -49,4 +49,4 @@ Speed up with solve(A,b) instead of finding the
 full inverse matrix by svd and compute A{-1}*b . 
 See emplikH2.test2() for an example.
 
-Integrate the kmc package into emplik package.
+Integrate the kmc package into emplik package, may be.

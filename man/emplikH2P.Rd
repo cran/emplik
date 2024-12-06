@@ -7,7 +7,7 @@ emplikH2P(lambda, x1, d1, x2, d2, fun1, fun2, CIforTheta=FALSE)
 \description{Compute the Poisson empirical likelihood ratio for the given tilt parameter lambda.
 Most useful when construct Wilks confidence intervals. 
 The null hypothesis or constraint is defined by the parameter \eqn{\theta}, where 
-\deqn{\int fun1(t) dH_1(t) - \int fun2(t) dH_2(t) = \theta }.
+\deqn{\int fun1(t) dH_1(t) - \int fun2(t) dH_2(t) = \theta }
 
 If the lambda value set to zero, you get the Nelson-Aalen (NPMLE) and output -2LLR =0.
 For other values of lambda, this is not scaled (like in one sample) since there are two samples and it can be

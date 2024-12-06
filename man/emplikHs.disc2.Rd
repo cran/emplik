@@ -43,7 +43,7 @@ will be infinite. In this case the computation will stop.
         maximization.}
     \item{theta}{a given vector of length q. for Ho constraint. }
     \item{maxit}{integer, maximum number of iteration. }
-    \item{itertrace}{ Logocal, lower bound for lambda }
+    \item{itertrace}{ Logical. }
 }
 \value{
     A list with the following components:

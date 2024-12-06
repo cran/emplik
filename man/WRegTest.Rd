@@ -11,7 +11,7 @@ WRegTest(x, y, delta, beta0, psifun=function(t){t})
               delta=1 means y is uncensored;
 	      delta=0 means y is right censored. }
     \item{beta0}{a vector of length q. The value of the regression 
-           coefficient to be tested in the linear model }.
+           coefficient to be tested in the linear model. }
     \item{psifun}{the estimating function. The definition of it determines
                   the type of estimator under testing. }
 }
@@ -24,7 +24,6 @@ The log empirical likelihood been maximized is
 \deqn{ \sum_{d=1} \log \Delta F(y_i) + \sum_{d=0} \log [1-F(y_i)].}
 }
 \details{
-
 The above likelihood should be understood as the likelihood of the 
 censored responses \code{y} and \code{delta}. 
 
@@ -37,10 +36,11 @@ which was described in detail in the reference below.
 
 For median regression (Least Absolute Deviation) estimator, you should
 define the 
-\code{psifun} as \eqn{+1, -1} or \eqn{0} when \eqn{t} is \eqn{>0, <0 }
-or \eqn{ =0}.
+\code{psifun} as \eqn{+1, -1} or \eqn{0} when \eqn{t} is \eqn{>0, <0}
+or \eqn{=0}.
 
-For ordinary least squares estimator, \code{psifun} should be the identity function psifun <- function(t){t}.
+For ordinary least squares estimator, \code{psifun} should be the identity 
+function \code{ psifun <- function(t){t}}.
 }
 \value{
     A list with the following components:

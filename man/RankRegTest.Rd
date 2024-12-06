@@ -12,7 +12,7 @@ RankRegTest(y, d, x, beta, type="Gehan")
     \item{x}{a matrix of size N by q. }
     \item{beta}{a vector of length q. the value of the regression 
                coefficient to be tested in the model 
-               \eqn{y_i = \beta x_i  + \epsilon_i} }.
+               \eqn{y_i = \beta x_i  + \epsilon_i} }
     \item{type}{default to Gehan type. 
                The other option is Logrank type.}
 }

@@ -7,7 +7,7 @@ emplikH1B(lambda, x, d, fung, CIforTheta=FALSE)
 \description{Compute the binomial empirical likelihood ratio for the given tilt parameter lambda. 
 Most useful for construct Wilks confidence intervals.
 The null hypothesis or constraint is defined by the parameter \eqn{\theta}, where 
-\deqn{\int fung(t) d log(1-H(t)) = \theta }.
+\deqn{\int fung(t) d \log (1-H(t)) = \theta }
 
  
 Where \eqn{H(t)} is the unknown

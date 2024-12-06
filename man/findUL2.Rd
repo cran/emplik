@@ -39,7 +39,7 @@ see the pdf vignettes file.
     \item{FstepL}{the final step size when search lower limit. An indication of the precision.}
     \item{FstepU}{Ditto. An indication of the precision of the upper limit.}
     \item{Lvalue}{The -2LLR value of the final \code{Low} value. Should be approximately equal to level. If larger than level, than the confidence interval limit \code{Low} is wrong.}
-    \item{Uvalue}{Ditto. Should be approximately equa to level.}
+    \item{Uvalue}{Ditto. Should be approximately equal to \code{level}.}
 }
 \details{
 

@@ -8,7 +8,7 @@ emplikH2B(lambda, x1, d1, x2, d2, fun1, fun2, CIforTheta=FALSE)
 Most useful for construct Wilks confidence intervals.
 The null hypothesis or constraint is defined by the parameter \eqn{\theta}, where 
 \deqn{
-\int fun1(t) d \log(1-H_1(t)) - \int fun2(t) d \log (1-H_2(t)) = \theta }.
+\int fun1(t) d \log(1-H_1(t)) - \int fun2(t) d \log (1-H_2(t)) = \theta }
 
 If the lambda=0, you get the Nelson-Aalen (NPMLE) and output -2LLR =0. Otherwise the lambda is not scaled
 (as in one sample case). Since there are two sample sizes. It can be confusing which sample size to use for scale.
@@ -44,7 +44,7 @@ true distribution should be discrete. Ties in the data are OK.
 
 The log empirical likelihood used here is the `binomial' version empirical likelihood:
 \deqn{  
-log EL1 = \sum_{i=1}^n \delta_i \log (dH(x_i))  + (R_i - \delta_i)\log [1- dH(x_i) ]  ~,
+ \log EL1 = \sum_{i=1}^n \delta_i \log (dH(x_i))  + (R_i - \delta_i)\log [1- dH(x_i) ]  ~,
 }
 (similarly defined for sample 2) and the overall log EL = log EL1 + log EL2.
 

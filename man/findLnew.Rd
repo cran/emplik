@@ -5,7 +5,7 @@
 findLnew(step=0.003, initStep=0, fun, MLE, level=3.84146, tol=.Machine$double.eps^0.5,...)
 }
 \description{
-This function is similar to \code{findUL2} but here the seeking of lower and upper bound are
+This function is similar to \code{findUL2} but here the seeking of lower and upper confidence bound are
 separate (the other half is \code{findUnew}).
 
 The reason for this is: sometime we need to supply the \code{fun}
@@ -38,7 +38,8 @@ At curruent implimentation, only handles one dimesional parameter, i.e. only
 confidence intervals, not confidence regions.
 }
 \arguments{
-    \item{step}{a positive number. The starting step size of the search. Reasonable value should be about 1/5 of the SD of MLE. }
+    \item{step}{a positive number. The starting step size of the search. 
+	            Reasonable value should be about 1/5 of the SD of MLE. If in doubt, use a smaller value.}
     \item{initStep}{a nonnegative number. The first step size of the search. Sometimes, you may want to put a larger innitStep to speed the search.}
     \item{fun}{a function that returns a list. One of the item in the list should be "-2LLR", which is the -2 log (empirical) likelihood ratio. 
  The first input of \code{fun} must be the parameter for which we are seeking the confidence interval. (The MLE or NPMLE of this parameter should be supplied as in the input MLE). The rest of the input to \code{fun} are typically the data.

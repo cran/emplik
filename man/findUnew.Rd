@@ -45,8 +45,8 @@ confidence intervals, not confidence regions.
 }
 \value{
     A list with the following components:
-    \item{Up}{the lower limit of the confidence interval.}
-    \item{FstepU}{the final step size when search lower limit. An indication of the precision/error size.}
+    \item{Up}{the upper limit of the confidence interval.}
+    \item{FstepU}{the final step size when search upper limit. An indication of the precision/error size.}
     \item{Uvalue}{The -2LLR value of the final \code{Up} value. Should be approximately equal to level. If larger than level, 
 	than the confidence interval limit \code{Up} is wrong.}
 }

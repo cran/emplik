@@ -14,12 +14,14 @@ the null hypothesis that
 \int{f_2(t) dH_2(t)} = \theta 
 }
 where \eqn{H_*(t)} is the (unknown) cumulative
-hazard functions; \eqn{f_*(t)} can be any predictable  
+hazard functions for sample 1 and sample 2; \eqn{f_*(t)} can be any predictable  
 functions of \eqn{t}. 
 \eqn{\theta} is a vector of parameters (dim=q). 
 The given value of \eqn{\theta}
 in these computation are the value to be tested.
 The data can be right censored and left truncated.
+
+The two samples are assumed independent of each other.
 
 When the given constants \eqn{\theta} is too far
 away from the NPMLE, there will be no hazard function satisfy this 
